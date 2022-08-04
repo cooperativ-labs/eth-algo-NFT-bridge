@@ -1,8 +1,16 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import "../styles/main.css";
+import "../styles/tailwind.css";
+
+import type { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <div id="outer-container" className="bg-gray-500 flex flex-col">
+      <main id="page-wrap flex-grow h-full">
+        <Component {...pageProps} />
+      </main>
+    </div>
+  );
 }
 
-export default MyApp
+export default MyApp;
