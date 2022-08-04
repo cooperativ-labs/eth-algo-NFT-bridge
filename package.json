@@ -10,12 +10,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "fix": "yarn run fix-js-lint && yarn run fix-style-lint"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.4",
     "autoprefixer": "^10.4.8",
+    "classnames": "^2.3.1",
+    "formik": "^2.2.9",
     "next": "^12.2.3",
     "postcss": "^8.4.14",
     "postcss-preset-env": "^7.7.2",
