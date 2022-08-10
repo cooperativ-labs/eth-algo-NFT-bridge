@@ -1,9 +1,10 @@
-import type { NextPage } from "next";
+import FormCard from "../src/containers/FormCard";
 import Head from "next/head";
 import Image from "next/image";
 import NavigationBar from "../src/components/NavigationBar";
+import React from "react";
 import SwapForm from "../src/components/SwapForm";
-import FormCard from "../src/containers/FormCard";
+import type { NextPage } from "next";
 
 const Application: NextPage = () => {
   return (
@@ -18,21 +19,26 @@ const Application: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavigationBar />
-      <div className="my-auto items-center h-full mt-24 md:mt-36">
+      <div className="my-auto items-center h-full mt-24 md:mt-28">
         <FormCard center>
           <SwapForm />
         </FormCard>
       </div>
 
-      <footer className={""}>
+      <footer className={" p-2"}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://cooperativ.io?utm_source=eth_algo_nft_bridge"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{" "}
-          <span className={""}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
+          <span className={"flex items-center"}>
+            Powered by{" "}
+            <Image
+              src="/logos/Cooperativ_Main Logo_Full_Yellow.svg"
+              alt="Vercel Logo"
+              width={150}
+              height={25}
+            />
           </span>
         </a>
       </footer>

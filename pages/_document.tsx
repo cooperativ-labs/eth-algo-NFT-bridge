@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link href="/dist/output.css" rel="stylesheet" />
+          {/* <link href="/dist/output.css" rel="stylesheet" /> */}
           <link
             href="https://fonts.googleapis.com/css2?family=Inter&family=Ubuntu:wght@400;700&display=swap"
             rel="stylesheet"

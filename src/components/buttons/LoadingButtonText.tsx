@@ -54,7 +54,7 @@ export const LoadingButtonText = ({
           <span>{step2Text}</span>
         </div>
       );
-    case "step2":
+    case "step3":
       return (
         <div className="flex justify-center items-center ">
           <img
