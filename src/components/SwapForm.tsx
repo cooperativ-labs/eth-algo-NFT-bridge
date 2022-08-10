@@ -2,11 +2,11 @@ import AlgoLogo from "chain-icons/algorand-algo.svg";
 import EthLogo from "../../public/chain-icons/ethereum-eth-logo.svg";
 import FormButton from "./buttons/FormButton";
 import FormSection from "../containers/FormSection";
-import Image from "next/image";
 import Input, { defaultFieldDiv } from "./form-components/Inputs";
 import LoadingButtonText, {
   LoadingButtonStateType,
 } from "./buttons/LoadingButtonText";
+import NonInput from "./form-components/NonInput";
 import React, { FC, useState } from "react";
 import Select from "./form-components/Select";
 import { ErrorMessage, Form, Formik } from "formik";
@@ -15,6 +15,8 @@ const selectFieldClass =
   "text-lg font-semibold text-slate-100 dark:text-slate-300 border-2 bg-sky-800 border-sky-800 dark:bg-white dark:bg-opacity-10 my-1 p-3 pl-5 w-64 rounded-full shadow-xl focus:border-blue-900 focus:outline-none";
 const inputFieldClass =
   "text-lg font-semibold text-slate-800 dark:text-slate-300 border-2 bg-sky-50 border-sky-800 dark:bg-white dark:bg-opacity-10 my-1 p-3 pl-5 rounded-full shadow-inner focus:border-blue-900 focus:outline-none ";
+const nonInputFieldClass =
+  "text-lg font-semibold text-slate-800 dark:text-slate-300 border-2 bg-sky-100 border-sky-800 dark:bg-white dark:bg-opacity-10 my-1 p-3 pl-5 rounded-full shadow-inner focus:border-blue-900 focus:outline-none ";
 
 const SwapForm: FC = () => {
   const [buttonStep, setButtonStep] = useState<LoadingButtonStateType>("idle");
@@ -103,13 +105,12 @@ const SwapForm: FC = () => {
                       Algorand
                     </option>
                   </Select>
-                  <Input
+                  <NonInput
                     className={defaultFieldDiv}
-                    fieldClass={inputFieldClass}
-                    required
-                    name="toWalletAddress"
-                    placeholder={`Your NFT's ${values.toChain} address`}
-                  />
+                    fieldClass={nonInputFieldClass}
+                  >
+                    {`Your receiving wallet address`}
+                  </NonInput>
                 </div>
               </div>
             </FormSection>
