@@ -10,7 +10,7 @@ const Application: NextPage = () => {
   return (
     <div
       data-test="component-landing"
-      className="bg-gradient-to-r from-white via-sky-50 to-blue-50 dark:from-slate-800 dark:via-sky-900 dark:to-blue-900 flex flex-col w-screen h-screen"
+      className="bg-gradient-to-r from-white via-sky-50 to-blue-50 dark:from-slate-800 dark:via-sky-900 dark:to-blue-900 flex flex-col w-screen min-h-screen"
     >
       <Head>
         <title>{`Eth <> Algo NFT Bridge`}</title>
@@ -35,7 +35,7 @@ const Application: NextPage = () => {
             Powered by{" "}
             <Image
               src="/logos/Cooperativ_Main Logo_Full_Yellow.svg"
-              alt="Vercel Logo"
+              alt="Cooperativ Logo"
               width={150}
               height={25}
             />

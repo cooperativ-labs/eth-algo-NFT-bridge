@@ -19,9 +19,9 @@ const NavigationBar: FC = () => {
         <NavBarLink text="Bridge" url="/" />
         <NavBarLink text="Duplicate" url="/" />
       </div>
-      <button className="text-white bg-cYellow dark:bg-opacity-10 dark:border-2 dark:border-slate-200 font-semibold py-2 px-4 rounded-full">
+      {/* <button className="text-white bg-cYellow dark:bg-opacity-10 dark:border-2 dark:border-slate-200 font-semibold py-2 px-4 rounded-full">
         Connect Wallet
-      </button>
+      </button> */}
     </div>
   );
 };
