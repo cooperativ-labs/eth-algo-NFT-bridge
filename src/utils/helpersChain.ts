@@ -3,6 +3,7 @@ import Web3 from "web3";
 import { nftContract } from "../../ethContracts/erc721";
 import { ALGO_MyAlgoConnect as MyAlgoConnect } from "@reach-sh/stdlib";
 import * as backendCtc from "../../reachBackend/test.main";
+import { Dispatch, SetStateAction } from "react";
 
 declare let window: any;
 
@@ -67,12 +68,14 @@ export const checkNftBalance = async (
 };
 
 export const getNftUri = async (
-  selectedNftId: number,
+  selectedNftId: string,
   nftToBeBridgedAddress: string,
   ethWalletAddress: string,
-  setNftImageURI: (uri: string) => void
+  setNftImageURI: (uri: string) => void,
+  setNftUrl: Dispatch<SetStateAction<string>>,
+  setMetaData: Dispatch<SetStateAction<undefined>>
 ) => {
-  if (isNaN(selectedNftId)) {
+  if (isNaN(parseInt(selectedNftId))) {
     alert(
       `Please enter a valid NFT ID. You entered this invalid value: "${selectedNftId}"`
     );
@@ -83,50 +86,79 @@ export const getNftUri = async (
       const web3_ = new Web3(window.ethereum);
       const ctc = await nftContract(web3_, nftToBeBridgedAddress);
       const uri = await ctc.methods.tokenURI(selectedNftId).call();
-      // setURL(uri);
+      setNftUrl(uri);
       const gateway = uri.replace(
         "ipfs://",
         "https://gateway.ipfscdn.io/ipfs/"
       );
       const metadata = await fetch(gateway).then((r) => r.json());
-      // setMetaData(metadata);
+      setMetaData(metadata);
       const uri2 = "https://ipfs.io/ipfs/" + metadata.image.substring(7);
-      // setSuccessMsg(`The URL of the NFT with id ${tokenId} is:
-      //          ${uri2}`);
+
       setNftImageURI(uri2);
     } catch (err: any) {
       alert(`getUri: ${err.message}`);
     }
 };
 
-export const runAPI = (apiName: string) => {
-  const API = (arg = { apiName: [[""]] }) => {
-    return arg;
-  };
-  const Fun = (arg1, arg2, arg3, arg4) => {
-    return [arg1, arg2, arg3, arg4];
-  };
-
-  const User = API({
-    approveBridge: Fun([], Bool, [], `Backend Approve Bridge`),
-    lockNFT: Fun([], Bool, [], `Bridger Lock NFT`),
-    claimNFT: Fun([], Bool, [], `Bridger Claim NFT`),
-  });
-
-  let input = User[apiName][0].map((j, index) => {
-    return j == UInt
-      ? parseInt(getElement(`${apiName}${j}${index + 1}`))
-      : getElement(`${apiName}${j}${index + 1}`);
-  });
-  console.log(`this is input: `, input);
-  callAPI(backendCtc, algoCtcId.current, apiName, input);
-};
-
-export const optinToNFT = async (token) => {
+export const optInToNFT = async (token: string) => {
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
     reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
   );
   const acc = await reach.getDefaultAccount();
-  await acc.tokenAccept(token);
+  console.log("acc", acc);
+  const accepted = await acc.tokenAccept(token);
+  return accepted;
+};
+
+export const callAPI = async (ctcDeployed: string, apiName: string, apiArg) => {
+  // @Sunday - What Are These Arguments?
+  const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
+  reach.setWalletFallback(
+    reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
+  );
+  const acc = await reach.getDefaultAccount();
+  const ctc = acc.contract(backendCtc, ctcDeployed);
+
+  const call = async (f: any) => {
+    let res = undefined;
+    try {
+      res = await f();
+      if (res == `no`) {
+        console.log(`"${apiName}" API is not available from Reach backend`);
+        alert(`"${apiName}" API is not available from Reach backend`);
+        // setBridgeButton(noAnimate);
+      } else {
+        console.log(
+          `the "${apiName}" API has successfully worked. Here is the response:`,
+          res
+        );
+        alert(
+          `the "${apiName}" API has successfully worked. Here is the response: ${res}`
+        );
+        // setBridgeButton(noAnimate);
+      }
+    } catch (e) {
+      res = [`err`, e];
+      console.log(`there is an error while running "${apiName} API: "`, e);
+      alert(`there is an error while running "${apiName} API: ${e}`);
+      // setBridgeButton(noAnimate);
+    }
+  };
+  //
+  const apis = ctc.a;
+  call(async () => {
+    let apiReturn;
+    ``;
+    for (const x in apis) {
+      if (x == apiName) {
+        apiReturn = await apis[apiName](...apiArg);
+      }
+    }
+    if (apiReturn == ``) {
+      apiReturn = `no`;
+    }
+    return apiReturn;
+  });
 };

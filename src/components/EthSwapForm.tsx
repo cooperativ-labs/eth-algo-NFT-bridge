@@ -1,11 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Web3 from "web3";
 import FormSection from "../containers/FormSection";
 import Input, {
   defaultFieldDiv,
   inputFieldClass,
 } from "./form-components/Inputs";
-import Select from "./form-components/Select";
 declare let window: any;
 import cn from "classnames";
 import {
@@ -19,7 +24,9 @@ type EthSwapFormProps = {
   isFrom: boolean;
   ethWalletAddress: string;
   nftToBeBridgedAddress: string;
-  selectedNftId: number | string;
+  selectedNftId: string;
+  setNftUrl: Dispatch<SetStateAction<string>>;
+  setMetaData: Dispatch<SetStateAction<undefined>>;
   setNftImageURI: (uri: string) => void;
   setEthWalletAddress: (uri: string) => void;
 };
@@ -29,6 +36,8 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
   ethWalletAddress,
   nftToBeBridgedAddress,
   selectedNftId,
+  setNftUrl,
+  setMetaData,
   setNftImageURI,
   setEthWalletAddress,
 }) => {
@@ -55,10 +64,12 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
       checkNftBalance(nftToBeBridgedAddress, ethWalletAddress, setNftBalance);
       if (selectedNftId) {
         getNftUri(
-          selectedNftId as number,
+          selectedNftId,
           nftToBeBridgedAddress,
           ethWalletAddress,
-          setNftImageURI
+          setNftImageURI,
+          setNftUrl,
+          setMetaData
         );
       }
     }
@@ -107,16 +118,15 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
         </div>
       )}
       {!!ethWalletAddress && nftToBeBridgedAddress && (
-        <Select name="selectedNftId" className={""}>
-          <option value="">Select a NFT</option>
-          {createSelectionList().map((item, index) => {
-            return (
-              <option key={index} value={item}>
-                {item}
-              </option>
-            );
-          })}
-        </Select>
+        <div className="flex items-center ">
+          <Input
+            className={defaultFieldDiv}
+            fieldClass={inputFieldClass}
+            required
+            name="selectedNftId"
+            placeholder={`Your NFT's Id`}
+          />
+        </div>
       )}
     </FormSection>
   );

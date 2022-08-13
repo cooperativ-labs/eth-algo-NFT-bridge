@@ -10,21 +10,23 @@ declare let window: any;
 import EthSwapForm from "./EthSwapForm";
 import AlgoSwapForm from "./AlgoSwapForm";
 import ImageSection from "../containers/ImageSection";
-import { getNftUri, optinToNFT, runAPI } from "../utils/helpersChain";
+import { callAPI, getNftUri, optInToNFT } from "../utils/helpersChain";
 
 const SwapForm: FC = () => {
   const [buttonStep, setButtonStep] = useState<LoadingButtonStateType>("idle");
-  const [showBridgeButton, setShowBridgeButton] = useState<boolean>(false);
   const [ethWalletAddress, setEthWalletAddress] = useState<string>("");
   const [algoWalletAddress, setAlgoWalletAddress] = useState<string>("");
+  const [nftUrl, setNftUrl] = useState<string>("");
   const [nftImageUri, setNftImageURI] = useState<string>("");
+  const [metaData, setMetaData] = useState<any>("");
   const [nftClaimId, setNftClaimId] = useState<string>("");
   const [algorandBridgeId, setAlgorandBridgeId] = useState<string>("");
-  const [bridgeRunning, setBridgeRunning] = useState<boolean>(true);
 
-  //triggerd by submit of form
+  console.log({ nftUrl, nftImageUri, metaData, nftClaimId, algorandBridgeId });
+
+  //triggered by submit of form
   const bridgeNFT = async (
-    selectedNftId: number,
+    selectedNftId: string,
     nftToBeBridgedAddress: string
   ) => {
     if (!ethWalletAddress) {
@@ -41,7 +43,9 @@ const SwapForm: FC = () => {
         return;
       }
       try {
-        const res = await fetch("api/bridgeToAlgo", {
+        console.log("deploying algo token");
+        const res = await fetch("../../pages/api/bridgeToAlgo", {
+          // @Sunday - Problem here
           method: "POST",
           body: JSON.stringify({
             ethRecAddr: ethWalletAddress,
@@ -49,7 +53,7 @@ const SwapForm: FC = () => {
             bridgerOnEth: ethWalletAddress,
             bridgerOnAlgo: algoWalletAddress,
             name: "",
-            url: URL,
+            url: nftUrl,
             //We probably need to transfer the metadata of the NFT to the Algorand contract
             metadataHash: "metaDataHash",
             tokenId: selectedNftId,
@@ -58,10 +62,9 @@ const SwapForm: FC = () => {
         });
         const data = await res.json();
         if (data.contractId) {
-          setShowBridgeButton(true);
           setAlgorandBridgeId(data.contractId);
           setNftClaimId(data.NFTid);
-          optinToNFT(data.NFTid);
+          console.log(await optInToNFT(data.NFTid));
           alert(
             `This Algorand Bridge contract now holds your NFT waiting to be claimed (write it down): ${data.contractId}`
           );
@@ -69,7 +72,11 @@ const SwapForm: FC = () => {
           alert(
             `This is the ID of your "NFT" waiting for you to claim after opting in:  ${data.NFTid}. You will be able to claim your NFT on Algorand on the next prompt`
           );
-          runAPI("claimNFT");
+          console.log(algorandBridgeId);
+
+          const apiReturn = await callAPI(algorandBridgeId, "claimNFT"); // @Sunday - NOT SURE ABOUT THIS
+          console.log(apiReturn);
+          return apiReturn;
         } else {
           setButtonStep("failed");
           alert(`Server authentication failed. Please try again`);
@@ -81,13 +88,12 @@ const SwapForm: FC = () => {
 
     if (!!ethWalletAddress)
       try {
-        if (isNaN(selectedNftId)) {
+        if (isNaN(parseInt(selectedNftId))) {
           alert(
             `Please enter a valid NFT ID. You entered this invalid value: "${selectedNftId}"`
           );
           return;
         }
-        setShowBridgeButton(true);
         const web3_ = new Web3(window.ethereum);
         const ctc = await nftContract(web3_, nftToBeBridgedAddress);
         ctc.methods
@@ -103,29 +109,29 @@ const SwapForm: FC = () => {
           })
           .on("error", function (error: any, receipt: any) {
             setButtonStep("failed");
-            setBridgeRunning(false);
+
             alert(`There is an error: ${JSON.stringify(error)}`);
           })
-          .on("confirmation", function (confirmationNumber: any, receipt: any) {
-            let count = 0;
-            while (count < 1 && bridgeRunning === true) {
-              getNftUri(
+          .on(
+            "confirmation",
+            async function (confirmationNumber: any, receipt: any) {
+              await getNftUri(
                 selectedNftId,
                 nftToBeBridgedAddress,
                 ethWalletAddress,
-                setNftImageURI
+                setNftImageURI,
+                setNftUrl,
+                setMetaData
               );
-              deployAlgoToken();
-              count++;
-            }
-            if (bridgeRunning == false) {
+              const deployAlgo = await deployAlgoToken();
+              console.log("deployAlgo", deployAlgo);
               console.log(confirmationNumber, receipt);
               setButtonStep("confirmed");
             }
-          });
+          );
       } catch (err: any) {
         setButtonStep("failed");
-        setBridgeRunning(false);
+
         alert(err.message);
       }
   };
@@ -141,14 +147,10 @@ const SwapForm: FC = () => {
           nftToBeBridgedAddress: "",
           toChain: "",
           toWalletAddress: "",
-          selectedNftId: null,
+          selectedNftId: "",
         }}
         validate={(values) => {
           const errors: any = {}; /** @TODO : Shape */
-          if (values.fromChain === values.toChain) {
-            errors.fromChain = "From and To chains must be different";
-            errors.toChain = "From and To chains must be different";
-          }
 
           return errors;
         }}
@@ -174,6 +176,8 @@ const SwapForm: FC = () => {
               setNftImageURI={setNftImageURI}
               ethWalletAddress={ethWalletAddress}
               setEthWalletAddress={setEthWalletAddress}
+              setNftUrl={setNftUrl}
+              setMetaData={setMetaData}
             />
             <AlgoSwapForm
               isFrom={false}

@@ -2,11 +2,16 @@ const bridgeAbi = require("./erc721abi.json");
 const nftAbi = require("./nftAbi.json");
 
 export const nftContract = (web3: any, nftCtcId: string) => {
-  return new web3.eth.Contract(
-    nftAbi,
-    nftCtcId
-    //"0x8d43F477F386228AC23CEcFC53B9CC9883c19BF4"
-  );
+  try {
+    const nftContract = new web3.eth.Contract(
+      nftAbi,
+      nftCtcId
+      //"0x8d43F477F386228AC23CEcFC53B9CC9883c19BF4"
+    );
+    return nftContract;
+  } catch (err: any) {
+    alert(err.message);
+  }
 };
 
 export const bridgeContract = (web3: any) => {

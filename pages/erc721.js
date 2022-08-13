@@ -384,14 +384,14 @@ export default function Erc721() {
   return (
     <div className="bg-blue-500 flex flex-col">
       <nav className="navbar mt-4 mb-4">
-        <div class="container mx-auto">
+        <div className="container mx-auto">
           <h2 font="34px">
             <strong>TESTING ETH BRIDGE</strong>
           </h2>
           <div className="navbar-end">
             <button
               onClick={connectWallet}
-              class="bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              className="bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
               Connect Wallet
             </button>
@@ -402,10 +402,10 @@ export default function Erc721() {
         <p>Enter the ERC721 NFT Contract ID: </p>
         <input
           id="erc721nftId"
-          class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+          className="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
         ></input>
         <button
-          class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={checkNftBalance}
         >
           Check your NFT Balance (ERC-721)
@@ -416,7 +416,7 @@ export default function Erc721() {
         <p>Enter the ERC721 token ID: </p>
         <input
           id="nftUrl"
-          class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+          className="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
         ></input>
         <br />
         <p>
@@ -424,9 +424,9 @@ export default function Erc721() {
         </p>
         <input
           id="algorandAddress"
-          class="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+          className="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
         ></input>
-        <button class={bridgeButton} onClick={bridgeNFT}>
+        <button className={bridgeButton} onClick={bridgeNFT}>
           Bridge NFT
         </button>{" "}
         <br />
@@ -436,7 +436,7 @@ export default function Erc721() {
       </div>
       <div className="mb-5">
         <button
-          class="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-purple-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
           onClick={getNftUri}
         >
           Check NFT URL
