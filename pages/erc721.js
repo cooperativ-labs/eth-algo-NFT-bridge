@@ -153,7 +153,7 @@ export default function Erc721() {
             `This Algorand Bridge contract now holds your NFT waiting to be claimed (write it down): ${data.contractId}`
           );
         if (data.contractId)
-          alert(
+          alert( 
             `This is the ID of your "NFT" waiting for you to claim after opting in:  ${data.NFTid}`
           );
         if (data.contractId) {
@@ -381,6 +381,57 @@ export default function Erc721() {
     runAPI("claimNFT");
   };
 
+  const deployToken = async () => {
+    const tokenIdd = parseInt(getElement("nftUrl"));
+    const ctcIdd = getElement("erc721nftId");
+    let algoAddr = getElement("algorandAddress");
+    algorandAddress.current = algoAddr;
+    if (algorandAddress.current == "") {
+      alert("Please enter your Algorand address");
+      return;
+    }
+    try {
+      const res = await fetch("api/bridgeToAlgo", {
+        method: "POST",
+        body: JSON.stringify({
+          ethRecAddr: address.current,
+          ethNftCtcId: ctcIdd,
+          bridgerOnEth: address.current,
+          bridgerOnAlgo: algoAddr,
+          name: "",
+          url: URL,
+          metadataHash: "metaDataHash",
+          tokenId: tokenIdd,
+        }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      if (data.contractId) setBridgeButton(animate);
+      if (data.contractId)
+        alert(
+          `This Algorand Bridge contract now holds your NFT waiting to be claimed (write it down): ${data.contractId}`
+        );
+      if (data.contractId)
+        alert( 
+          `This is the ID of your "NFT" waiting for you to claim after opting in:  ${data.NFTid}`
+        );
+      if (data.contractId) {
+        algoCtcId.current = data.contractId;
+        alert(
+          `You can now go ahead and claim your NFT on Algorand on the next prompt`
+        );
+        optinToNFT(data.NFTid);
+        runAPI("claimNFT");
+      } else {
+        setBridgeButton(noAnimate);
+        alert(`Server authentication failed. Please try again`);
+      }
+    } catch (error) {
+      alert(`error: `, error);
+    }
+  };
+  
+
   return (
     <div className="bg-blue-500 flex flex-col">
       <nav className="navbar mt-4 mb-4">
@@ -432,7 +483,7 @@ export default function Erc721() {
         <br />
         <br />
         {/* <button className="button is-primary" onClick = {claimNft}> Claim Algorand NFT</button> */}
-        {/* <button className="button is-danger" onClick = {deployToken}>Test BackEnd</button> <br/><br/> */}
+        <button className="button is-danger" onClick = {deployToken}>Test BackEnd</button> <br/><br/>
       </div>
       <div className="mb-5">
         <button

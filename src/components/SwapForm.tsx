@@ -2,7 +2,7 @@ import FormButton from "./buttons/FormButton";
 import LoadingButtonText, {
   LoadingButtonStateType,
 } from "./buttons/LoadingButtonText";
-import React, { FC, useState } from "react";
+import React, { FC, useState, useRef } from "react";
 import { Form, Formik } from "formik";
 import Web3 from "web3";
 import { nftContract } from "../../ethContracts/erc721";
@@ -11,6 +11,9 @@ import EthSwapForm from "./EthSwapForm";
 import AlgoSwapForm from "./AlgoSwapForm";
 import ImageSection from "../containers/ImageSection";
 import { callAPI, getNftUri, optInToNFT } from "../utils/helpersChain";
+import * as backendCtc from '../../reachBackend/test.main'
+import { ALGO_MyAlgoConnect as MyAlgoConnect } from "@reach-sh/stdlib";
+import loadStdlib from "@reach-sh/stdlib";
 
 const SwapForm: FC = () => {
   const [buttonStep, setButtonStep] = useState<LoadingButtonStateType>("idle");
@@ -20,7 +23,8 @@ const SwapForm: FC = () => {
   const [nftImageUri, setNftImageURI] = useState<string>("");
   const [metaData, setMetaData] = useState<any>("");
   const [nftClaimId, setNftClaimId] = useState<string>("");
-  const [algorandBridgeId, setAlgorandBridgeId] = useState<string>("");
+  const algorandBridgeId = useRef<string>("");
+  const count = useRef<number>(0);
 
   console.log({ nftUrl, nftImageUri, metaData, nftClaimId, algorandBridgeId });
 
@@ -44,12 +48,12 @@ const SwapForm: FC = () => {
       }
       try {
         console.log("deploying algo token");
-        const res = await fetch("../../pages/api/bridgeToAlgo", {
+        const res = await fetch("api/bridgeToAlgo", {
           // @Sunday - Problem here
           method: "POST",
           body: JSON.stringify({
             ethRecAddr: ethWalletAddress,
-            ethNftCtcId: nftToBeBridgedAddress,
+            ethNftCtcId: "0x8d43F477F386228AC23CEcFC53B9CC9883c19BF4",
             bridgerOnEth: ethWalletAddress,
             bridgerOnAlgo: algoWalletAddress,
             name: "",
@@ -60,21 +64,22 @@ const SwapForm: FC = () => {
           }),
           headers: { "Content-Type": "application/json" },
         });
+        console.log(res);
         const data = await res.json();
         if (data.contractId) {
-          setAlgorandBridgeId(data.contractId);
+          algorandBridgeId.current = (`${data.contractId}`);
           setNftClaimId(data.NFTid);
-          console.log(await optInToNFT(data.NFTid));
+          optInToNFT(data.NFTid);
           alert(
             `This Algorand Bridge contract now holds your NFT waiting to be claimed (write it down): ${data.contractId}`
           );
-
+    
           alert(
             `This is the ID of your "NFT" waiting for you to claim after opting in:  ${data.NFTid}. You will be able to claim your NFT on Algorand on the next prompt`
           );
-          console.log(algorandBridgeId);
-
-          const apiReturn = await callAPI(algorandBridgeId, "claimNFT"); // @Sunday - NOT SURE ABOUT THIS
+          console.log(algorandBridgeId.current);
+    
+          const apiReturn = runAPI("claimNFT"); // @Sunday - NOT SURE ABOUT THIS
           console.log(apiReturn);
           return apiReturn;
         } else {
@@ -85,7 +90,6 @@ const SwapForm: FC = () => {
         alert(`error: ${err}`);
       }
     };
-
     if (!!ethWalletAddress)
       try {
         if (isNaN(parseInt(selectedNftId))) {
@@ -115,18 +119,23 @@ const SwapForm: FC = () => {
           .on(
             "confirmation",
             async function (confirmationNumber: any, receipt: any) {
-              await getNftUri(
-                selectedNftId,
-                nftToBeBridgedAddress,
-                ethWalletAddress,
-                setNftImageURI,
-                setNftUrl,
-                setMetaData
-              );
-              const deployAlgo = await deployAlgoToken();
-              console.log("deployAlgo", deployAlgo);
-              console.log(confirmationNumber, receipt);
-              setButtonStep("confirmed");
+              //this is to make sure it only runs once and not infinitely
+              while(count.current < 1) {
+                await getNftUri(
+                  selectedNftId,
+                  nftToBeBridgedAddress,
+                  ethWalletAddress,
+                  setNftImageURI,
+                  setNftUrl,
+                  setMetaData
+                );
+                const deployAlgo = await deployAlgoToken();
+                console.log("deployAlgo", deployAlgo);
+                console.log(confirmationNumber, receipt);
+                setButtonStep("confirmed");
+                count.current = count.current + 1;
+              }
+              
             }
           );
       } catch (err: any) {
@@ -139,6 +148,67 @@ const SwapForm: FC = () => {
   const shortenAddress = (address: string) => {
     return address.slice(0, 6) + "..." + address.slice(-4);
   };
+//
+//API calling
+const callAPI = async (reachBackend : any, ctcDeployed: any, apiName: any, apiArg: any) => {
+  const reach = loadStdlib.loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
+  reach.setWalletFallback(
+    reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
+  );
+  const acc = await reach.getDefaultAccount();
+  const ctc = acc.contract(reachBackend, ctcDeployed);
+
+  const call = async (f:any) => {
+    let res = undefined;
+    try {
+      res = await f();
+      if (res == `no`) {
+        console.log(`"${apiName}" API is not available from Reach backend`);
+        alert(`"${apiName}" API is not available from Reach backend`);
+      } else {
+        console.log(
+          `the "${apiName}" API has successfully worked. Here is the response:`,
+          res
+        );
+        alert(
+          `the "${apiName}" API has successfully worked. Here is the response: ${res}`
+        );
+      }
+    } catch (e) {
+      res = [`err`, e];
+      console.log(`there is an error while running "${apiName} API: "`, e);
+      alert(`there is an error while running "${apiName} API: ${e}`);
+    }
+  };
+  //
+  const apis = ctc.a;
+  call(async () => {
+    let apiReturn;
+    ``;
+    for (const x in apis) {
+      if (x == apiName) {
+        apiReturn = await apis[apiName](...apiArg);
+      }
+    }
+    if (apiReturn == ``) {
+      apiReturn = `no`;
+    }
+    return apiReturn;
+  });
+};
+
+// this is the function that executes and call the callAPI
+const runAPI = (apiName:any) => {
+  let input: any = [];
+  callAPI(backendCtc, algorandBridgeId.current, apiName, input);
+};
+
+//
+
+///
+
+
+///
   return (
     <>
       <Formik
@@ -209,6 +279,7 @@ const SwapForm: FC = () => {
           </Form>
         )}
       </Formik>
+      {/* <button onClick = {deployAlgoToken}>Test BackEnd</button> */}
     </>
   );
 };

@@ -25,6 +25,7 @@ const handler = async (request, res) => {
   const deploySmartContract = async () => {
     //connect wallet
     const stdlib = loadStdlib.loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
+    console.log(private_key)
     const accCreator = await stdlib.newAccountFromMnemonic(private_key);
     stdlib.setProviderByName("TestNet");
     console.log(`TestNet has been set as the provider`);
@@ -89,7 +90,7 @@ const handler = async (request, res) => {
   try {
     authenticate(req.ethNftCtcId)
       .then(async (auth) => {
-        console.log(auth);
+        console.log(auth.tokenId == req.tokenId );
         if (
           auth.from == req.bridgerOnEth &&
           auth.to == `0x7a403d1f0CF58EDa5D3047d856D2525cbbc993f2` &&

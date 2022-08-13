@@ -112,7 +112,7 @@ export const optInToNFT = async (token: string) => {
   return accepted;
 };
 
-export const callAPI = async (ctcDeployed: string, apiName: string, apiArg) => {
+export const callAPI = async (ctcDeployed: string, apiName: string, apiArg : any) => {
   // @Sunday - What Are These Arguments?
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
