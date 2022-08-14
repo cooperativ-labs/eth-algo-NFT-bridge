@@ -36,7 +36,7 @@ export const LoadingButtonText = ({
       return (
         <div className="flex justify-center items-center ">
           <img
-            src="/assets/images/loading-circle.jpeg"
+            src="/loading-circle.jpeg"
             aria-label="loading"
             className="h-6 mr-1 animate-spin bg-white rounded-full"
           />
@@ -47,7 +47,7 @@ export const LoadingButtonText = ({
       return (
         <div className="flex justify-center items-center ">
           <img
-            src="/assets/images/loading-circle.jpeg"
+            src="/loading-circle.jpeg"
             aria-label="loading"
             className="h-6 mr-1 animate-spin bg-white rounded-full"
           />
@@ -58,7 +58,7 @@ export const LoadingButtonText = ({
       return (
         <div className="flex justify-center items-center ">
           <img
-            src="/assets/images/loading-circle.jpeg"
+            src="/loading-circle.jpeg"
             aria-label="loading"
             className="h-6 mr-1 animate-spin bg-white rounded-full"
           />

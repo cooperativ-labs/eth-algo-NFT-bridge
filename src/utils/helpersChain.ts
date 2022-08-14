@@ -112,14 +112,19 @@ export const optInToNFT = async (token: string) => {
   return accepted;
 };
 
-export const callAPI = async (ctcDeployed: string, apiName: string, apiArg : any) => {
-  // @Sunday - What Are These Arguments?
+//API calling
+export const callAPI = async (
+  reachBackend: any,
+  ctcDeployed: any,
+  apiName: any,
+  apiArg: any
+) => {
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
     reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
   );
   const acc = await reach.getDefaultAccount();
-  const ctc = acc.contract(backendCtc, ctcDeployed);
+  const ctc = acc.contract(reachBackend, ctcDeployed);
 
   const call = async (f: any) => {
     let res = undefined;
@@ -128,7 +133,6 @@ export const callAPI = async (ctcDeployed: string, apiName: string, apiArg : any
       if (res == `no`) {
         console.log(`"${apiName}" API is not available from Reach backend`);
         alert(`"${apiName}" API is not available from Reach backend`);
-        // setBridgeButton(noAnimate);
       } else {
         console.log(
           `the "${apiName}" API has successfully worked. Here is the response:`,
@@ -137,13 +141,11 @@ export const callAPI = async (ctcDeployed: string, apiName: string, apiArg : any
         alert(
           `the "${apiName}" API has successfully worked. Here is the response: ${res}`
         );
-        // setBridgeButton(noAnimate);
       }
     } catch (e) {
       res = [`err`, e];
       console.log(`there is an error while running "${apiName} API: "`, e);
       alert(`there is an error while running "${apiName} API: ${e}`);
-      // setBridgeButton(noAnimate);
     }
   };
   //
