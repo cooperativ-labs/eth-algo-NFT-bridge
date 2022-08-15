@@ -113,12 +113,8 @@ export const optInToNFT = async (token: string) => {
 };
 
 //API calling
-export const callAPI = async (
-  reachBackend: any,
-  ctcDeployed: any,
-  apiName: any,
-  apiArg: any
-) => {
+export const callAPI = async (reachBackend : any, ctcDeployed: any, apiName: any, apiArg: any) => {
+  let response;
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
     reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
@@ -126,10 +122,10 @@ export const callAPI = async (
   const acc = await reach.getDefaultAccount();
   const ctc = acc.contract(reachBackend, ctcDeployed);
 
-  const call = async (f: any) => {
+  const call = async (f:any) => {
     let res = undefined;
     try {
-      res = await f();
+      res = await f(); response = await f();
       if (res == `no`) {
         console.log(`"${apiName}" API is not available from Reach backend`);
         alert(`"${apiName}" API is not available from Reach backend`);
@@ -163,4 +159,5 @@ export const callAPI = async (
     }
     return apiReturn;
   });
+  return response;
 };
