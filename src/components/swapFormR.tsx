@@ -9,7 +9,7 @@ import EthSwapF from "./EthSwapF";
 import AlgoSwapF from "./AlgoSwapF";
 import ImageSection from "../containers/ImageSection";
 import { callAPI, getNftUri, optInToNFT } from "../utils/helpersChain";
-import * as backendCtc from '../../reachBackend/test.main'
+import * as backendCtc from '../../reachBackend/algoToEth.main.mjs'
 
 
 const SwapFormR: FC = () => {
@@ -28,6 +28,7 @@ const SwapFormR: FC = () => {
     //
     const deployAlgoLock = async () => {
       try {
+        setButtonStep("submitting");
         const res = await fetch("api/deployAlgoLock", {
           method: "POST",
           body: JSON.stringify({
@@ -38,9 +39,7 @@ const SwapFormR: FC = () => {
         });
         let data : any; 
         res.json().then((x) => {
-          console.log('I am running here')
           alert(x.success);
-          console.log(x.success) 
           data = x;
           if (data.contractId) {
             status.current = "lockCtcDeployed";
@@ -48,7 +47,6 @@ const SwapFormR: FC = () => {
             alert(
               `You now need to lock your Algorand NFT in the bridge contract: ${data.contractId}`
             );
-            setButtonStep("submitting");
           } else {
             setButtonStep("failed");
             alert(`There was a problem deploying the bridge contract`);
@@ -68,10 +66,12 @@ const SwapFormR: FC = () => {
     //
     const finalBridgeStep = async () => {
       try {
-        const res = await fetch("api/finalBridgeStep", {
+        const res = await fetch("api/finalAlgoBridgeStep", {
           method: "POST",
           body: JSON.stringify({
-            algoNftId: nft
+            algoNftId: nft,
+            algoBridgeId: algorandBridgeId.current,
+            bridgerOnAlgorand: algoWalletAddress,
           }),
           headers: { "Content-Type": "application/json" },
         });
@@ -95,19 +95,23 @@ const SwapFormR: FC = () => {
     //run the steps now
     if(status.current == "init" && algorandBridgeId.current === "") {
       deployAlgoLock().then(() => {
-        if(status.current == "lockCtcDeployed") lockNFT().then(() =>{ 
-          if (status.current == "nftLocked") finalBridgeStep()})});
-    } else if(status.current == "lockCtcDeployed") {
-      lockNFT().then(() => {
-        if (status.current == "nftLocked") finalBridgeStep()
-      })
-    } else if (status.current == "nftLocked") {
-      finalBridgeStep();
+        setTimeout(() => {
+          if(status.current == "lockCtcDeployed") {
+            alert(`about to lock NFT now`)
+            lockNFT().then(() =>{ 
+              setTimeout(() => {
+                if (status.current == "nftLocked") {
+                  finalBridgeStep()
+                }
+              },2000)
+            })
+          }
+        },3000)
+        });
     } else if (status.current == "error") {
       setButtonStep("failed");
       alert(`Error message returned from backend`);
       }
-    
   }
 
   const shortenAddress = (address: string) => {
