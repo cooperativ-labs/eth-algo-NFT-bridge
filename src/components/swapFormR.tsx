@@ -8,7 +8,7 @@ declare let window: any;
 import EthSwapF from "./EthSwapF";
 import AlgoSwapF from "./AlgoSwapF";
 import ImageSection from "../containers/ImageSection";
-import { callAPI, getNftUri, optInToNFT } from "../utils/helpersChain";
+import { callAPI, getAlgoNftBalance, getNftUri, optInToNFT } from "../utils/helpersChain";
 import * as backendCtc from '../../reachBackend/algoToEth.main.mjs'
 
 
@@ -16,12 +16,14 @@ const SwapFormR: FC = () => {
   const [buttonStep, setButtonStep] = useState<LoadingButtonStateType>("idle");
   const [ethWalletAddress, setEthWalletAddress] = useState<string>("");
   const [algoWalletAddress, setAlgoWalletAddress] = useState<string>("");
+  const [pubKey, setPubKey] = useState<string>("");
   const [nftUrl, setNftUrl] = useState<string>("");
   const [nftImageUri, setNftImageURI] = useState<string>("");
   const [metaData, setMetaData] = useState<any>("");
   const algorandBridgeId = useRef<string>("");
   const ethNftId = useRef<string>("");
   const status = useRef<string>("init");
+  const lockingNFT = useRef<boolean>(false);
 
   //triggered by submit of form
   const bridgeNFT = async (nft: string ) => {
@@ -56,12 +58,27 @@ const SwapFormR: FC = () => {
       } catch (err) {
         status.current = "error"
         alert(`error: ${err}`);
+        setButtonStep("failed");
       }
     }
     //
     const lockNFT = async () => {
-      let res = await runAPI("lockNFT");
-      if(res) status.current = "nftLocked"
+      let bal = 1000000 * (await getAlgoNftBalance(nft)); 
+      if(bal > 0 && lockingNFT.current == false) {
+        lockingNFT.current = true;
+        runAPI("lockNFT")
+        .then(() => {
+          status.current = "nftLocked" 
+          return true
+        })
+        .catch((err) => status.current = "error");
+      }
+      else {
+        alert(`balance of NFT is ${bal}`);
+        alert("You do not have this nft in your wallet: " + nft);
+        setButtonStep("failed");
+        return false
+      }
     }
     //
     const finalBridgeStep = async () => {
@@ -71,16 +88,16 @@ const SwapFormR: FC = () => {
           body: JSON.stringify({
             algoNftId: nft,
             algoBridgeId: algorandBridgeId.current,
-            bridgerOnAlgorand: algoWalletAddress,
+            bridgerOnAlgorand: pubKey,
           }),
           headers: { "Content-Type": "application/json" },
         });
         const data = await res.json();
         if (data.ethNftId) {
           status.current = "bridged";
-          ethNftId.current = `${data.contractId}`;
+          ethNftId.current = `${data.ethNftId}`;
           alert(
-            `Here is your ERC-721 NFT ID: ${data.contractId}`
+            `Here is your ERC-721 NFT ID: ${ethNftId.current}`
           );
           setButtonStep("confirmed");
         } else {
@@ -90,6 +107,7 @@ const SwapFormR: FC = () => {
       } catch (err) {
         status.current = "error"
         alert(`error: ${err}`);
+        setButtonStep("failed");
       }
     }
     //run the steps now
@@ -98,15 +116,15 @@ const SwapFormR: FC = () => {
         setTimeout(() => {
           if(status.current == "lockCtcDeployed") {
             alert(`about to lock NFT now`)
-            lockNFT().then(() =>{ 
+            lockNFT().then((x) =>{ 
               setTimeout(() => {
-                if (status.current == "nftLocked") {
+                if (status.current == "nftLocked" ) {
                   finalBridgeStep()
                 }
-              },2000)
+              },4000)
             })
           }
-        },3000)
+        },2000)
         });
     } else if (status.current == "error") {
       setButtonStep("failed");
@@ -159,6 +177,7 @@ const runAPI = (apiName:any) => {
               algoWalletAddress={algoWalletAddress}
               nftToBeBridgedAddress= {values.nftToBeBridgedAddress}
               setAlgoWalletAddress={setAlgoWalletAddress}
+              setPubKey={setPubKey}
               setNftUrl={setNftUrl}
                 setMetaData={setMetaData}
                 setNftImageURI={setNftImageURI}

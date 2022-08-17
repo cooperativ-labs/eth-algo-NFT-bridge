@@ -12,7 +12,9 @@ export const shortenAddress = (address: string) => {
 };
 
 export const connectAlgoWallet = async (
-  setAlgoWalletAddress: (uri: string) => void
+  setAlgoWalletAddress: (uri: string) => void,
+  setPubKey: (uri: string) => void
+
 ) => {
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
@@ -20,8 +22,19 @@ export const connectAlgoWallet = async (
   );
   const acc = await reach.getDefaultAccount();
   const contractUserPubKey = acc.getAddress();
+  setPubKey(contractUserPubKey)
   setAlgoWalletAddress(reach.formatAddress(contractUserPubKey));
 };
+
+export const getAlgoNftBalance = async (nftId: string) => {
+  const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
+  reach.setWalletFallback(
+    reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
+  );
+  const acc = await reach.getDefaultAccount();
+  const bal = await reach.balanceOf(acc,nftId);
+  return parseFloat(reach.formatCurrency(bal,6));
+}
 
 export const connectEthWallet = async (
   ethWalletAddress: string,

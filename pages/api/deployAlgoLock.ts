@@ -11,7 +11,7 @@ const handler = async (request: any, res: any) => {
     const stdlib = loadStdlib.loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
     console.log(private_key)
     const accCreator = await stdlib.newAccountFromMnemonic(private_key);
-    //stdlib.setProviderByName("TestNet");
+    stdlib.setProviderByName("TestNet");
     console.log(`TestNet has been set as the provider`);
     //connect to backend
     const ctcCreator = accCreator.contract(backendCtc);
