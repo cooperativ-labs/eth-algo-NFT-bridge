@@ -11,10 +11,9 @@ const authenticate = async(ethnft) => {
     let to = null
     let tokenId = null
     let eventId = null 
-    //const ctc = await import ('../../ethContracts/erc721.mjs');
     const nftCtc = ctc.nftContract(web3, ethnft);
     await nftCtc.getPastEvents('Transfer', {
-        fromBlock: 7354253,
+        fromBlock: 7322281,
         toBlock: 'latest'
     }, (error, events) => {
         if (error) {

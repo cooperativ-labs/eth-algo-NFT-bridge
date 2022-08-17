@@ -6,18 +6,8 @@ const { authenticate } = require("./authenticate.js");
 const private_key = process.env.PRIVATE_KEY;
 const infura = `https://goerli.infura.io/v3/eaf55bdd847a49a6a4701f2ef30e96f8`;
 const web3 = new Web3(infura);
-//write a function that finds how many enteries is in an object
-const count = (obj) => {
-  let count = 0;
-  for (let key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      count++;
-    }
-  }
-  return count;
-};
+
 const handler = async (request, res) => {
-  let authenticated = false;
   let req = request.body;
   let ctcId = `deployment pending`;
   let nft = `not deployed yet`;
@@ -98,7 +88,6 @@ const handler = async (request, res) => {
           auth.eventId !== `none`
         ) {
           //for greater security, we should check the eventId is not any saved in databse before
-          authenticated = true;
           console.log(`authentication success`);
           deploySmartContract().then((a) => {
             //set timeout
