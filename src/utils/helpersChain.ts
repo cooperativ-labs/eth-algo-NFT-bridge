@@ -36,7 +36,8 @@ export const connectEthWallet = async (
 
 export const connectAlgoWallet = async (
   algoWalletAddress: string,
-  setAlgoWalletAddress: Dispatch<SetStateAction<string>>
+  setAlgoWalletAddress: Dispatch<SetStateAction<string>>,
+  setPubKey: Dispatch<SetStateAction<string>>
 ) => {
   if (!!algoWalletAddress) {
     alert(`Algorand wallet already connected`);
@@ -47,6 +48,7 @@ export const connectAlgoWallet = async (
   );
   const acc = await reach.getDefaultAccount();
   const contractUserPubKey = acc.getAddress();
+  setPubKey(contractUserPubKey);
   setAlgoWalletAddress(reach.formatAddress(contractUserPubKey));
 };
 
@@ -358,6 +360,15 @@ export type getAlgoNftUriProps = {
   setNftImageUrl: Dispatch<SetStateAction<string>>;
 };
 
+export const getAlgoNftBalance = async (nftId: string) => {
+  reach.setWalletFallback(
+    reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
+  );
+  const acc = await reach.getDefaultAccount();
+  const bal = await reach.balanceOf(acc, nftId);
+  return parseFloat(reach.formatCurrency(bal, 6));
+};
+
 export const getAlgoNftUri = async ({
   nftToBeBridgedAddress,
   setNftUrl,
@@ -389,6 +400,7 @@ const deployAlgoLock = async ({
   setButtonStep,
 }: deployAlgoLockProps) => {
   try {
+    setButtonStep("submitting");
     const res = await fetch("api/deployAlgoLock", {
       method: "POST",
       body: JSON.stringify({
@@ -417,12 +429,15 @@ const deployAlgoLock = async ({
     });
   } catch (err) {
     status.current = "error";
+    setButtonStep("failed");
     alert(`error: ${err}`);
   }
 };
 
 type bridgeAlgoToEthProps = deployAlgoLockProps & {
   ethNftId: any;
+  lockingNFT: any;
+  pubKey: string;
 };
 //triggered by submit of form
 export const bridgeAlgoToEth = async ({
@@ -432,11 +447,17 @@ export const bridgeAlgoToEth = async ({
   selectedNftId,
   status,
   setButtonStep,
+  lockingNFT,
+  pubKey,
 }: bridgeAlgoToEthProps) => {
   const lockNFT = async () => {
+    const bal = 1000000 * (await getAlgoNftBalance(selectedNftId));
     try {
-      await runAPI("lockNFT", algorandBridgeId.current);
-      status.current = "nftLocked";
+      if (bal > 0 && lockingNFT.current == false) {
+        lockingNFT.current = true;
+        await runAPI("lockNFT", algorandBridgeId.current);
+        status.current = "nftLocked";
+      }
     } catch (err) {
       status.current = "error";
       alert(`error: ${err}`);
@@ -449,6 +470,8 @@ export const bridgeAlgoToEth = async ({
         method: "POST",
         body: JSON.stringify({
           algoNftId: selectedNftId,
+          algoBridgeId: algorandBridgeId.current,
+          bridgerOnAlgorand: pubKey,
         }),
         headers: { "Content-Type": "application/json" },
       });
@@ -465,30 +488,32 @@ export const bridgeAlgoToEth = async ({
     } catch (err) {
       status.current = "error";
       alert(`error: ${err}`);
+      setButtonStep("failed");
     }
   };
   //run the steps now
   if (status.current == "init" && algorandBridgeId.current === "") {
-    deployAlgoLock({
+    await deployAlgoLock({
       algoWalletAddress,
       selectedNftId,
       status,
       algorandBridgeId,
       setButtonStep,
-    }).then(() => {
-      if (status.current == "lockCtcDeployed")
-        lockNFT().then(() => {
-          if (status.current == "nftLocked") finalBridgeStep();
+    });
+    setTimeout(() => {
+      if (status.current == "lockCtcDeployed") {
+        alert(`about to lock NFT now`);
+        lockNFT().then((x) => {
+          setTimeout(() => {
+            if (status.current == "nftLocked") {
+              finalBridgeStep();
+            }
+          }, 4000);
         });
-    });
-  } else if (status.current == "lockCtcDeployed") {
-    lockNFT().then(() => {
-      if (status.current == "nftLocked") finalBridgeStep();
-    });
-  } else if (status.current == "nftLocked") {
-    finalBridgeStep();
-  } else if (status.current == "error") {
-    setButtonStep("failed");
-    alert(`Error message returned from backend`);
+      }
+    }, 2000);
+
+    if (status.current == "error") setButtonStep("failed");
+    alert(`error: from backend`);
   }
 };
