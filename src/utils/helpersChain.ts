@@ -7,8 +7,7 @@ import { Dispatch, SetStateAction } from "react";
 import { LoadingButtonStateType } from "../components/buttons/LoadingButtonText";
 declare let window: any;
 
-const reach = loadStdlib();
-
+const apiPath = "../../pages/api";
 // =============== WALLET CONNECTORS =====================
 
 export const connectEthWallet = async (
@@ -43,10 +42,12 @@ export const connectAlgoWallet = async (
     alert(`Algorand wallet already connected`);
     return;
   }
+  const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
     reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
   );
   const acc = await reach.getDefaultAccount();
+
   const contractUserPubKey = acc.getAddress();
   setPubKey(contractUserPubKey);
   setAlgoWalletAddress(reach.formatAddress(contractUserPubKey));
@@ -146,6 +147,7 @@ export const callAPI = async (
   apiArg: any
 ) => {
   let response;
+  const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
     reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
   );
@@ -218,7 +220,7 @@ const deployAlgoToken = async ({
   }
   try {
     console.log("deploying algo token");
-    const res = await fetch("api/bridgeToAlgo", {
+    const res = await fetch(apiPath + "/bridgeToAlgo", {
       // @Sunday - Problem here
       method: "POST",
       body: JSON.stringify({
@@ -314,7 +316,6 @@ export const bridgeEthToAlgo = async ({
         })
         .on("error", function (error: any, receipt: any) {
           setButtonStep("failed");
-
           alert(`There is an error: ${JSON.stringify(error)}`);
         })
         .on(
@@ -348,7 +349,7 @@ export const bridgeEthToAlgo = async ({
     } catch (err: any) {
       setButtonStep("failed");
 
-      alert(err.message);
+      alert(`bridgeEthtoAlgo, ${err.message}`);
     }
 };
 
@@ -361,6 +362,7 @@ export type getAlgoNftUriProps = {
 };
 
 export const getAlgoNftBalance = async (nftId: string) => {
+  const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
     reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
   );
@@ -374,6 +376,7 @@ export const getAlgoNftUri = async ({
   setNftUrl,
   setNftImageUrl,
 }: getAlgoNftUriProps) => {
+  const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   const acc = await reach.getDefaultAccount();
   const metadata = await acc.tokenMetadata(nftToBeBridgedAddress);
   let obj = JSON.stringify(metadata);
@@ -386,6 +389,7 @@ export const getAlgoNftUri = async ({
 
 type deployAlgoLockProps = {
   algoWalletAddress: string;
+  ethWalletAddress: string;
   selectedNftId: string;
   status: any;
   algorandBridgeId: any;
@@ -401,7 +405,7 @@ const deployAlgoLock = async ({
 }: deployAlgoLockProps) => {
   try {
     setButtonStep("submitting");
-    const res = await fetch("api/deployAlgoLock", {
+    const res = await fetch(apiPath + "/deployAlgoLock", {
       method: "POST",
       body: JSON.stringify({
         algoNftId: selectedNftId,
@@ -430,7 +434,7 @@ const deployAlgoLock = async ({
   } catch (err) {
     status.current = "error";
     setButtonStep("failed");
-    alert(`error: ${err}`);
+    alert(`deployAlgoLock error: ${err}`);
   }
 };
 
@@ -443,6 +447,7 @@ type bridgeAlgoToEthProps = deployAlgoLockProps & {
 export const bridgeAlgoToEth = async ({
   algorandBridgeId,
   ethNftId,
+  ethWalletAddress,
   algoWalletAddress,
   selectedNftId,
   status,
@@ -453,25 +458,30 @@ export const bridgeAlgoToEth = async ({
   const lockNFT = async () => {
     const bal = 1000000 * (await getAlgoNftBalance(selectedNftId));
     try {
-      if (bal > 0 && lockingNFT.current == false) {
-        lockingNFT.current = true;
-        await runAPI("lockNFT", algorandBridgeId.current);
-        status.current = "nftLocked";
+      if (bal > 0) {
+        let count = 0;
+        while (count == 0) {
+          count++;
+          await runAPI("lockNFT", algorandBridgeId.current);
+          status.current = "nftLocked";
+          return true;
+        }
       }
     } catch (err) {
       status.current = "error";
-      alert(`error: ${err}`);
+      alert(`lockNFT error: ${err}`);
     }
   };
   //
   const finalBridgeStep = async () => {
     try {
-      const res = await fetch("api/finalBridgeStep", {
+      const res = await fetch(apiPath + "/finalBridgeStep", {
         method: "POST",
         body: JSON.stringify({
           algoNftId: selectedNftId,
           algoBridgeId: algorandBridgeId.current,
           bridgerOnAlgorand: pubKey,
+          bridgerOnEth: ethWalletAddress,
         }),
         headers: { "Content-Type": "application/json" },
       });
@@ -487,7 +497,7 @@ export const bridgeAlgoToEth = async ({
       }
     } catch (err) {
       status.current = "error";
-      alert(`error: ${err}`);
+      alert(`finalBridgeStep error: ${err}`);
       setButtonStep("failed");
     }
   };
@@ -499,17 +509,22 @@ export const bridgeAlgoToEth = async ({
       status,
       algorandBridgeId,
       setButtonStep,
+      ethWalletAddress,
     });
     setTimeout(() => {
       if (status.current == "lockCtcDeployed") {
         alert(`about to lock NFT now`);
-        lockNFT().then((x) => {
-          setTimeout(() => {
-            if (status.current == "nftLocked") {
-              finalBridgeStep();
-            }
-          }, 4000);
-        });
+        let count = 0;
+        while (count == 0) {
+          count++;
+          lockNFT().then((x) => {
+            setTimeout(() => {
+              if (status.current == "nftLocked") {
+                finalBridgeStep();
+              }
+            }, 25000);
+          });
+        }
       }
     }, 2000);
 

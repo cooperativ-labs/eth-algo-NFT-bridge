@@ -111,6 +111,7 @@ const SwapForm: FC = () => {
             : bridgeAlgoToEth({
                 algorandBridgeId,
                 ethNftId,
+                ethWalletAddress,
                 algoWalletAddress,
                 selectedNftId,
                 status,
