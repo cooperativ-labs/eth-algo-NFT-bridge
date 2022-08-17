@@ -16,6 +16,7 @@ type AlgoSwapFormProps = getAlgoNftUriProps & {
   isFrom: boolean;
   algoWalletAddress: string;
   setAlgoWalletAddress: Dispatch<SetStateAction<string>>;
+  setPubKey: Dispatch<SetStateAction<string>>;
 };
 
 const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
@@ -25,6 +26,7 @@ const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
   setAlgoWalletAddress,
   setNftUrl,
   setNftImageUrl,
+  setPubKey,
 }) => {
   useEffect(() => {
     if (!!nftToBeBridgedAddress && isFrom) {
@@ -50,7 +52,11 @@ const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
           )}
           onClick={(e) => {
             e.preventDefault();
-            connectAlgoWallet(algoWalletAddress, setAlgoWalletAddress);
+            connectAlgoWallet(
+              algoWalletAddress,
+              setAlgoWalletAddress,
+              setPubKey
+            );
           }}
         >
           {!algoWalletAddress ? (

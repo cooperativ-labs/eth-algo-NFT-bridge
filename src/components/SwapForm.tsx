@@ -19,10 +19,12 @@ const SwapForm: FC = () => {
   const [nftImageUri, setNftImageUrl] = useState<string>("");
   const [metaData, setMetaData] = useState<any>("");
   const [nftClaimId, setNftClaimId] = useState<string>("");
+  const [pubKey, setPubKey] = useState<string>("");
   const algorandBridgeId = useRef<string>("");
   const count = useRef<number>(0);
   const ethNftId = useRef<string>("");
   const status = useRef<string>("init");
+  const lockingNFT = useRef<boolean>(false);
   const formikRef = useRef<any>();
 
   const handleBridgeDirectionChange = () => {
@@ -113,6 +115,8 @@ const SwapForm: FC = () => {
                 selectedNftId,
                 status,
                 setButtonStep,
+                lockingNFT,
+                pubKey,
               });
           setSubmitting(false);
         }}
@@ -143,6 +147,7 @@ const SwapForm: FC = () => {
                 nftToBeBridgedAddress={values.nftToBeBridgedAddress}
                 setNftUrl={setNftUrl}
                 setNftImageUrl={setNftImageUrl}
+                setPubKey={setPubKey}
               />
             </div>
             <FormButton
