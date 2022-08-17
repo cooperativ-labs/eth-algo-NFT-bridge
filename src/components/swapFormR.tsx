@@ -23,7 +23,6 @@ const SwapFormR: FC = () => {
   const algorandBridgeId = useRef<string>("");
   const ethNftId = useRef<string>("");
   const status = useRef<string>("init");
-  const lockingNFT = useRef<boolean>(false);
 
   //triggered by submit of form
   const bridgeNFT = async (nft: string ) => {
@@ -64,14 +63,16 @@ const SwapFormR: FC = () => {
     //
     const lockNFT = async () => {
       let bal = 1000000 * (await getAlgoNftBalance(nft)); 
-      if(bal > 0 && lockingNFT.current == false) {
-        lockingNFT.current = true;
-        runAPI("lockNFT")
-        .then(() => {
+      if(bal > 0 ) {
+        let count = 0;
+        while(count == 0){
+          count++;
+          runAPI("lockNFT")
+          .then(() => {
           status.current = "nftLocked" 
           return true
-        })
-        .catch((err) => status.current = "error");
+          }).catch((err) => status.current = "error");
+        }
       }
       else {
         alert(`balance of NFT is ${bal}`);
@@ -89,6 +90,7 @@ const SwapFormR: FC = () => {
             algoNftId: nft,
             algoBridgeId: algorandBridgeId.current,
             bridgerOnAlgorand: pubKey,
+            bridgerOnEth: ethWalletAddress,
           }),
           headers: { "Content-Type": "application/json" },
         });
@@ -116,13 +118,17 @@ const SwapFormR: FC = () => {
         setTimeout(() => {
           if(status.current == "lockCtcDeployed") {
             alert(`about to lock NFT now`)
-            lockNFT().then((x) =>{ 
-              setTimeout(() => {
-                if (status.current == "nftLocked" ) {
-                  finalBridgeStep()
-                }
-              },4000)
-            })
+            let count = 0;
+            while(count == 0){
+              count++;
+              lockNFT().then((x) =>{ 
+                setTimeout(() => {
+                  if (status.current == "nftLocked" ) {
+                    finalBridgeStep()
+                  }
+                },25000)
+              })
+            }
           }
         },2000)
         });

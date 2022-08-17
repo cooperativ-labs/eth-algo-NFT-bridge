@@ -1,7 +1,13 @@
 const loadStdlib = require("@reach-sh/stdlib");
 import * as backendCtc from "../../reachBackend/algoToEth.main.mjs";
-// import { nftContract } from '../../ethContracts/erc721.';
+const {authenticate} = require('./authenticate.js');
 const private_key = process.env.PRIVATE_KEY;
+const Web3 = require("web3");
+const infura = `https://goerli.infura.io/v3/eaf55bdd847a49a6a4701f2ef30e96f8`;
+const web3 = new Web3(infura);
+const ctc = require('../../ethContracts/erc721a.js');
+const nftCtc = ctc.bridgeContract(web3, ctc.goerliNftMinter);
+
 
 const handler = async (request: any, res: any) => {
   let req = request.body;
@@ -16,7 +22,7 @@ const handler = async (request: any, res: any) => {
     const ctcCreator = accCreator.contract(backendCtc, req.algoBridgeId);
     console.log(`...backend now connected`);
 
-    const authenticate = async() => {
+    const authenticated = async() => {
         const creator = await ctcCreator.views.Creator_v();
         const bridger = await ctcCreator.views.Bridger_v();
         const bridgingComplete = await ctcCreator.views.bridgingComplete_v();
@@ -35,13 +41,10 @@ const handler = async (request: any, res: any) => {
     const completeBridge = async() => {
         console.log('...about to complete bridge')
         const call = async (f: any) => {
-            let ret = undefined;
             try {
-                ret = await f();
-                console.log(`Bridge has just been completed`)
+                f().then( console.log(`Bridge has just been completed`));
             } catch (e) {
-                ret = [`err`, e]
-                console.log(`There is an error: `, e)
+                console.log(`There is an error while completing bridge: `, e)
             }
         };    
         const apis = ctcCreator.a;
@@ -51,13 +54,43 @@ const handler = async (request: any, res: any) => {
         });
     }
 
-    authenticate().then((auth) => {
+    const getNftId = async() => {
+        const auth = await authenticate(ctc.goerliNftMinter);
+        return auth.tokenId + 1;
+    }
+
+    const mintEthNft = async() => {
+        nftCtc.methods
+          .mint(
+            req.bridgerOnEth,
+            await getNftId()
+          )
+          .send({
+            from: '0xFc63bAd66fB4f454378C404ae792CeE147b67AEf',
+            gas: 300000,
+            gasPrice: null,
+          })
+          .on("error", function (error: any, receipt: any) {
+            console.log(`There is an error while minting ETH nft: ${JSON.stringify(error)}`);
+          })
+          .on("confirmation", function (confirmationNumber: any, receipt: any) {
+            console.log(`confirmationNumber: ${confirmationNumber}`);
+            const id = async() => await getNftId();
+            return id();
+          });
+    }
+
+    authenticated().then((auth) => {
         if(auth == true) {
             completeBridge().then(() => {
-                res.status(200).json({
-                    success: `Bridge completed successfully`,
-                    ethNftId: `successIsAmazing`
-                });
+                mintEthNft().then((id) => {
+                    res.status(200).json({
+                        success: `Bridge completed successfully`,
+                        ethNftId: `successIsAmazing : ${id}`
+                    });
+                }).catch((err) => {
+                    console.log(`error while minting eth NFT: `, err)
+                })
             }).catch(err => console.log(`error while completing bridge: ${err}`))
             
         } else {
