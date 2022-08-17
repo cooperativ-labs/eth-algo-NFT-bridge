@@ -1,23 +1,27 @@
-import React, { useRef, useEffect, Dispatch, SetStateAction } from "react";
-import { loadStdlib } from "@reach-sh/stdlib";
-import { ALGO_MyAlgoConnect as MyAlgoConnect } from "@reach-sh/stdlib";
+import cn from "classnames";
 import FormSection from "../containers/FormSection";
 import Input, {
   defaultFieldDiv,
   inputFieldClass,
 } from "./form-components/Inputs";
+import React, { Dispatch, SetStateAction, useEffect, useRef } from "react";
 import Select from "./form-components/Select";
-import cn from "classnames";
-import { connectAlgoWallet, shortenAddress } from "../utils/helpersChain";
+import {
+  connectAlgoWallet,
+  getAlgoNftUri,
+  shortenAddress,
+} from "../utils/helpersChain";
+import { loadStdlib } from "@reach-sh/stdlib";
+import { ALGO_MyAlgoConnect as MyAlgoConnect } from "@reach-sh/stdlib";
 
 type AlgoSwapFormProps = {
   isFrom: boolean;
   algoWalletAddress: string;
   nftToBeBridgedAddress: string;
+  setMetaData: Dispatch<SetStateAction<undefined>>;
   setNftUrl: Dispatch<SetStateAction<string>>;
-    setMetaData: Dispatch<SetStateAction<undefined>>;
-    setNftImageURI: (uri: string) => void;
-  setAlgoWalletAddress: (uri: string) => void;
+  setNftImageUrl: Dispatch<SetStateAction<string>>;
+  setAlgoWalletAddress: Dispatch<SetStateAction<string>>;
 };
 
 const AlgoSwapF: React.FC<AlgoSwapFormProps> = ({
@@ -26,25 +30,13 @@ const AlgoSwapF: React.FC<AlgoSwapFormProps> = ({
   nftToBeBridgedAddress,
   setAlgoWalletAddress,
   setNftUrl,
+  setNftImageUrl,
 }) => {
   useEffect(() => {
-    const connect = async () => {
-      const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
-      reach.setWalletFallback(
-        reach.walletFallback({
-          providerEnv: "TestNet",
-          MyAlgoConnect,
-        })
-      );
-      const acc = await reach.getDefaultAccount();
-      let metadata = await acc.tokenMetadata(nftToBeBridgedAddress);
-      let obj = (JSON.stringify(metadata));
-      setNftUrl(metadata.url);
-      alert(metadata.url);
-      //
-    };
-    if (nftToBeBridgedAddress) connect()
-  }, [nftToBeBridgedAddress])
+    if (nftToBeBridgedAddress && isFrom) {
+      getAlgoNftUri({ nftToBeBridgedAddress, setNftUrl, setNftImageUrl });
+    }
+  }, [nftToBeBridgedAddress, isFrom, setNftUrl, setNftImageUrl]);
   return (
     <FormSection>
       <div className="flex items-center mb-5 ">
@@ -63,7 +55,7 @@ const AlgoSwapF: React.FC<AlgoSwapFormProps> = ({
           )}
           onClick={(e) => {
             e.preventDefault();
-            connectAlgoWallet(setAlgoWalletAddress);
+            connectAlgoWallet(algoWalletAddress, setAlgoWalletAddress);
           }}
         >
           {!algoWalletAddress ? (
@@ -87,7 +79,6 @@ const AlgoSwapF: React.FC<AlgoSwapFormProps> = ({
           />
         </div>
       )}
-      
     </FormSection>
   );
 };

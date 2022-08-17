@@ -1,33 +1,21 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import Web3 from "web3";
 import FormSection from "../containers/FormSection";
 import Input, {
   defaultFieldDiv,
   inputFieldClass,
 } from "./form-components/Inputs";
+import React, { useEffect } from "react";
+import Web3 from "web3";
 declare let window: any;
 import cn from "classnames";
 import {
-  checkNftBalance,
   connectEthWallet,
-  getNftUri,
+  getEthNftUri,
+  getEthNftUriProps,
   shortenAddress,
 } from "../utils/helpersChain";
 
-type EthSwapFormProps = {
+type EthSwapFormProps = getEthNftUriProps & {
   isFrom: boolean;
-  ethWalletAddress: string;
-  nftToBeBridgedAddress: string;
-  selectedNftId: string;
-  setNftUrl: Dispatch<SetStateAction<string>>;
-  setMetaData: Dispatch<SetStateAction<undefined>>;
-  setNftImageURI: (uri: string) => void;
   setEthWalletAddress: (uri: string) => void;
 };
 
@@ -38,10 +26,10 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
   selectedNftId,
   setNftUrl,
   setMetaData,
-  setNftImageURI,
+  setNftImageUrl,
   setEthWalletAddress,
 }) => {
-  const [nftBalance, setNftBalance] = useState<string>("");
+  // const [nftBalance, setNftBalance] = useState<string>("");
 
   useEffect(() => {
     const web3 = new Web3(window.ethereum);
@@ -49,28 +37,30 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
       const accounts = await web3.eth.getAccounts();
       setEthWalletAddress(accounts[0]);
     });
-  });
-
-  const createSelectionList = () => {
-    const list = [];
-    for (let i = 0; i < parseInt(nftBalance); i++) {
-      list.push(i);
-    }
-    return list;
-  };
+  }, [
+    setEthWalletAddress,
+    ethWalletAddress,
+    setMetaData,
+    setNftUrl,
+    setNftImageUrl,
+  ]);
 
   useEffect(() => {
-    if (!!nftToBeBridgedAddress) {
-      checkNftBalance(nftToBeBridgedAddress, ethWalletAddress, setNftBalance);
+    if (nftToBeBridgedAddress) {
+      // checkEthNftBalance(
+      //   nftToBeBridgedAddress,
+      //   ethWalletAddress,
+      //   setNftBalance
+      // );
       if (selectedNftId) {
-        getNftUri(
+        getEthNftUri({
           selectedNftId,
           nftToBeBridgedAddress,
           ethWalletAddress,
-          setNftImageURI,
+          setNftImageUrl,
           setNftUrl,
-          setMetaData
-        );
+          setMetaData,
+        });
       }
     }
   }, [nftToBeBridgedAddress, selectedNftId]);
@@ -106,7 +96,7 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
           </div>
         </button>
       </div>
-      {!!ethWalletAddress && (
+      {!!ethWalletAddress && isFrom && (
         <div className="flex items-center ">
           <Input
             className={defaultFieldDiv}
@@ -117,7 +107,7 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
           />
         </div>
       )}
-      {!!ethWalletAddress && nftToBeBridgedAddress && (
+      {!!ethWalletAddress && nftToBeBridgedAddress && isFrom && (
         <div className="flex items-center ">
           <Input
             className={defaultFieldDiv}

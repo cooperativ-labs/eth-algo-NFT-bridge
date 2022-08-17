@@ -1,26 +1,37 @@
-import React, { useRef, useState } from "react";
-import { loadStdlib } from "@reach-sh/stdlib";
-import { ALGO_MyAlgoConnect as MyAlgoConnect } from "@reach-sh/stdlib";
+import cn from "classnames";
 import FormSection from "../containers/FormSection";
 import Input, {
   defaultFieldDiv,
   inputFieldClass,
 } from "./form-components/Inputs";
-import Select from "./form-components/Select";
-import cn from "classnames";
-import { connectAlgoWallet, shortenAddress } from "../utils/helpersChain";
+import React, { Dispatch, SetStateAction, useEffect } from "react";
+import {
+  connectAlgoWallet,
+  getAlgoNftUri,
+  getAlgoNftUriProps,
+  shortenAddress,
+} from "../utils/helpersChain";
 
-type AlgoSwapFormProps = {
+type AlgoSwapFormProps = getAlgoNftUriProps & {
   isFrom: boolean;
   algoWalletAddress: string;
-  setAlgoWalletAddress: (uri: string) => void;
+  setAlgoWalletAddress: Dispatch<SetStateAction<string>>;
 };
 
 const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
   isFrom,
   algoWalletAddress,
+  nftToBeBridgedAddress,
   setAlgoWalletAddress,
+  setNftUrl,
+  setNftImageUrl,
 }) => {
+  useEffect(() => {
+    if (!!nftToBeBridgedAddress && isFrom) {
+      getAlgoNftUri({ nftToBeBridgedAddress, setNftUrl, setNftImageUrl });
+    }
+  }, [nftToBeBridgedAddress, isFrom, setNftUrl, setNftImageUrl]);
+
   return (
     <FormSection>
       <div className="flex items-center mb-5 ">
@@ -39,7 +50,7 @@ const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
           )}
           onClick={(e) => {
             e.preventDefault();
-            connectAlgoWallet(setAlgoWalletAddress);
+            connectAlgoWallet(algoWalletAddress, setAlgoWalletAddress);
           }}
         >
           {!algoWalletAddress ? (
@@ -52,16 +63,17 @@ const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
           </div>
         </button>
       </div>
-
-      {/* <div className="flex items-center ">
-        <Input
-          className={defaultFieldDiv}
-          fieldClass={inputFieldClass}
-          required
-          name="nftToBeBridgedAddress"
-          placeholder={`Your Algorand address`}
-        />
-      </div> */}
+      {isFrom && !!algoWalletAddress && (
+        <div className="flex items-center ">
+          <Input
+            className={defaultFieldDiv}
+            fieldClass={inputFieldClass}
+            required
+            name="nftToBeBridgedAddress"
+            placeholder={`Your Algorand NFT address`}
+          />
+        </div>
+      )}
     </FormSection>
   );
 };
