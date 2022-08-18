@@ -6,11 +6,13 @@ const Web3 = require("web3");
 const infura = `https://goerli.infura.io/v3/eaf55bdd847a49a6a4701f2ef30e96f8`;
 const web3 = new Web3(infura);
 const ctc = require('../../ethContracts/erc721a.js');
+const {mintNft} = require('./mintEthNft.js');
 const nftCtc = ctc.bridgeContract(web3, ctc.goerliNftMinter);
 
 
 const handler = async (request: any, res: any) => {
   let req = request.body;
+  console.log(`req.nftUrl: ${req.nftUri}`);
     
     //connect wallet
     const stdlib = loadStdlib.loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
@@ -59,43 +61,25 @@ const handler = async (request: any, res: any) => {
         return auth.tokenId + 1;
     }
 
-    const mintEthNft = async() => {
-        nftCtc.methods
-          .mint(
-            req.bridgerOnEth,
-            await getNftId()
-          )
-          .send({
-            from: '0xFc63bAd66fB4f454378C404ae792CeE147b67AEf',
-            gas: 300000,
-            gasPrice: null,
-          })
-          .on("error", function (error: any, receipt: any) {
-            console.log(`There is an error while minting ETH nft: ${JSON.stringify(error)}`);
-          })
-          .on("confirmation", function (confirmationNumber: any, receipt: any) {
-            console.log(`confirmationNumber: ${confirmationNumber}`);
-            const id = async() => await getNftId();
-            return id();
-          });
-    }
+
 
     authenticated().then((auth) => {
         if(auth == true) {
             completeBridge().then(() => {
-                mintEthNft().then((id) => {
+                mintNft(req.bridgerOnEth, req.nftUri).then((id : string) => {
                     res.status(200).json({
-                        success: `Bridge completed successfully`,
-                        ethNftId: `successIsAmazing : ${id}`
+                        success: `Bridge completed successfully. Check your wallet for your ERC-721 NFT`,
+                        nftContractId: `Here is your NFT contract ID : ${ctc.goerliNftMinter}`,
                     });
-                }).catch((err) => {
-                    console.log(`error while minting eth NFT: `, err)
+                }).catch((err: any) => {
+                    console.log(`error while minting eth NFT: `, err);
+                    res.status(500).json({error: `error while minting eth NFT: ${err}`});
                 })
             }).catch(err => console.log(`error while completing bridge: ${err}`))
             
         } else {
             console.log(`authentication failed`)
-            res.status(500).json({ error: `Authentication failed. Bridge not completed` })
+            res.status(500).json({ failure: `Authentication failed. Bridge not completed` })
         }
     }) 
     
