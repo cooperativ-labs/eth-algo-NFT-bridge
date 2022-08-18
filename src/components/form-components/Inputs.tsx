@@ -4,7 +4,7 @@ import { ErrorMessage, Field } from "formik";
 
 export const defaultFieldLabelClass =
   "text-sm text-blue-900 dark:text-slate-200 font-semibold text-opacity-80";
-export const defaultFieldDiv = "pt-3 bg-opacity-0";
+export const defaultFieldDiv = "bg-opacity-0";
 export const addressFieldDiv = "pt-2 my-2 bg-opacity-0";
 export const selectFieldClass =
   "text-lg font-semibold text-slate-100 dark:text-slate-300 border-2 bg-sky-800 border-sky-800 dark:bg-white dark:bg-opacity-10 my-1 p-3 pl-5 w-64 rounded-full shadow-xl focus:border-blue-900 focus:outline-none";

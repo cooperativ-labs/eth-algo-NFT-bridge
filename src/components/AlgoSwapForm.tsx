@@ -1,10 +1,7 @@
 import cn from "classnames";
 import FormSection from "../containers/FormSection";
-import Input, {
-  defaultFieldDiv,
-  inputFieldClass,
-} from "./form-components/Inputs";
-import React, { Dispatch, SetStateAction, useEffect } from "react";
+import Input, { inputFieldClass } from "./form-components/Inputs";
+import React, { Dispatch, SetStateAction } from "react";
 import {
   connectAlgoWallet,
   getAlgoNftUri,
