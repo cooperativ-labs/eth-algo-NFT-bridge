@@ -22,13 +22,14 @@ const authenticate = async(ethnft) => {
             
             eventsss = events;
             eventId = (events[events.length - 1].id)
-            //console.log(`the eventId is: `, eventId);
+            console.log(`the eventId is: `, eventId);
             let obsEvents = events[events.length - 1].returnValues;
             from = obsEvents.from;
-            //console.log(`the from is: `, from);
+            console.log(`the from is: `, from);
             to = obsEvents.to;
-            //console.log(`the to is: `, to);
+            console.log(`the to is: `, to);
             tokenId = obsEvents.tokenId;
+            console.log(`the tokenId is: `, tokenId);
         }
         return {from, to, tokenId, eventId};
     } )

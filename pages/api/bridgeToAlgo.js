@@ -79,7 +79,8 @@ const handler = async (request, res) => {
   try {
     authenticate(req.ethNftCtcId)
       .then(async (auth) => {
-        console.log(auth.tokenId == req.tokenId);
+        console.log(`req.tokenId is: ${req.tokenId} AND auth.tokenId is: ${auth.tokenId}`);
+        console.log(`authenticating tokenId`, auth.tokenId == req.tokenId );
         if (
           auth.from == req.bridgerOnEth &&
           auth.to == `0x7a403d1f0CF58EDa5D3047d856D2525cbbc993f2` &&
@@ -91,18 +92,22 @@ const handler = async (request, res) => {
           deploySmartContract().then((a) => {
             //set timeout
             setTimeout(() => {
-              res.status(200).json({
-                success: `Contract deployed successfully with Contract id: ${ctcId}`,
-                NFTid: a[1],
-                contractId: `${ctcId}`,
-              });
+              res
+                .status(200)
+                .json({
+                  success: `Contract deployed successfully with Contract id: ${ctcId}`,
+                  NFTid: a[1],
+                  contractId: `${ctcId}`,
+                });
             }, 25000);
           });
         } else {
           console.log(`authentication failed`);
-          res.status(500).json({
-            error: `authentication failed: Could not confirm locking of your NFT for bridging`,
-          });
+          res
+            .status(500)
+            .json({
+              error: `authentication failed: Could not confirm locking of your NFT for bridging`,
+            });
         }
       })
       .catch((error) => {

@@ -195,17 +195,19 @@ type deployAlgoTokenProps = {
   ethWalletAddress: string;
   nftUrl: string;
   selectedNftId: string;
+  nftToBeBridgedAddress: string;
   algorandBridgeId: any;
   setNftClaimId: Dispatch<SetStateAction<string>>;
   setButtonStep: Dispatch<SetStateAction<LoadingButtonStateType>>;
 };
 
-const deployAlgoToken = async ({
+const deployAlgoToken = async ({ //@Jake -  this is running the backend like three times - may be rerendering issue
   algoWalletAddress,
   ethWalletAddress,
   nftUrl,
   selectedNftId,
   algorandBridgeId,
+  nftToBeBridgedAddress,
   setNftClaimId,
   setButtonStep,
 }: deployAlgoTokenProps) => {
@@ -220,7 +222,7 @@ const deployAlgoToken = async ({
       method: "POST",
       body: JSON.stringify({
         ethRecAddr: ethWalletAddress,
-        ethNftCtcId: "0x8d43F477F386228AC23CEcFC53B9CC9883c19BF4",
+        ethNftCtcId: nftToBeBridgedAddress, 
         bridgerOnEth: ethWalletAddress,
         bridgerOnAlgo: algoWalletAddress,
         name: "",
@@ -245,7 +247,7 @@ const deployAlgoToken = async ({
         `This is the ID of your "NFT" waiting for you to claim after opting in:  ${data.NFTid}. You will be able to claim your NFT on Algorand on the next prompt`
       );
       console.log(algorandBridgeId.current);
-      const apiReturn = runAPI("claimNFT", algorandBridgeId.current);
+      const apiReturn = runAPI("claimNFT", algorandBridgeId.current); ///@Jake - this keeps running infinitely with new myAlgo popups trying to claim NFT (may be rerendering issues)
       setButtonStep("confirmed");
       return apiReturn;
     } else {
@@ -331,6 +333,7 @@ export const bridgeEthToAlgo = async ({
                 ethWalletAddress,
                 nftUrl,
                 selectedNftId,
+                nftToBeBridgedAddress,
                 algorandBridgeId,
                 setNftClaimId,
                 setButtonStep,
@@ -405,8 +408,8 @@ const deployAlgoLock = async ({
     const res = await fetch(apiPath + "/deployAlgoLock", {
       method: "POST",
       body: JSON.stringify({
-        algoNftId: selectedNftId,
-        bridgerOnAlgorand: algoWalletAddress,
+        algoNftId: selectedNftId, //@Jake  - this is sending empty string to backend for algoNftId
+        bridgerOnAlgorand: algoWalletAddress, 
       }),
       headers: { "Content-Type": "application/json" },
     });
