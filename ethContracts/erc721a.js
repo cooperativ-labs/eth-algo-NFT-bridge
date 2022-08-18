@@ -1,25 +1,18 @@
-const bridgeAbi = require ('./erc721abi.json') ;
-const nftAbi = require ( './nftAbi.json') ;
+const bridgeAbi = require("./erc721abi.json");
+const nftAbi = require("./nftAbi.json");
 
+const nftContract = (web3, nftCtcId) => {
+  return new web3.eth.Contract(nftAbi, nftCtcId);
+};
 
-const nftContract = (web3, nftCtcId ) => {
-    return new web3.eth.Contract(
-        nftAbi,
-        nftCtcId
-    )
-}
+const goerliNftMinter = "0xB581b6b2E3c411285f53a28FFfcBe38169C2a599";
 
-const bridgeContract = web3 => {
-    return new web3.eth.Contract(
-        bridgeAbi["abi"],
-        "0x7a403d1f0CF58EDa5D3047d856D2525cbbc993f2"
-    )
-}
-
-const goerliNftMinter = '0x7a403d1f0CF58EDa5D3047d856D2525cbbc993f2'
+const bridgeContract = (web3, minter) => {
+  return new web3.eth.Contract(bridgeAbi, minter ?? goerliNftMinter);
+};
 
 module.exports = {
-    nftContract,
-    bridgeContract,
-    goerliNftMinter
-}
+  nftContract,
+  bridgeContract,
+  goerliNftMinter,
+};

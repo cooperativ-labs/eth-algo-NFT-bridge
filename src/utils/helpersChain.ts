@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction } from "react";
 import { LoadingButtonStateType } from "../components/buttons/LoadingButtonText";
 declare let window: any;
 
-const apiPath = "../../pages/api";
+const apiPath = "../../api";
 // =============== WALLET CONNECTORS =====================
 
 export const connectEthWallet = async (
@@ -488,10 +488,11 @@ export const bridgeAlgoToEth = async ({
       const data = await res.json();
       if (data.ethNftId) {
         status.current = "bridged";
-        ethNftId.current = `${data.contractId}`;
-        alert(`Here is your ERC-721 NFT ID: ${data.contractId}`);
+        ethNftId.current = `${data.ethNftId}`;
+        alert(`Here is your ERC-721 NFT ID: ${data.nftContractId}`);
         setButtonStep("confirmed");
       } else {
+        console.log("in final bridge step", data);
         setButtonStep("failed");
         alert(`Authentication failed. Please try again.`);
       }
