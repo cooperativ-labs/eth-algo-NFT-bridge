@@ -7,7 +7,7 @@ import { Dispatch, SetStateAction } from "react";
 import { LoadingButtonStateType } from "../components/buttons/LoadingButtonText";
 declare let window: any;
 
-const apiPath = "../../api";
+const apiPath = "/api";
 // =============== WALLET CONNECTORS =====================
 
 export const connectEthWallet = async (
@@ -439,6 +439,7 @@ type bridgeAlgoToEthProps = deployAlgoLockProps & {
   ethNftId: any;
   lockingNFT: any;
   pubKey: string;
+  nftUrl: string;
 };
 //triggered by submit of form
 export const bridgeAlgoToEth = async ({
@@ -449,7 +450,7 @@ export const bridgeAlgoToEth = async ({
   selectedNftId,
   status,
   setButtonStep,
-  lockingNFT,
+  nftUrl,
   pubKey,
 }: bridgeAlgoToEthProps) => {
   const lockNFT = async () => {
@@ -472,13 +473,14 @@ export const bridgeAlgoToEth = async ({
   //
   const finalBridgeStep = async () => {
     try {
-      const res = await fetch(apiPath + "/finalBridgeStep", {
+      const res = await fetch(apiPath + "/finalAlgoBridgeStep", {
         method: "POST",
         body: JSON.stringify({
           algoNftId: selectedNftId,
           algoBridgeId: algorandBridgeId.current,
           bridgerOnAlgorand: pubKey,
           bridgerOnEth: ethWalletAddress,
+          nftUri: nftUrl,
         }),
         headers: { "Content-Type": "application/json" },
       });

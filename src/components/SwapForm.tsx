@@ -118,6 +118,7 @@ const SwapForm: FC = () => {
                 setButtonStep,
                 lockingNFT,
                 pubKey,
+                nftUrl,
               });
           setSubmitting(false);
         }}

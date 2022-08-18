@@ -6,7 +6,7 @@ const Web3 = require("web3");
 const infura = `https://goerli.infura.io/v3/eaf55bdd847a49a6a4701f2ef30e96f8`;
 const web3 = new Web3(infura);
 const ctc = require("../../ethContracts/erc721a.js");
-const { mintNft } = require("./mintEthNft.js");
+const { mintNft } = require("./mintEthNft.ts");
 const nftCtc = ctc.bridgeContract(web3, ctc.goerliNftMinter);
 
 const handler = async (request: any, res: any) => {
