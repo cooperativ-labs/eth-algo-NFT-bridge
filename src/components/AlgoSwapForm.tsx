@@ -28,11 +28,11 @@ const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
   setNftImageUrl,
   setPubKey,
 }) => {
-  useEffect(() => {
+  const displayAlgoNft = () => {
     if (!!nftToBeBridgedAddress && isFrom) {
       getAlgoNftUri({ nftToBeBridgedAddress, setNftUrl, setNftImageUrl });
     }
-  }, [nftToBeBridgedAddress, isFrom, setNftUrl, setNftImageUrl]);
+  };
 
   return (
     <FormSection>
@@ -52,11 +52,7 @@ const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
           )}
           onClick={(e) => {
             e.preventDefault();
-            connectAlgoWallet(
-              algoWalletAddress,
-              setAlgoWalletAddress,
-              setPubKey
-            );
+            connectAlgoWallet(setAlgoWalletAddress, setPubKey);
           }}
         >
           {!algoWalletAddress ? (
@@ -72,12 +68,23 @@ const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
       {isFrom && !!algoWalletAddress && (
         <div className="flex items-center ">
           <Input
-            className={defaultFieldDiv}
+            className="bg-opacity-0 mr-4"
             fieldClass={inputFieldClass}
             required
             name="nftToBeBridgedAddress"
-            placeholder={`Your Algorand NFT address`}
+            placeholder={`Your Algorand NFT's ID`}
           />
+          {nftToBeBridgedAddress && (
+            <button
+              className="text-lg font-semibold text-white dark:text-slate-300 border-2 bg-slate-800 dark:bg-white dark:bg-opacity-10 my-1 p-3  rounded-full shadow-lg w-48 focus:border-blue-900 focus:outline-none"
+              onClick={(e) => {
+                e.preventDefault();
+                displayAlgoNft();
+              }}
+            >
+              Connect NFT
+            </button>
+          )}
         </div>
       )}
     </FormSection>

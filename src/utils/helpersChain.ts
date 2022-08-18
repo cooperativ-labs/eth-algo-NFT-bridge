@@ -34,14 +34,9 @@ export const connectEthWallet = async (
 };
 
 export const connectAlgoWallet = async (
-  algoWalletAddress: string,
   setAlgoWalletAddress: Dispatch<SetStateAction<string>>,
   setPubKey: Dispatch<SetStateAction<string>>
 ) => {
-  if (!!algoWalletAddress) {
-    alert(`Algorand wallet already connected`);
-    return;
-  }
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
     reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
@@ -355,12 +350,6 @@ export const bridgeEthToAlgo = async ({
 
 // =============== FROM-ALGO FUNCTIONS =====================
 
-export type getAlgoNftUriProps = {
-  nftToBeBridgedAddress: string;
-  setNftUrl: Dispatch<SetStateAction<string>>;
-  setNftImageUrl: Dispatch<SetStateAction<string>>;
-};
-
 export const getAlgoNftBalance = async (nftId: string) => {
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
@@ -371,6 +360,12 @@ export const getAlgoNftBalance = async (nftId: string) => {
   return parseFloat(reach.formatCurrency(bal, 6));
 };
 
+export type getAlgoNftUriProps = {
+  nftToBeBridgedAddress: string;
+  setNftUrl: Dispatch<SetStateAction<string>>;
+  setNftImageUrl: Dispatch<SetStateAction<string>>;
+};
+
 export const getAlgoNftUri = async ({
   nftToBeBridgedAddress,
   setNftUrl,
@@ -379,12 +374,14 @@ export const getAlgoNftUri = async ({
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   const acc = await reach.getDefaultAccount();
   const metadata = await acc.tokenMetadata(nftToBeBridgedAddress);
-  let obj = JSON.stringify(metadata);
-  console.log(metadata);
-
-  setNftImageUrl("https://ipfs.io/ipfs/" + metadata?.image?.substring(7));
   setNftUrl(metadata.url);
-  alert(metadata.url);
+  const gateway = metadata.url.replace(
+    "ipfs://",
+    "https://gateway.ipfscdn.io/ipfs/"
+  );
+  const metadataIpfs = await fetch(gateway).then((r) => r.json());
+  const uri2 = "https://ipfs.io/ipfs/" + metadataIpfs.image.substring(7);
+  setNftImageUrl(uri2);
 };
 
 type deployAlgoLockProps = {
