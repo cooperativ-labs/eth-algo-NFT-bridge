@@ -4,6 +4,8 @@ This is ALGO-ETH BRIDGE a [Next.js](https://nextjs.org/) project bootstrapped wi
 
 - This application is written to work only on Algorand testnet and ETH Goerli testnet
 
+- This application only works for NFTs with metadata uploaded to IPFS. In other words, the url of either the ERC-721 NFT or Algorand NFT has to be an IPFS url.
+
 ## Definitions
 
 Bridge Deployer - this is the entity who decides to deploy this Next.js Bridge Application discussed in this readMe
