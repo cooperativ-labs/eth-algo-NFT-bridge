@@ -2,7 +2,7 @@ import { loadStdlib } from "@reach-sh/stdlib";
 import Web3 from "web3";
 import { nftContract } from "../../ethContracts/erc721";
 import { ALGO_MyAlgoConnect as MyAlgoConnect } from "@reach-sh/stdlib";
-import * as backendCtc from "../../reachBackend/test.main";
+import * as backendCtc from "../../reachBackend/algoToEth.main.mjs";
 import { Dispatch, SetStateAction } from "react";
 import { LoadingButtonStateType } from "../components/buttons/LoadingButtonText";
 declare let window: any;
