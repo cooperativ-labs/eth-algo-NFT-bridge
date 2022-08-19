@@ -420,7 +420,7 @@ const deployAlgoLock = async ({
     const res = await fetch(apiPath + "/deployAlgoLock", {
       method: "POST",
       body: JSON.stringify({
-        algoNftId: nftToBeBridgedAddress, //@Jake  - this is sending empty string to backend for algoNftId
+        algoNftId: nftToBeBridgedAddress,
         bridgerOnAlgorand: algoWalletAddress,
       }),
       headers: { "Content-Type": "application/json" },
@@ -469,6 +469,7 @@ export const bridgeAlgoToEth = async ({
   pubKey,
 }: bridgeAlgoToEthProps) => {
   const lockNFT = async () => {
+    console.log(algorandBridgeId.current);
     const bal = 1000000 * (await getAlgoNftBalance(nftToBeBridgedAddress));
     try {
       if (bal > 0) {
@@ -499,6 +500,7 @@ export const bridgeAlgoToEth = async ({
         }),
         headers: { "Content-Type": "application/json" },
       });
+
       const data = await res.json();
       if (data.ethNftId) {
         status.current = "bridged";
@@ -518,32 +520,33 @@ export const bridgeAlgoToEth = async ({
   };
   //run the steps now
   if (status.current == "init" && algorandBridgeId.current === "") {
-    await deployAlgoLock({
+    deployAlgoLock({
       algoWalletAddress,
       nftToBeBridgedAddress,
       status,
       algorandBridgeId,
       setButtonStep,
       ethWalletAddress,
-    });
-    setTimeout(() => {
-      if (status.current == "lockCtcDeployed") {
-        alert(`about to lock NFT now`);
-        let count = 0;
-        while (count == 0) {
-          count++;
-          lockNFT().then((x) => {
-            setTimeout(() => {
-              if (status.current == "nftLocked") {
-                finalBridgeStep();
-              }
-            }, 25000);
-          });
+    }).then(() => {
+      setTimeout(() => {
+        if (status.current == "lockCtcDeployed") {
+          alert(`about to lock NFT now`);
+          let count = 0;
+          while (count == 0) {
+            count++;
+            lockNFT().then((x) => {
+              setTimeout(() => {
+                if (status.current == "nftLocked") {
+                  finalBridgeStep();
+                }
+              }, 37000);
+            });
+          }
         }
-      }
-    }, 2000);
-
-    if (status.current == "error") setButtonStep("failed");
-    alert(`error: from backend`);
+      }, 2000);
+    });
+  } else if (status.current == "error") {
+    setButtonStep("failed");
+    alert(`Error message returned from backend`);
   }
 };

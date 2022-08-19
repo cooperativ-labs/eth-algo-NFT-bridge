@@ -1,19 +1,17 @@
 // Automatically generated with Reach 0.1.11 (27cb9643)
 /* eslint-disable */
-export const _version = '0.1.11';
-export const _versionHash = '0.1.11 (27cb9643)';
+export const _version = "0.1.11";
+export const _versionHash = "0.1.11 (27cb9643)";
 export const _backendVersion = 19;
 
 export function getExports(s) {
   const stdlib = s.reachStdlib;
-  return {
-    };
-  };
+  return {};
+}
 export function _getEvents(s) {
   const stdlib = s.reachStdlib;
-  return {
-    };
-  };
+  return {};
+}
 export function _getViews(s, viewlib) {
   const stdlib = s.reachStdlib;
   const ctc0 = stdlib.T_Address;
@@ -21,317 +19,492 @@ export function _getViews(s, viewlib) {
   const ctc2 = stdlib.T_Bool;
   const ctc3 = stdlib.T_UInt;
   const ctc4 = stdlib.T_Tuple([ctc3, ctc3, ctc2]);
-  const ctc5 = stdlib.T_Array(ctc4, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '1'));
+  const ctc5 = stdlib.T_Array(
+    ctc4,
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "1")
+  );
   const ctc6 = stdlib.T_Null;
   const ctc7 = stdlib.T_Data({
     None: ctc6,
-    Some: ctc3
-    });
+    Some: ctc3,
+  });
   const map0_ctc = ctc7;
-  
-  
+
   const _Bridger_v = async (i, svs, args) => {
-    if (stdlib.eq(i, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'))) {
+    if (
+      stdlib.eq(
+        i,
+        stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")
+      )
+    ) {
       const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = svs;
-      return (await ((async () => {
-        
-        
-        return v475;}))(...args));
-      }
-    
-    stdlib.assert(false, 'illegal view')
-    };
+      return await (async () => {
+        return v475;
+      })(...args);
+    }
+
+    stdlib.assert(false, "illegal view");
+  };
   const _Creator_v = async (i, svs, args) => {
-    if (stdlib.eq(i, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'))) {
+    if (
+      stdlib.eq(
+        i,
+        stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")
+      )
+    ) {
       const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = svs;
-      return (await ((async () => {
-        
-        
-        return v463;}))(...args));
-      }
-    
-    stdlib.assert(false, 'illegal view')
-    };
+      return await (async () => {
+        return v463;
+      })(...args);
+    }
+
+    stdlib.assert(false, "illegal view");
+  };
   const _balance_NFT_v = async (i, svs, args) => {
-    if (stdlib.eq(i, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'))) {
+    if (
+      stdlib.eq(
+        i,
+        stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")
+      )
+    ) {
       const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = svs;
-      return (await ((async () => {
-        
-        
-        return v492;}))(...args));
-      }
-    
-    stdlib.assert(false, 'illegal view')
-    };
+      return await (async () => {
+        return v492;
+      })(...args);
+    }
+
+    stdlib.assert(false, "illegal view");
+  };
   const _balance_v = async (i, svs, args) => {
-    if (stdlib.eq(i, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'))) {
+    if (
+      stdlib.eq(
+        i,
+        stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")
+      )
+    ) {
       const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = svs;
-      return (await ((async () => {
-        
-        
-        return v481;}))(...args));
-      }
-    
-    stdlib.assert(false, 'illegal view')
-    };
+      return await (async () => {
+        return v481;
+      })(...args);
+    }
+
+    stdlib.assert(false, "illegal view");
+  };
   const _bridgingComplete_v = async (i, svs, args) => {
-    if (stdlib.eq(i, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'))) {
+    if (
+      stdlib.eq(
+        i,
+        stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")
+      )
+    ) {
       const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = svs;
-      return (await ((async () => {
-        
-        
-        return v476;}))(...args));
-      }
-    
-    stdlib.assert(false, 'illegal view')
-    };
+      return await (async () => {
+        return v476;
+      })(...args);
+    }
+
+    stdlib.assert(false, "illegal view");
+  };
   const _lockedNFT_v = async (i, svs, args) => {
-    if (stdlib.eq(i, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'))) {
+    if (
+      stdlib.eq(
+        i,
+        stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")
+      )
+    ) {
       const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = svs;
-      return (await ((async () => {
-        
-        
-        return v477;}))(...args));
-      }
-    
-    stdlib.assert(false, 'illegal view')
-    };
+      return await (async () => {
+        return v477;
+      })(...args);
+    }
+
+    stdlib.assert(false, "illegal view");
+  };
   const _saved_v = async (i, svs, args) => {
-    if (stdlib.eq(i, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'))) {
+    if (
+      stdlib.eq(
+        i,
+        stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")
+      )
+    ) {
       const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = svs;
-      return (await ((async (_v493 ) => {
-          const v493 = stdlib.protect(ctc0, _v493, null);
-        
-        const v494 = stdlib.protect(map0_ctc, await viewlib.viewMapRef(0, v493), null);
-        const v495 = stdlib.fromSome(v494, stdlib.checkedBigNumberify('./index.rsh:55:45:decimal', stdlib.UInt_max, '0'));
-        
-        return v495;}))(...args));
-      }
-    
-    stdlib.assert(false, 'illegal view')
-    };
+      return await (async (_v493) => {
+        const v493 = stdlib.protect(ctc0, _v493, null);
+
+        const v494 = stdlib.protect(
+          map0_ctc,
+          await viewlib.viewMapRef(0, v493),
+          null
+        );
+        const v495 = stdlib.fromSome(
+          v494,
+          stdlib.checkedBigNumberify(
+            "./index.rsh:55:45:decimal",
+            stdlib.UInt_max,
+            "0"
+          )
+        );
+
+        return v495;
+      })(...args);
+    }
+
+    stdlib.assert(false, "illegal view");
+  };
   return {
     infos: {
       Bridger_v: {
         decode: _Bridger_v,
-        ty: ctc0
-        },
+        ty: ctc0,
+      },
       Creator_v: {
         decode: _Creator_v,
-        ty: ctc0
-        },
+        ty: ctc0,
+      },
       balance_NFT_v: {
         decode: _balance_NFT_v,
-        ty: ctc3
-        },
+        ty: ctc3,
+      },
       balance_v: {
         decode: _balance_v,
-        ty: ctc3
-        },
+        ty: ctc3,
+      },
       bridgingComplete_v: {
         decode: _bridgingComplete_v,
-        ty: ctc2
-        },
+        ty: ctc2,
+      },
       lockedNFT_v: {
         decode: _lockedNFT_v,
-        ty: ctc2
-        },
+        ty: ctc2,
+      },
       saved_v: {
         decode: _saved_v,
-        ty: ctc3
-        }
+        ty: ctc3,
       },
+    },
     views: {
-      3: [ctc0, ctc0, ctc1, ctc0, ctc2, ctc2, ctc5, ctc3, ctc4, ctc3]
-      }
-    };
-  
+      3: [ctc0, ctc0, ctc1, ctc0, ctc2, ctc2, ctc5, ctc3, ctc4, ctc3],
+    },
   };
+}
 export function _getMaps(s) {
   const stdlib = s.reachStdlib;
   const ctc0 = stdlib.T_Null;
   const ctc1 = stdlib.T_UInt;
   const ctc2 = stdlib.T_Data({
     None: ctc0,
-    Some: ctc1
-    });
+    Some: ctc1,
+  });
   const ctc3 = stdlib.T_Tuple([ctc2]);
   return {
-    mapDataTy: ctc3
-    };
+    mapDataTy: ctc3,
   };
+}
 export async function Creator(ctcTop, interact) {
-  if (typeof(ctcTop) !== 'object' || ctcTop._initialize === undefined) {
-    return Promise.reject(new Error(`The backend for Creator expects to receive a contract as its first argument.`));}
-  if (typeof(interact) !== 'object') {
-    return Promise.reject(new Error(`The backend for Creator expects to receive an interact object as its second argument.`));}
+  if (typeof ctcTop !== "object" || ctcTop._initialize === undefined) {
+    return Promise.reject(
+      new Error(
+        `The backend for Creator expects to receive a contract as its first argument.`
+      )
+    );
+  }
+  if (typeof interact !== "object") {
+    return Promise.reject(
+      new Error(
+        `The backend for Creator expects to receive an interact object as its second argument.`
+      )
+    );
+  }
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
   const ctc0 = stdlib.T_Null;
   const ctc1 = stdlib.T_UInt;
   const ctc2 = stdlib.T_Data({
     None: ctc0,
-    Some: ctc1
-    });
+    Some: ctc1,
+  });
   const ctc3 = stdlib.T_Address;
   const ctc4 = stdlib.T_Token;
   const ctc5 = stdlib.T_Object({
     Bridger: ctc3,
-    NFT: ctc4
-    });
-  const ctc6 = stdlib.T_Bytes(stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '4'));
+    NFT: ctc4,
+  });
+  const ctc6 = stdlib.T_Bytes(
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "4")
+  );
   const ctc7 = stdlib.T_Tuple([ctc3, ctc3, ctc1, ctc6]);
   const ctc8 = stdlib.T_Tuple([]);
   const ctc9 = stdlib.T_Data({
     IERC721Receiver0_73: ctc7,
     claimNFT0_73: ctc8,
     completeBridge0_73: ctc8,
-    lockNFT0_73: ctc8
-    });
+    lockNFT0_73: ctc8,
+  });
   const ctc10 = stdlib.T_Bool;
   const ctc11 = stdlib.T_Tuple([ctc1, ctc1, ctc10]);
-  const ctc12 = stdlib.T_Array(ctc11, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '1'));
-  
+  const ctc12 = stdlib.T_Array(
+    ctc11,
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "1")
+  );
+
   const map0_ctc = ctc2;
   const map0 = stdlib.newMap({
     ctc: ctc,
     idx: 0,
     isAPI: false,
-    ty: map0_ctc
-    });
-  
-  
-  const v450 = [stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '0'), stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '0'), false];
+    ty: map0_ctc,
+  });
+
+  const v450 = [
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "0"),
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "0"),
+    false,
+  ];
   const v451 = [v450];
-  const v457 = 'I have deployed';
+  const v457 = "I have deployed";
   const v458 = stdlib.protect(ctc5, await interact.getParams(v457), {
-    at: './index.rsh:40:66:application',
-    fs: ['at ./index.rsh:39:21:application call to [unknown function] (defined at: ./index.rsh:39:25:function exp)'],
-    msg: 'getParams',
-    who: 'Creator'
-    });
+    at: "./index.rsh:40:66:application",
+    fs: [
+      "at ./index.rsh:39:21:application call to [unknown function] (defined at: ./index.rsh:39:25:function exp)",
+    ],
+    msg: "getParams",
+    who: "Creator",
+  });
   const v459 = v458.Bridger;
   const v460 = v458.NFT;
-  
-  const txn1 = await (ctc.sendrecv({
+
+  const txn1 = await ctc.sendrecv({
     args: [v459, v460],
     evt_cnt: 2,
     funcNum: 0,
-    lct: stdlib.checkedBigNumberify('./index.rsh:44:17:dot', stdlib.UInt_max, '0'),
+    lct: stdlib.checkedBigNumberify(
+      "./index.rsh:44:17:dot",
+      stdlib.UInt_max,
+      "0"
+    ),
     onlyIf: true,
     out_tys: [ctc3, ctc4],
-    pay: [stdlib.checkedBigNumberify('./index.rsh:44:17:decimal', stdlib.UInt_max, '0'), []],
-    sim_p: (async (txn1) => {
+    pay: [
+      stdlib.checkedBigNumberify(
+        "./index.rsh:44:17:decimal",
+        stdlib.UInt_max,
+        "0"
+      ),
+      [],
+    ],
+    sim_p: async (txn1) => {
       const sim_r = { txns: [], mapRefs: [], maps: [] };
       let sim_txn_ctr = stdlib.UInt_max;
-      const getSimTokCtr = () => { sim_txn_ctr = sim_txn_ctr.sub(1); return sim_txn_ctr; };
-      
+      const getSimTokCtr = () => {
+        sim_txn_ctr = sim_txn_ctr.sub(1);
+        return sim_txn_ctr;
+      };
+
       stdlib.simMapDupe(sim_r, 0, map0);
-      
-      const {data: [v464, v465], secs: v467, time: v466, didSend: v33, from: v463 } = txn1;
-      
-      const v468 = v451[stdlib.checkedBigNumberify('./index.rsh:44:17:dot', stdlib.UInt_max, '0')];
-      const v469 = stdlib.Array_set(v468, '0', stdlib.checkedBigNumberify('./index.rsh:44:17:dot', stdlib.UInt_max, '0'));
-      const v470 = stdlib.Array_set(v451, stdlib.checkedBigNumberify('./index.rsh:44:17:dot', stdlib.UInt_max, '0'), v469);
+
+      const {
+        data: [v464, v465],
+        secs: v467,
+        time: v466,
+        didSend: v33,
+        from: v463,
+      } = txn1;
+
+      const v468 =
+        v451[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:44:17:dot",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
+      const v469 = stdlib.Array_set(
+        v468,
+        "0",
+        stdlib.checkedBigNumberify(
+          "./index.rsh:44:17:dot",
+          stdlib.UInt_max,
+          "0"
+        )
+      );
+      const v470 = stdlib.Array_set(
+        v451,
+        stdlib.checkedBigNumberify(
+          "./index.rsh:44:17:dot",
+          stdlib.UInt_max,
+          "0"
+        ),
+        v469
+      );
       sim_r.txns.push({
-        amt: stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '0'),
-        kind: 'init',
-        tok: v465
-        });
-      ;
-      
+        amt: stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "0"),
+        kind: "init",
+        tok: v465,
+      });
       const v475 = v464;
       const v476 = false;
       const v477 = false;
       const v478 = v466;
       const v480 = v470;
-      const v481 = stdlib.checkedBigNumberify('./index.rsh:37:15:after expr stmt semicolon', stdlib.UInt_max, '0');
-      
-      if (await (async () => {
-        
-        return true;})()) {
-        const v491 = v480[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-        const v492 = v491[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
+      const v481 = stdlib.checkedBigNumberify(
+        "./index.rsh:37:15:after expr stmt semicolon",
+        stdlib.UInt_max,
+        "0"
+      );
+
+      if (
+        await (async () => {
+          return true;
+        })()
+      ) {
+        const v491 =
+          v480[
+            stdlib.checkedBigNumberify(
+              "./index.rsh:76:44:application",
+              stdlib.UInt_max,
+              "0"
+            )
+          ];
+        const v492 =
+          v491[
+            stdlib.checkedBigNumberify(
+              "./index.rsh:76:44:application",
+              stdlib.UInt_max,
+              "0"
+            )
+          ];
         sim_r.isHalt = false;
-        }
-      else {
+      } else {
         sim_r.txns.push({
-          kind: 'halt',
-          tok: v465
-          })
+          kind: "halt",
+          tok: v465,
+        });
         sim_r.txns.push({
-          kind: 'halt',
-          tok: undefined /* Nothing */
-          })
+          kind: "halt",
+          tok: undefined /* Nothing */,
+        });
         sim_r.isHalt = true;
-        }
+      }
       return sim_r;
-      }),
+    },
     soloSend: true,
     timeoutAt: undefined /* mto */,
     tys: [ctc3, ctc4],
-    waitIfNotPresent: false
-    }));
-  const {data: [v464, v465], secs: v467, time: v466, didSend: v33, from: v463 } = txn1;
-  const v468 = v451[stdlib.checkedBigNumberify('./index.rsh:44:17:dot', stdlib.UInt_max, '0')];
-  const v469 = stdlib.Array_set(v468, '0', stdlib.checkedBigNumberify('./index.rsh:44:17:dot', stdlib.UInt_max, '0'));
-  const v470 = stdlib.Array_set(v451, stdlib.checkedBigNumberify('./index.rsh:44:17:dot', stdlib.UInt_max, '0'), v469);
-  ;
-  ;
-  const v473 = 'I HAVE DEPLOYED';
+    waitIfNotPresent: false,
+  });
+  const {
+    data: [v464, v465],
+    secs: v467,
+    time: v466,
+    didSend: v33,
+    from: v463,
+  } = txn1;
+  const v468 =
+    v451[
+      stdlib.checkedBigNumberify("./index.rsh:44:17:dot", stdlib.UInt_max, "0")
+    ];
+  const v469 = stdlib.Array_set(
+    v468,
+    "0",
+    stdlib.checkedBigNumberify("./index.rsh:44:17:dot", stdlib.UInt_max, "0")
+  );
+  const v470 = stdlib.Array_set(
+    v451,
+    stdlib.checkedBigNumberify("./index.rsh:44:17:dot", stdlib.UInt_max, "0"),
+    v469
+  );
+  const v473 = "I HAVE DEPLOYED";
   stdlib.protect(ctc0, await interact.iDeployed(v473), {
-    at: './index.rsh:46:35:application',
-    fs: ['at ./index.rsh:46:35:application call to [unknown function] (defined at: ./index.rsh:46:35:function exp)', 'at ./index.rsh:46:35:application call to "liftedInteract" (defined at: ./index.rsh:46:35:application)'],
-    msg: 'iDeployed',
-    who: 'Creator'
-    });
-  
+    at: "./index.rsh:46:35:application",
+    fs: [
+      "at ./index.rsh:46:35:application call to [unknown function] (defined at: ./index.rsh:46:35:function exp)",
+      'at ./index.rsh:46:35:application call to "liftedInteract" (defined at: ./index.rsh:46:35:application)',
+    ],
+    msg: "iDeployed",
+    who: "Creator",
+  });
+
   let v475 = v464;
   let v476 = false;
   let v477 = false;
   let v478 = v466;
   let v480 = v470;
-  let v481 = stdlib.checkedBigNumberify('./index.rsh:37:15:after expr stmt semicolon', stdlib.UInt_max, '0');
-  
-  while (await (async () => {
-    
-    return true;})()) {
-    const v491 = v480[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-    const v492 = v491[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-    const txn2 = await (ctc.recv({
+  let v481 = stdlib.checkedBigNumberify(
+    "./index.rsh:37:15:after expr stmt semicolon",
+    stdlib.UInt_max,
+    "0"
+  );
+
+  while (
+    await (async () => {
+      return true;
+    })()
+  ) {
+    const v491 =
+      v480[
+        stdlib.checkedBigNumberify(
+          "./index.rsh:76:44:application",
+          stdlib.UInt_max,
+          "0"
+        )
+      ];
+    const v492 =
+      v491[
+        stdlib.checkedBigNumberify(
+          "./index.rsh:76:44:application",
+          stdlib.UInt_max,
+          "0"
+        )
+      ];
+    const txn2 = await ctc.recv({
       didSend: false,
       evt_cnt: 1,
       funcNum: 2,
       out_tys: [ctc9],
-      timeoutAt: ['time', stdlib.UInt_max],
-      waitIfNotPresent: false
-      }));
+      timeoutAt: ["time", stdlib.UInt_max],
+      waitIfNotPresent: false,
+    });
     if (txn2.didTimeout) {
-      const txn3 = await (ctc.sendrecv({
+      const txn3 = await ctc.sendrecv({
         args: [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492],
         evt_cnt: 0,
         funcNum: 3,
         lct: v478,
         onlyIf: true,
         out_tys: [],
-        pay: [stdlib.checkedBigNumberify('./index.rsh:158:21:decimal', stdlib.UInt_max, '0'), []],
-        sim_p: (async (txn3) => {
+        pay: [
+          stdlib.checkedBigNumberify(
+            "./index.rsh:158:21:decimal",
+            stdlib.UInt_max,
+            "0"
+          ),
+          [],
+        ],
+        sim_p: async (txn3) => {
           const sim_r = { txns: [], mapRefs: [], maps: [] };
           let sim_txn_ctr = stdlib.UInt_max;
-          const getSimTokCtr = () => { sim_txn_ctr = sim_txn_ctr.sub(1); return sim_txn_ctr; };
-          
+          const getSimTokCtr = () => {
+            sim_txn_ctr = sim_txn_ctr.sub(1);
+            return sim_txn_ctr;
+          };
+
           stdlib.simMapDupe(sim_r, 0, map0);
-          
-          const {data: [], secs: v1034, time: v1033, didSend: v379, from: v1032 } = txn3;
-          
-          ;
+
+          const {
+            data: [],
+            secs: v1034,
+            time: v1033,
+            didSend: v379,
+            from: v1032,
+          } = txn3;
+
           const cv475 = v475;
           const cv476 = v476;
           const cv477 = v477;
           const cv478 = v1033;
           const cv480 = v480;
           const cv481 = v481;
-          
+
           await (async () => {
             const v475 = cv475;
             const v476 = cv476;
@@ -339,1031 +512,1776 @@ export async function Creator(ctcTop, interact) {
             const v478 = cv478;
             const v480 = cv480;
             const v481 = cv481;
-            
-            if (await (async () => {
-              
-              return true;})()) {
-              const v491 = v480[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-              const v492 = v491[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
+
+            if (
+              await (async () => {
+                return true;
+              })()
+            ) {
+              const v491 =
+                v480[
+                  stdlib.checkedBigNumberify(
+                    "./index.rsh:76:44:application",
+                    stdlib.UInt_max,
+                    "0"
+                  )
+                ];
+              const v492 =
+                v491[
+                  stdlib.checkedBigNumberify(
+                    "./index.rsh:76:44:application",
+                    stdlib.UInt_max,
+                    "0"
+                  )
+                ];
               sim_r.isHalt = false;
-              }
-            else {
+            } else {
               sim_r.txns.push({
-                kind: 'halt',
-                tok: v465
-                })
+                kind: "halt",
+                tok: v465,
+              });
               sim_r.txns.push({
-                kind: 'halt',
-                tok: undefined /* Nothing */
-                })
+                kind: "halt",
+                tok: undefined /* Nothing */,
+              });
               sim_r.isHalt = true;
-              }})();
+            }
+          })();
           return sim_r;
-          }),
+        },
         soloSend: true,
         timeoutAt: undefined /* mto */,
         tys: [ctc3, ctc3, ctc4, ctc3, ctc10, ctc10, ctc12, ctc1, ctc11, ctc1],
-        waitIfNotPresent: false
-        }));
-      const {data: [], secs: v1034, time: v1033, didSend: v379, from: v1032 } = txn3;
-      ;
+        waitIfNotPresent: false,
+      });
+      const {
+        data: [],
+        secs: v1034,
+        time: v1033,
+        didSend: v379,
+        from: v1032,
+      } = txn3;
       const v1035 = stdlib.addressEq(v463, v1032);
       stdlib.assert(v1035, {
-        at: './index.rsh:158:21:dot',
-        fs: ['at ./index.rsh:157:40:application call to [unknown function] (defined at: ./index.rsh:157:40:function exp)'],
-        msg: 'sender correct',
-        who: 'Creator'
-        });
+        at: "./index.rsh:158:21:dot",
+        fs: [
+          "at ./index.rsh:157:40:application call to [unknown function] (defined at: ./index.rsh:157:40:function exp)",
+        ],
+        msg: "sender correct",
+        who: "Creator",
+      });
       const cv475 = v475;
       const cv476 = v476;
       const cv477 = v477;
       const cv478 = v1033;
       const cv480 = v480;
       const cv481 = v481;
-      
+
       v475 = cv475;
       v476 = cv476;
       v477 = cv477;
       v478 = cv478;
       v480 = cv480;
       v481 = cv481;
-      
+
       continue;
-      }
-    else {
-      const {data: [v597], secs: v599, time: v598, didSend: v304, from: v596 } = txn2;
+    } else {
+      const {
+        data: [v597],
+        secs: v599,
+        time: v598,
+        didSend: v304,
+        from: v596,
+      } = txn2;
       switch (v597[0]) {
-        case 'IERC721Receiver0_73': {
+        case "IERC721Receiver0_73": {
           const v600 = v597[1];
           undefined /* setApiDetails */;
-          ;
-          const v649 = stdlib.Array_set(v491, '0', v492);
-          const v650 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v649);
-          ;
-          const v656 = 'true';
-          await txn2.getOutput('IERC721Receiver', 'v656', ctc6, v656);
+          const v649 = stdlib.Array_set(v491, "0", v492);
+          const v650 = stdlib.Array_set(
+            v480,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:68:75:dot",
+              stdlib.UInt_max,
+              "0"
+            ),
+            v649
+          );
+          const v656 = "true";
+          await txn2.getOutput("IERC721Receiver", "v656", ctc6, v656);
           const cv475 = v475;
           const cv476 = v476;
           const cv477 = v477;
           const cv478 = v598;
           const cv480 = v650;
           const cv481 = v481;
-          
+
           v475 = cv475;
           v476 = cv476;
           v477 = cv477;
           v478 = cv478;
           v480 = cv480;
           v481 = cv481;
-          
+
           continue;
           break;
-          }
-        case 'claimNFT0_73': {
+        }
+        case "claimNFT0_73": {
           const v708 = v597[1];
           undefined /* setApiDetails */;
-          ;
-          const v757 = stdlib.Array_set(v491, '0', v492);
-          const v758 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v757);
-          ;
+          const v757 = stdlib.Array_set(v491, "0", v492);
+          const v758 = stdlib.Array_set(
+            v480,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:68:75:dot",
+              stdlib.UInt_max,
+              "0"
+            ),
+            v757
+          );
           const v776 = stdlib.addressEq(v596, v464);
           stdlib.assert(v776, {
-            at: './index.rsh:132:24:application',
-            fs: ['at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)'],
-            msg: 'Only Bridger can claim NFT when bridging',
-            who: 'Creator'
-            });
+            at: "./index.rsh:132:24:application",
+            fs: [
+              "at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)",
+            ],
+            msg: "Only Bridger can claim NFT when bridging",
+            who: "Creator",
+          });
           stdlib.assert(v477, {
-            at: './index.rsh:133:24:application',
-            fs: ['at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)'],
-            msg: 'Bridger must have NFT to claim. None available',
-            who: 'Creator'
-            });
-          const v778 = v758[stdlib.checkedBigNumberify('./index.rsh:134:32:application', stdlib.UInt_max, '0')];
-          const v779 = v778[stdlib.checkedBigNumberify('./index.rsh:134:32:application', stdlib.UInt_max, '0')];
-          const v780 = stdlib.gt(v779, stdlib.checkedBigNumberify('./index.rsh:134:40:decimal', stdlib.UInt_max, '0'));
+            at: "./index.rsh:133:24:application",
+            fs: [
+              "at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)",
+            ],
+            msg: "Bridger must have NFT to claim. None available",
+            who: "Creator",
+          });
+          const v778 =
+            v758[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:134:32:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
+          const v779 =
+            v778[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:134:32:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
+          const v780 = stdlib.gt(
+            v779,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:134:40:decimal",
+              stdlib.UInt_max,
+              "0"
+            )
+          );
           stdlib.assert(v780, {
-            at: './index.rsh:134:24:application',
-            fs: ['at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)'],
-            msg: 'Bridger must have NFT to claim. None available',
-            who: 'Creator'
-            });
-          const v786 = stdlib.safeSub(v779, stdlib.checkedBigNumberify('./index.rsh:136:26:decimal', stdlib.UInt_max, '1'));
-          const v788 = stdlib.Array_set(v778, '0', v786);
-          const v789 = stdlib.Array_set(v758, stdlib.checkedBigNumberify('./index.rsh:136:36:application', stdlib.UInt_max, '0'), v788);
-          ;
-          await stdlib.mapSet(map0, v596, stdlib.checkedBigNumberify('./index.rsh:138:31:decimal', stdlib.UInt_max, '0'));
+            at: "./index.rsh:134:24:application",
+            fs: [
+              "at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)",
+            ],
+            msg: "Bridger must have NFT to claim. None available",
+            who: "Creator",
+          });
+          const v786 = stdlib.safeSub(
+            v779,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:136:26:decimal",
+              stdlib.UInt_max,
+              "1"
+            )
+          );
+          const v788 = stdlib.Array_set(v778, "0", v786);
+          const v789 = stdlib.Array_set(
+            v758,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:136:36:application",
+              stdlib.UInt_max,
+              "0"
+            ),
+            v788
+          );
+          await stdlib.mapSet(
+            map0,
+            v596,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:138:31:decimal",
+              stdlib.UInt_max,
+              "0"
+            )
+          );
           const v790 = true;
-          await txn2.getOutput('claimNFT', 'v790', ctc10, v790);
+          await txn2.getOutput("claimNFT", "v790", ctc10, v790);
           const cv475 = v475;
           const cv476 = v476;
           const cv477 = false;
           const cv478 = v598;
           const cv480 = v789;
           const cv481 = v481;
-          
+
           v475 = cv475;
           v476 = cv476;
           v477 = cv477;
           v478 = cv478;
           v480 = cv480;
           v481 = cv481;
-          
+
           continue;
           break;
-          }
-        case 'completeBridge0_73': {
+        }
+        case "completeBridge0_73": {
           const v816 = v597[1];
           undefined /* setApiDetails */;
-          ;
-          const v865 = stdlib.Array_set(v491, '0', v492);
-          const v866 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v865);
-          ;
+          const v865 = stdlib.Array_set(v491, "0", v492);
+          const v866 = stdlib.Array_set(
+            v480,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:68:75:dot",
+              stdlib.UInt_max,
+              "0"
+            ),
+            v865
+          );
           const v906 = stdlib.addressEq(v596, v463);
           stdlib.assert(v906, {
-            at: './index.rsh:93:24:application',
-            fs: ['at ./index.rsh:92:13:application call to [unknown function] (defined at: ./index.rsh:92:13:function exp)'],
-            msg: 'Only Backend can complete bridging',
-            who: 'Creator'
-            });
+            at: "./index.rsh:93:24:application",
+            fs: [
+              "at ./index.rsh:92:13:application call to [unknown function] (defined at: ./index.rsh:92:13:function exp)",
+            ],
+            msg: "Only Backend can complete bridging",
+            who: "Creator",
+          });
           stdlib.assert(v477, {
-            at: './index.rsh:94:24:application',
-            fs: ['at ./index.rsh:92:13:application call to [unknown function] (defined at: ./index.rsh:92:13:function exp)'],
-            msg: 'no NFT has been locked yet, so cannot complete bridging',
-            who: 'Creator'
-            });
+            at: "./index.rsh:94:24:application",
+            fs: [
+              "at ./index.rsh:92:13:application call to [unknown function] (defined at: ./index.rsh:92:13:function exp)",
+            ],
+            msg: "no NFT has been locked yet, so cannot complete bridging",
+            who: "Creator",
+          });
           const v908 = true;
-          await txn2.getOutput('completeBridge', 'v908', ctc10, v908);
+          await txn2.getOutput("completeBridge", "v908", ctc10, v908);
           const cv475 = v475;
           const cv476 = true;
           const cv477 = true;
           const cv478 = v598;
           const cv480 = v866;
           const cv481 = v481;
-          
+
           v475 = cv475;
           v476 = cv476;
           v477 = cv477;
           v478 = cv478;
           v480 = cv480;
           v481 = cv481;
-          
+
           continue;
           break;
-          }
-        case 'lockNFT0_73': {
+        }
+        case "lockNFT0_73": {
           const v924 = v597[1];
           undefined /* setApiDetails */;
-          ;
-          const v971 = stdlib.safeAdd(v492, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '1'));
-          const v973 = stdlib.Array_set(v491, '0', v971);
-          const v974 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v973);
-          ;
+          const v971 = stdlib.safeAdd(
+            v492,
+            stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "1")
+          );
+          const v973 = stdlib.Array_set(v491, "0", v971);
+          const v974 = stdlib.Array_set(
+            v480,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:68:75:dot",
+              stdlib.UInt_max,
+              "0"
+            ),
+            v973
+          );
           const v1024 = stdlib.addressEq(v596, v464);
           stdlib.assert(v1024, {
-            at: './index.rsh:110:24:application',
-            fs: ['at ./index.rsh:109:13:application call to [unknown function] (defined at: ./index.rsh:109:13:function exp)'],
-            msg: 'You are not the bridger. Only Bridger can bridge NFT on this contract',
-            who: 'Creator'
-            });
-          await stdlib.mapSet(map0, v596, stdlib.checkedBigNumberify('./index.rsh:112:39:decimal', stdlib.UInt_max, '1'));
+            at: "./index.rsh:110:24:application",
+            fs: [
+              "at ./index.rsh:109:13:application call to [unknown function] (defined at: ./index.rsh:109:13:function exp)",
+            ],
+            msg: "You are not the bridger. Only Bridger can bridge NFT on this contract",
+            who: "Creator",
+          });
+          await stdlib.mapSet(
+            map0,
+            v596,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:112:39:decimal",
+              stdlib.UInt_max,
+              "1"
+            )
+          );
           const v1025 = true;
-          await txn2.getOutput('lockNFT', 'v1025', ctc10, v1025);
+          await txn2.getOutput("lockNFT", "v1025", ctc10, v1025);
           const cv475 = v475;
           const cv476 = v476;
           const cv477 = true;
           const cv478 = v598;
           const cv480 = v974;
           const cv481 = v481;
-          
+
           v475 = cv475;
           v476 = cv476;
           v477 = cv477;
           v478 = cv478;
           v480 = cv480;
           v481 = cv481;
-          
+
           continue;
           break;
-          }
-        }}
-    
+        }
+      }
     }
+  }
   return;
-  
-  
-  };
+}
 export async function _IERC721Receiver3(ctcTop, interact) {
-  if (typeof(ctcTop) !== 'object' || ctcTop._initialize === undefined) {
-    return Promise.reject(new Error(`The backend for _IERC721Receiver3 expects to receive a contract as its first argument.`));}
-  if (typeof(interact) !== 'object') {
-    return Promise.reject(new Error(`The backend for _IERC721Receiver3 expects to receive an interact object as its second argument.`));}
+  if (typeof ctcTop !== "object" || ctcTop._initialize === undefined) {
+    return Promise.reject(
+      new Error(
+        `The backend for _IERC721Receiver3 expects to receive a contract as its first argument.`
+      )
+    );
+  }
+  if (typeof interact !== "object") {
+    return Promise.reject(
+      new Error(
+        `The backend for _IERC721Receiver3 expects to receive an interact object as its second argument.`
+      )
+    );
+  }
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
   const ctc0 = stdlib.T_Null;
   const ctc1 = stdlib.T_UInt;
   const ctc2 = stdlib.T_Data({
     None: ctc0,
-    Some: ctc1
-    });
+    Some: ctc1,
+  });
   const ctc3 = stdlib.T_Address;
   const ctc4 = stdlib.T_Token;
   const ctc5 = stdlib.T_Bool;
   const ctc6 = stdlib.T_Tuple([ctc1, ctc1, ctc5]);
-  const ctc7 = stdlib.T_Array(ctc6, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '1'));
-  const ctc8 = stdlib.T_Bytes(stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '4'));
+  const ctc7 = stdlib.T_Array(
+    ctc6,
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "1")
+  );
+  const ctc8 = stdlib.T_Bytes(
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "4")
+  );
   const ctc9 = stdlib.T_Tuple([ctc3, ctc3, ctc1, ctc8]);
   const ctc10 = stdlib.T_Tuple([]);
   const ctc11 = stdlib.T_Data({
     IERC721Receiver0_73: ctc9,
     claimNFT0_73: ctc10,
     completeBridge0_73: ctc10,
-    lockNFT0_73: ctc10
-    });
-  
+    lockNFT0_73: ctc10,
+  });
+
   const map0_ctc = ctc2;
   const map0 = stdlib.newMap({
     ctc: ctc,
     idx: 0,
     isAPI: true,
-    ty: map0_ctc
-    });
-  
-  
-  const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = await ctc.getState(stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'), [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1]);
+    ty: map0_ctc,
+  });
+
+  const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] =
+    await ctc.getState(
+      stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3"),
+      [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1]
+    );
   const v534 = stdlib.protect(ctc9, await interact.in(), {
-    at: './index.rsh:1:23:application',
-    fs: ['at ./index.rsh:148:13:application call to [unknown function] (defined at: ./index.rsh:148:13:function exp)', 'at ./index.rsh:68:75:application call to "runIERC721Receiver0_73" (defined at: ./index.rsh:145:13:function exp)', 'at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)'],
-    msg: 'in',
-    who: 'IERC721Receiver'
-    });
-  const v550 = ['IERC721Receiver0_73', v534];
-  
-  const txn1 = await (ctc.sendrecv({
+    at: "./index.rsh:1:23:application",
+    fs: [
+      "at ./index.rsh:148:13:application call to [unknown function] (defined at: ./index.rsh:148:13:function exp)",
+      'at ./index.rsh:68:75:application call to "runIERC721Receiver0_73" (defined at: ./index.rsh:145:13:function exp)',
+      "at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)",
+    ],
+    msg: "in",
+    who: "IERC721Receiver",
+  });
+  const v550 = ["IERC721Receiver0_73", v534];
+
+  const txn1 = await ctc.sendrecv({
     args: [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492, v550],
     evt_cnt: 1,
     funcNum: 2,
-    lct: stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '0'),
+    lct: stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "0"),
     onlyIf: true,
     out_tys: [ctc11],
-    pay: [stdlib.checkedBigNumberify('./index.rsh:150:29:decimal', stdlib.UInt_max, '0'), [[stdlib.checkedBigNumberify('./index.rsh:150:33:decimal', stdlib.UInt_max, '0'), v465]]],
-    sim_p: (async (txn1) => {
+    pay: [
+      stdlib.checkedBigNumberify(
+        "./index.rsh:150:29:decimal",
+        stdlib.UInt_max,
+        "0"
+      ),
+      [
+        [
+          stdlib.checkedBigNumberify(
+            "./index.rsh:150:33:decimal",
+            stdlib.UInt_max,
+            "0"
+          ),
+          v465,
+        ],
+      ],
+    ],
+    sim_p: async (txn1) => {
       const sim_r = { txns: [], mapRefs: [], maps: [] };
       let sim_txn_ctr = stdlib.UInt_max;
-      const getSimTokCtr = () => { sim_txn_ctr = sim_txn_ctr.sub(1); return sim_txn_ctr; };
-      
+      const getSimTokCtr = () => {
+        sim_txn_ctr = sim_txn_ctr.sub(1);
+        return sim_txn_ctr;
+      };
+
       stdlib.simMapDupe(sim_r, 0, map0);
-      
-      const {data: [v597], secs: v599, time: v598, didSend: v304, from: v596 } = txn1;
-      
+
+      const {
+        data: [v597],
+        secs: v599,
+        time: v598,
+        didSend: v304,
+        from: v596,
+      } = txn1;
+
       switch (v597[0]) {
-        case 'IERC721Receiver0_73': {
+        case "IERC721Receiver0_73": {
           const v600 = v597[1];
           sim_r.txns.push({
-            kind: 'api',
-            who: "IERC721Receiver"
-            });
-          ;
-          const v649 = stdlib.Array_set(v491, '0', v492);
-          const v650 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v649);
-          ;
-          const v656 = 'true';
-          const v657 = await txn1.getOutput('IERC721Receiver', 'v656', ctc8, v656);
-          
+            kind: "api",
+            who: "IERC721Receiver",
+          });
+          const v649 = stdlib.Array_set(v491, "0", v492);
+          const v650 = stdlib.Array_set(
+            v480,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:68:75:dot",
+              stdlib.UInt_max,
+              "0"
+            ),
+            v649
+          );
+          const v656 = "true";
+          const v657 = await txn1.getOutput(
+            "IERC721Receiver",
+            "v656",
+            ctc8,
+            v656
+          );
+
           const v1592 = v475;
           const v1593 = v476;
           const v1594 = v477;
           const v1596 = v650;
           const v1597 = v481;
-          const v1598 = v650[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-          const v1599 = v1598[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
+          const v1598 =
+            v650[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:76:44:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
+          const v1599 =
+            v1598[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:76:44:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
           sim_r.isHalt = false;
-          
+
           break;
-          }
-        case 'claimNFT0_73': {
-          const v708 = v597[1];
-          
-          break;
-          }
-        case 'completeBridge0_73': {
-          const v816 = v597[1];
-          
-          break;
-          }
-        case 'lockNFT0_73': {
-          const v924 = v597[1];
-          
-          break;
-          }
         }
+        case "claimNFT0_73": {
+          const v708 = v597[1];
+
+          break;
+        }
+        case "completeBridge0_73": {
+          const v816 = v597[1];
+
+          break;
+        }
+        case "lockNFT0_73": {
+          const v924 = v597[1];
+
+          break;
+        }
+      }
       return sim_r;
-      }),
+    },
     soloSend: false,
     timeoutAt: undefined /* mto */,
     tys: [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1, ctc11],
-    waitIfNotPresent: false
-    }));
-  const {data: [v597], secs: v599, time: v598, didSend: v304, from: v596 } = txn1;
+    waitIfNotPresent: false,
+  });
+  const {
+    data: [v597],
+    secs: v599,
+    time: v598,
+    didSend: v304,
+    from: v596,
+  } = txn1;
   switch (v597[0]) {
-    case 'IERC721Receiver0_73': {
+    case "IERC721Receiver0_73": {
       const v600 = v597[1];
       undefined /* setApiDetails */;
-      ;
-      const v649 = stdlib.Array_set(v491, '0', v492);
-      const v650 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v649);
-      ;
-      const v656 = 'true';
-      const v657 = await txn1.getOutput('IERC721Receiver', 'v656', ctc8, v656);
+      const v649 = stdlib.Array_set(v491, "0", v492);
+      const v650 = stdlib.Array_set(
+        v480,
+        stdlib.checkedBigNumberify(
+          "./index.rsh:68:75:dot",
+          stdlib.UInt_max,
+          "0"
+        ),
+        v649
+      );
+      const v656 = "true";
+      const v657 = await txn1.getOutput("IERC721Receiver", "v656", ctc8, v656);
       if (v304) {
         stdlib.protect(ctc0, await interact.out(v600, v657), {
-          at: './index.rsh:146:13:application',
-          fs: ['at ./index.rsh:146:13:application call to [unknown function] (defined at: ./index.rsh:146:13:function exp)', 'at ./index.rsh:153:20:application call to "res" (defined at: ./index.rsh:152:13:function exp)', 'at ./index.rsh:152:13:application call to [unknown function] (defined at: ./index.rsh:152:13:function exp)'],
-          msg: 'out',
-          who: 'IERC721Receiver'
-          });
-        }
-      else {
-        }
-      
+          at: "./index.rsh:146:13:application",
+          fs: [
+            "at ./index.rsh:146:13:application call to [unknown function] (defined at: ./index.rsh:146:13:function exp)",
+            'at ./index.rsh:153:20:application call to "res" (defined at: ./index.rsh:152:13:function exp)',
+            "at ./index.rsh:152:13:application call to [unknown function] (defined at: ./index.rsh:152:13:function exp)",
+          ],
+          msg: "out",
+          who: "IERC721Receiver",
+        });
+      } else {
+      }
+
       const v1592 = v475;
       const v1593 = v476;
       const v1594 = v477;
       const v1596 = v650;
       const v1597 = v481;
-      const v1598 = v650[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-      const v1599 = v1598[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
+      const v1598 =
+        v650[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:76:44:application",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
+      const v1599 =
+        v1598[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:76:44:application",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
       return;
-      
+
       break;
-      }
-    case 'claimNFT0_73': {
+    }
+    case "claimNFT0_73": {
       const v708 = v597[1];
       return;
       break;
-      }
-    case 'completeBridge0_73': {
+    }
+    case "completeBridge0_73": {
       const v816 = v597[1];
       return;
       break;
-      }
-    case 'lockNFT0_73': {
+    }
+    case "lockNFT0_73": {
       const v924 = v597[1];
       return;
       break;
-      }
     }
-  
-  
-  };
+  }
+}
 export async function _claimNFT3(ctcTop, interact) {
-  if (typeof(ctcTop) !== 'object' || ctcTop._initialize === undefined) {
-    return Promise.reject(new Error(`The backend for _claimNFT3 expects to receive a contract as its first argument.`));}
-  if (typeof(interact) !== 'object') {
-    return Promise.reject(new Error(`The backend for _claimNFT3 expects to receive an interact object as its second argument.`));}
+  if (typeof ctcTop !== "object" || ctcTop._initialize === undefined) {
+    return Promise.reject(
+      new Error(
+        `The backend for _claimNFT3 expects to receive a contract as its first argument.`
+      )
+    );
+  }
+  if (typeof interact !== "object") {
+    return Promise.reject(
+      new Error(
+        `The backend for _claimNFT3 expects to receive an interact object as its second argument.`
+      )
+    );
+  }
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
   const ctc0 = stdlib.T_Null;
   const ctc1 = stdlib.T_UInt;
   const ctc2 = stdlib.T_Data({
     None: ctc0,
-    Some: ctc1
-    });
+    Some: ctc1,
+  });
   const ctc3 = stdlib.T_Address;
   const ctc4 = stdlib.T_Token;
   const ctc5 = stdlib.T_Bool;
   const ctc6 = stdlib.T_Tuple([ctc1, ctc1, ctc5]);
-  const ctc7 = stdlib.T_Array(ctc6, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '1'));
+  const ctc7 = stdlib.T_Array(
+    ctc6,
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "1")
+  );
   const ctc8 = stdlib.T_Tuple([]);
-  const ctc9 = stdlib.T_Bytes(stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '4'));
+  const ctc9 = stdlib.T_Bytes(
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "4")
+  );
   const ctc10 = stdlib.T_Tuple([ctc3, ctc3, ctc1, ctc9]);
   const ctc11 = stdlib.T_Data({
     IERC721Receiver0_73: ctc10,
     claimNFT0_73: ctc8,
     completeBridge0_73: ctc8,
-    lockNFT0_73: ctc8
-    });
-  
+    lockNFT0_73: ctc8,
+  });
+
   const map0_ctc = ctc2;
   const map0 = stdlib.newMap({
     ctc: ctc,
     idx: 0,
     isAPI: true,
-    ty: map0_ctc
-    });
-  
-  
-  const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = await ctc.getState(stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'), [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1]);
+    ty: map0_ctc,
+  });
+
+  const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] =
+    await ctc.getState(
+      stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3"),
+      [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1]
+    );
   const v519 = ctc.selfAddress();
   const v521 = stdlib.protect(ctc8, await interact.in(), {
-    at: './index.rsh:1:23:application',
-    fs: ['at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:13:function exp)', 'at ./index.rsh:68:75:application call to "runclaimNFT0_73" (defined at: ./index.rsh:120:13:function exp)', 'at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)'],
-    msg: 'in',
-    who: 'claimNFT'
-    });
+    at: "./index.rsh:1:23:application",
+    fs: [
+      "at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:13:function exp)",
+      'at ./index.rsh:68:75:application call to "runclaimNFT0_73" (defined at: ./index.rsh:120:13:function exp)',
+      "at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)",
+    ],
+    msg: "in",
+    who: "claimNFT",
+  });
   const v523 = stdlib.addressEq(v519, v464);
   stdlib.assert(v523, {
-    at: './index.rsh:124:23:application',
-    fs: ['at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:17:function exp)', 'at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:13:function exp)', 'at ./index.rsh:68:75:application call to "runclaimNFT0_73" (defined at: ./index.rsh:120:13:function exp)', 'at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)'],
-    msg: 'Only Bridger can claim NFT when bridging',
-    who: 'claimNFT'
-    });
+    at: "./index.rsh:124:23:application",
+    fs: [
+      "at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:17:function exp)",
+      "at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:13:function exp)",
+      'at ./index.rsh:68:75:application call to "runclaimNFT0_73" (defined at: ./index.rsh:120:13:function exp)',
+      "at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)",
+    ],
+    msg: "Only Bridger can claim NFT when bridging",
+    who: "claimNFT",
+  });
   stdlib.assert(v477, {
-    at: './index.rsh:125:23:application',
-    fs: ['at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:17:function exp)', 'at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:13:function exp)', 'at ./index.rsh:68:75:application call to "runclaimNFT0_73" (defined at: ./index.rsh:120:13:function exp)', 'at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)'],
-    msg: 'Bridger must have NFT to claim. None available',
-    who: 'claimNFT'
-    });
-  const v527 = stdlib.gt(v492, stdlib.checkedBigNumberify('./index.rsh:126:39:decimal', stdlib.UInt_max, '0'));
+    at: "./index.rsh:125:23:application",
+    fs: [
+      "at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:17:function exp)",
+      "at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:13:function exp)",
+      'at ./index.rsh:68:75:application call to "runclaimNFT0_73" (defined at: ./index.rsh:120:13:function exp)',
+      "at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)",
+    ],
+    msg: "Bridger must have NFT to claim. None available",
+    who: "claimNFT",
+  });
+  const v527 = stdlib.gt(
+    v492,
+    stdlib.checkedBigNumberify(
+      "./index.rsh:126:39:decimal",
+      stdlib.UInt_max,
+      "0"
+    )
+  );
   stdlib.assert(v527, {
-    at: './index.rsh:126:23:application',
-    fs: ['at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:17:function exp)', 'at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:13:function exp)', 'at ./index.rsh:68:75:application call to "runclaimNFT0_73" (defined at: ./index.rsh:120:13:function exp)', 'at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)'],
-    msg: 'Bridger must have NFT to claim. None available',
-    who: 'claimNFT'
-    });
-  const v530 = ['claimNFT0_73', v521];
-  
-  const txn1 = await (ctc.sendrecv({
+    at: "./index.rsh:126:23:application",
+    fs: [
+      "at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:17:function exp)",
+      "at ./index.rsh:123:13:application call to [unknown function] (defined at: ./index.rsh:123:13:function exp)",
+      'at ./index.rsh:68:75:application call to "runclaimNFT0_73" (defined at: ./index.rsh:120:13:function exp)',
+      "at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)",
+    ],
+    msg: "Bridger must have NFT to claim. None available",
+    who: "claimNFT",
+  });
+  const v530 = ["claimNFT0_73", v521];
+
+  const txn1 = await ctc.sendrecv({
     args: [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492, v530],
     evt_cnt: 1,
     funcNum: 2,
-    lct: stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '0'),
+    lct: stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "0"),
     onlyIf: true,
     out_tys: [ctc11],
-    pay: [stdlib.checkedBigNumberify('./index.rsh:129:21:decimal', stdlib.UInt_max, '0'), [[stdlib.checkedBigNumberify('./index.rsh:129:25:decimal', stdlib.UInt_max, '0'), v465]]],
-    sim_p: (async (txn1) => {
+    pay: [
+      stdlib.checkedBigNumberify(
+        "./index.rsh:129:21:decimal",
+        stdlib.UInt_max,
+        "0"
+      ),
+      [
+        [
+          stdlib.checkedBigNumberify(
+            "./index.rsh:129:25:decimal",
+            stdlib.UInt_max,
+            "0"
+          ),
+          v465,
+        ],
+      ],
+    ],
+    sim_p: async (txn1) => {
       const sim_r = { txns: [], mapRefs: [], maps: [] };
       let sim_txn_ctr = stdlib.UInt_max;
-      const getSimTokCtr = () => { sim_txn_ctr = sim_txn_ctr.sub(1); return sim_txn_ctr; };
-      
+      const getSimTokCtr = () => {
+        sim_txn_ctr = sim_txn_ctr.sub(1);
+        return sim_txn_ctr;
+      };
+
       stdlib.simMapDupe(sim_r, 0, map0);
-      
-      const {data: [v597], secs: v599, time: v598, didSend: v304, from: v596 } = txn1;
-      
+
+      const {
+        data: [v597],
+        secs: v599,
+        time: v598,
+        didSend: v304,
+        from: v596,
+      } = txn1;
+
       switch (v597[0]) {
-        case 'IERC721Receiver0_73': {
+        case "IERC721Receiver0_73": {
           const v600 = v597[1];
-          
+
           break;
-          }
-        case 'claimNFT0_73': {
+        }
+        case "claimNFT0_73": {
           const v708 = v597[1];
           sim_r.txns.push({
-            kind: 'api',
-            who: "claimNFT"
-            });
-          ;
-          const v757 = stdlib.Array_set(v491, '0', v492);
-          const v758 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v757);
-          ;
-          const v778 = v758[stdlib.checkedBigNumberify('./index.rsh:134:32:application', stdlib.UInt_max, '0')];
-          const v779 = v778[stdlib.checkedBigNumberify('./index.rsh:134:32:application', stdlib.UInt_max, '0')];
-          const v786 = stdlib.safeSub(v779, stdlib.checkedBigNumberify('./index.rsh:136:26:decimal', stdlib.UInt_max, '1'));
-          const v788 = stdlib.Array_set(v778, '0', v786);
-          const v789 = stdlib.Array_set(v758, stdlib.checkedBigNumberify('./index.rsh:136:36:application', stdlib.UInt_max, '0'), v788);
+            kind: "api",
+            who: "claimNFT",
+          });
+          const v757 = stdlib.Array_set(v491, "0", v492);
+          const v758 = stdlib.Array_set(
+            v480,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:68:75:dot",
+              stdlib.UInt_max,
+              "0"
+            ),
+            v757
+          );
+          const v778 =
+            v758[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:134:32:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
+          const v779 =
+            v778[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:134:32:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
+          const v786 = stdlib.safeSub(
+            v779,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:136:26:decimal",
+              stdlib.UInt_max,
+              "1"
+            )
+          );
+          const v788 = stdlib.Array_set(v778, "0", v786);
+          const v789 = stdlib.Array_set(
+            v758,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:136:36:application",
+              stdlib.UInt_max,
+              "0"
+            ),
+            v788
+          );
           sim_r.txns.push({
-            kind: 'from',
+            kind: "from",
             to: v596,
-            tok: v465
-            });
-          await stdlib.simMapSet(sim_r, 0, v596, stdlib.checkedBigNumberify('./index.rsh:138:31:decimal', stdlib.UInt_max, '0'));
+            tok: v465,
+          });
+          await stdlib.simMapSet(
+            sim_r,
+            0,
+            v596,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:138:31:decimal",
+              stdlib.UInt_max,
+              "0"
+            )
+          );
           const v790 = true;
-          const v791 = await txn1.getOutput('claimNFT', 'v790', ctc5, v790);
-          
+          const v791 = await txn1.getOutput("claimNFT", "v790", ctc5, v790);
+
           const v1642 = v475;
           const v1643 = v476;
           const v1644 = false;
           const v1646 = v789;
           const v1647 = v481;
-          const v1648 = v789[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-          const v1649 = v1648[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
+          const v1648 =
+            v789[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:76:44:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
+          const v1649 =
+            v1648[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:76:44:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
           sim_r.isHalt = false;
-          
+
           break;
-          }
-        case 'completeBridge0_73': {
-          const v816 = v597[1];
-          
-          break;
-          }
-        case 'lockNFT0_73': {
-          const v924 = v597[1];
-          
-          break;
-          }
         }
+        case "completeBridge0_73": {
+          const v816 = v597[1];
+
+          break;
+        }
+        case "lockNFT0_73": {
+          const v924 = v597[1];
+
+          break;
+        }
+      }
       return sim_r;
-      }),
+    },
     soloSend: false,
     timeoutAt: undefined /* mto */,
     tys: [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1, ctc11],
-    waitIfNotPresent: false
-    }));
-  const {data: [v597], secs: v599, time: v598, didSend: v304, from: v596 } = txn1;
+    waitIfNotPresent: false,
+  });
+  const {
+    data: [v597],
+    secs: v599,
+    time: v598,
+    didSend: v304,
+    from: v596,
+  } = txn1;
   switch (v597[0]) {
-    case 'IERC721Receiver0_73': {
+    case "IERC721Receiver0_73": {
       const v600 = v597[1];
       return;
       break;
-      }
-    case 'claimNFT0_73': {
+    }
+    case "claimNFT0_73": {
       const v708 = v597[1];
       undefined /* setApiDetails */;
-      ;
-      const v757 = stdlib.Array_set(v491, '0', v492);
-      const v758 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v757);
-      ;
+      const v757 = stdlib.Array_set(v491, "0", v492);
+      const v758 = stdlib.Array_set(
+        v480,
+        stdlib.checkedBigNumberify(
+          "./index.rsh:68:75:dot",
+          stdlib.UInt_max,
+          "0"
+        ),
+        v757
+      );
       const v776 = stdlib.addressEq(v596, v464);
       stdlib.assert(v776, {
-        at: './index.rsh:132:24:application',
-        fs: ['at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)'],
-        msg: 'Only Bridger can claim NFT when bridging',
-        who: 'claimNFT'
-        });
+        at: "./index.rsh:132:24:application",
+        fs: [
+          "at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)",
+        ],
+        msg: "Only Bridger can claim NFT when bridging",
+        who: "claimNFT",
+      });
       stdlib.assert(v477, {
-        at: './index.rsh:133:24:application',
-        fs: ['at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)'],
-        msg: 'Bridger must have NFT to claim. None available',
-        who: 'claimNFT'
-        });
-      const v778 = v758[stdlib.checkedBigNumberify('./index.rsh:134:32:application', stdlib.UInt_max, '0')];
-      const v779 = v778[stdlib.checkedBigNumberify('./index.rsh:134:32:application', stdlib.UInt_max, '0')];
-      const v780 = stdlib.gt(v779, stdlib.checkedBigNumberify('./index.rsh:134:40:decimal', stdlib.UInt_max, '0'));
+        at: "./index.rsh:133:24:application",
+        fs: [
+          "at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)",
+        ],
+        msg: "Bridger must have NFT to claim. None available",
+        who: "claimNFT",
+      });
+      const v778 =
+        v758[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:134:32:application",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
+      const v779 =
+        v778[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:134:32:application",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
+      const v780 = stdlib.gt(
+        v779,
+        stdlib.checkedBigNumberify(
+          "./index.rsh:134:40:decimal",
+          stdlib.UInt_max,
+          "0"
+        )
+      );
       stdlib.assert(v780, {
-        at: './index.rsh:134:24:application',
-        fs: ['at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)'],
-        msg: 'Bridger must have NFT to claim. None available',
-        who: 'claimNFT'
-        });
-      const v786 = stdlib.safeSub(v779, stdlib.checkedBigNumberify('./index.rsh:136:26:decimal', stdlib.UInt_max, '1'));
-      const v788 = stdlib.Array_set(v778, '0', v786);
-      const v789 = stdlib.Array_set(v758, stdlib.checkedBigNumberify('./index.rsh:136:36:application', stdlib.UInt_max, '0'), v788);
-      ;
-      await stdlib.mapSet(map0, v596, stdlib.checkedBigNumberify('./index.rsh:138:31:decimal', stdlib.UInt_max, '0'));
+        at: "./index.rsh:134:24:application",
+        fs: [
+          "at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)",
+        ],
+        msg: "Bridger must have NFT to claim. None available",
+        who: "claimNFT",
+      });
+      const v786 = stdlib.safeSub(
+        v779,
+        stdlib.checkedBigNumberify(
+          "./index.rsh:136:26:decimal",
+          stdlib.UInt_max,
+          "1"
+        )
+      );
+      const v788 = stdlib.Array_set(v778, "0", v786);
+      const v789 = stdlib.Array_set(
+        v758,
+        stdlib.checkedBigNumberify(
+          "./index.rsh:136:36:application",
+          stdlib.UInt_max,
+          "0"
+        ),
+        v788
+      );
+      await stdlib.mapSet(
+        map0,
+        v596,
+        stdlib.checkedBigNumberify(
+          "./index.rsh:138:31:decimal",
+          stdlib.UInt_max,
+          "0"
+        )
+      );
       const v790 = true;
-      const v791 = await txn1.getOutput('claimNFT', 'v790', ctc5, v790);
+      const v791 = await txn1.getOutput("claimNFT", "v790", ctc5, v790);
       if (v304) {
         stdlib.protect(ctc0, await interact.out(v708, v791), {
-          at: './index.rsh:121:13:application',
-          fs: ['at ./index.rsh:121:13:application call to [unknown function] (defined at: ./index.rsh:121:13:function exp)', 'at ./index.rsh:141:20:application call to "res" (defined at: ./index.rsh:131:13:function exp)', 'at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)'],
-          msg: 'out',
-          who: 'claimNFT'
-          });
-        }
-      else {
-        }
-      
+          at: "./index.rsh:121:13:application",
+          fs: [
+            "at ./index.rsh:121:13:application call to [unknown function] (defined at: ./index.rsh:121:13:function exp)",
+            'at ./index.rsh:141:20:application call to "res" (defined at: ./index.rsh:131:13:function exp)',
+            "at ./index.rsh:131:13:application call to [unknown function] (defined at: ./index.rsh:131:13:function exp)",
+          ],
+          msg: "out",
+          who: "claimNFT",
+        });
+      } else {
+      }
+
       const v1642 = v475;
       const v1643 = v476;
       const v1644 = false;
       const v1646 = v789;
       const v1647 = v481;
-      const v1648 = v789[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-      const v1649 = v1648[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
+      const v1648 =
+        v789[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:76:44:application",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
+      const v1649 =
+        v1648[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:76:44:application",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
       return;
-      
+
       break;
-      }
-    case 'completeBridge0_73': {
+    }
+    case "completeBridge0_73": {
       const v816 = v597[1];
       return;
       break;
-      }
-    case 'lockNFT0_73': {
+    }
+    case "lockNFT0_73": {
       const v924 = v597[1];
       return;
       break;
-      }
     }
-  
-  
-  };
+  }
+}
 export async function _completeBridge3(ctcTop, interact) {
-  if (typeof(ctcTop) !== 'object' || ctcTop._initialize === undefined) {
-    return Promise.reject(new Error(`The backend for _completeBridge3 expects to receive a contract as its first argument.`));}
-  if (typeof(interact) !== 'object') {
-    return Promise.reject(new Error(`The backend for _completeBridge3 expects to receive an interact object as its second argument.`));}
+  if (typeof ctcTop !== "object" || ctcTop._initialize === undefined) {
+    return Promise.reject(
+      new Error(
+        `The backend for _completeBridge3 expects to receive a contract as its first argument.`
+      )
+    );
+  }
+  if (typeof interact !== "object") {
+    return Promise.reject(
+      new Error(
+        `The backend for _completeBridge3 expects to receive an interact object as its second argument.`
+      )
+    );
+  }
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
   const ctc0 = stdlib.T_Null;
   const ctc1 = stdlib.T_UInt;
   const ctc2 = stdlib.T_Data({
     None: ctc0,
-    Some: ctc1
-    });
+    Some: ctc1,
+  });
   const ctc3 = stdlib.T_Address;
   const ctc4 = stdlib.T_Token;
   const ctc5 = stdlib.T_Bool;
   const ctc6 = stdlib.T_Tuple([ctc1, ctc1, ctc5]);
-  const ctc7 = stdlib.T_Array(ctc6, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '1'));
+  const ctc7 = stdlib.T_Array(
+    ctc6,
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "1")
+  );
   const ctc8 = stdlib.T_Tuple([]);
-  const ctc9 = stdlib.T_Bytes(stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '4'));
+  const ctc9 = stdlib.T_Bytes(
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "4")
+  );
   const ctc10 = stdlib.T_Tuple([ctc3, ctc3, ctc1, ctc9]);
   const ctc11 = stdlib.T_Data({
     IERC721Receiver0_73: ctc10,
     claimNFT0_73: ctc8,
     completeBridge0_73: ctc8,
-    lockNFT0_73: ctc8
-    });
-  
+    lockNFT0_73: ctc8,
+  });
+
   const map0_ctc = ctc2;
   const map0 = stdlib.newMap({
     ctc: ctc,
     idx: 0,
     isAPI: true,
-    ty: map0_ctc
-    });
-  
-  
-  const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = await ctc.getState(stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'), [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1]);
+    ty: map0_ctc,
+  });
+
+  const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] =
+    await ctc.getState(
+      stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3"),
+      [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1]
+    );
   const v500 = ctc.selfAddress();
   const v502 = stdlib.protect(ctc8, await interact.in(), {
-    at: './index.rsh:1:23:application',
-    fs: ['at ./index.rsh:85:13:application call to [unknown function] (defined at: ./index.rsh:85:13:function exp)', 'at ./index.rsh:68:75:application call to "runcompleteBridge0_73" (defined at: ./index.rsh:82:13:function exp)', 'at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)'],
-    msg: 'in',
-    who: 'completeBridge'
-    });
+    at: "./index.rsh:1:23:application",
+    fs: [
+      "at ./index.rsh:85:13:application call to [unknown function] (defined at: ./index.rsh:85:13:function exp)",
+      'at ./index.rsh:68:75:application call to "runcompleteBridge0_73" (defined at: ./index.rsh:82:13:function exp)',
+      "at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)",
+    ],
+    msg: "in",
+    who: "completeBridge",
+  });
   const v504 = stdlib.addressEq(v500, v463);
   stdlib.assert(v504, {
-    at: './index.rsh:86:23:application',
-    fs: ['at ./index.rsh:85:13:application call to [unknown function] (defined at: ./index.rsh:85:17:function exp)', 'at ./index.rsh:85:13:application call to [unknown function] (defined at: ./index.rsh:85:13:function exp)', 'at ./index.rsh:68:75:application call to "runcompleteBridge0_73" (defined at: ./index.rsh:82:13:function exp)', 'at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)'],
-    msg: 'Only Backend can complete bridging',
-    who: 'completeBridge'
-    });
+    at: "./index.rsh:86:23:application",
+    fs: [
+      "at ./index.rsh:85:13:application call to [unknown function] (defined at: ./index.rsh:85:17:function exp)",
+      "at ./index.rsh:85:13:application call to [unknown function] (defined at: ./index.rsh:85:13:function exp)",
+      'at ./index.rsh:68:75:application call to "runcompleteBridge0_73" (defined at: ./index.rsh:82:13:function exp)',
+      "at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)",
+    ],
+    msg: "Only Backend can complete bridging",
+    who: "completeBridge",
+  });
   stdlib.assert(v477, {
-    at: './index.rsh:87:23:application',
-    fs: ['at ./index.rsh:85:13:application call to [unknown function] (defined at: ./index.rsh:85:17:function exp)', 'at ./index.rsh:85:13:application call to [unknown function] (defined at: ./index.rsh:85:13:function exp)', 'at ./index.rsh:68:75:application call to "runcompleteBridge0_73" (defined at: ./index.rsh:82:13:function exp)', 'at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)'],
-    msg: 'no NFT has been locked yet, so cannot complete bridging',
-    who: 'completeBridge'
-    });
-  const v508 = ['completeBridge0_73', v502];
-  
-  const txn1 = await (ctc.sendrecv({
+    at: "./index.rsh:87:23:application",
+    fs: [
+      "at ./index.rsh:85:13:application call to [unknown function] (defined at: ./index.rsh:85:17:function exp)",
+      "at ./index.rsh:85:13:application call to [unknown function] (defined at: ./index.rsh:85:13:function exp)",
+      'at ./index.rsh:68:75:application call to "runcompleteBridge0_73" (defined at: ./index.rsh:82:13:function exp)',
+      "at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)",
+    ],
+    msg: "no NFT has been locked yet, so cannot complete bridging",
+    who: "completeBridge",
+  });
+  const v508 = ["completeBridge0_73", v502];
+
+  const txn1 = await ctc.sendrecv({
     args: [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492, v508],
     evt_cnt: 1,
     funcNum: 2,
-    lct: stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '0'),
+    lct: stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "0"),
     onlyIf: true,
     out_tys: [ctc11],
-    pay: [stdlib.checkedBigNumberify('./index.rsh:90:21:decimal', stdlib.UInt_max, '0'), [[stdlib.checkedBigNumberify('./index.rsh:90:25:decimal', stdlib.UInt_max, '0'), v465]]],
-    sim_p: (async (txn1) => {
+    pay: [
+      stdlib.checkedBigNumberify(
+        "./index.rsh:90:21:decimal",
+        stdlib.UInt_max,
+        "0"
+      ),
+      [
+        [
+          stdlib.checkedBigNumberify(
+            "./index.rsh:90:25:decimal",
+            stdlib.UInt_max,
+            "0"
+          ),
+          v465,
+        ],
+      ],
+    ],
+    sim_p: async (txn1) => {
       const sim_r = { txns: [], mapRefs: [], maps: [] };
       let sim_txn_ctr = stdlib.UInt_max;
-      const getSimTokCtr = () => { sim_txn_ctr = sim_txn_ctr.sub(1); return sim_txn_ctr; };
-      
+      const getSimTokCtr = () => {
+        sim_txn_ctr = sim_txn_ctr.sub(1);
+        return sim_txn_ctr;
+      };
+
       stdlib.simMapDupe(sim_r, 0, map0);
-      
-      const {data: [v597], secs: v599, time: v598, didSend: v304, from: v596 } = txn1;
-      
+
+      const {
+        data: [v597],
+        secs: v599,
+        time: v598,
+        didSend: v304,
+        from: v596,
+      } = txn1;
+
       switch (v597[0]) {
-        case 'IERC721Receiver0_73': {
+        case "IERC721Receiver0_73": {
           const v600 = v597[1];
-          
+
           break;
-          }
-        case 'claimNFT0_73': {
+        }
+        case "claimNFT0_73": {
           const v708 = v597[1];
-          
+
           break;
-          }
-        case 'completeBridge0_73': {
+        }
+        case "completeBridge0_73": {
           const v816 = v597[1];
           sim_r.txns.push({
-            kind: 'api',
-            who: "completeBridge"
-            });
-          ;
-          const v865 = stdlib.Array_set(v491, '0', v492);
-          const v866 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v865);
-          ;
+            kind: "api",
+            who: "completeBridge",
+          });
+          const v865 = stdlib.Array_set(v491, "0", v492);
+          const v866 = stdlib.Array_set(
+            v480,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:68:75:dot",
+              stdlib.UInt_max,
+              "0"
+            ),
+            v865
+          );
           const v908 = true;
-          const v909 = await txn1.getOutput('completeBridge', 'v908', ctc5, v908);
-          
+          const v909 = await txn1.getOutput(
+            "completeBridge",
+            "v908",
+            ctc5,
+            v908
+          );
+
           const v1692 = v475;
           const v1693 = true;
           const v1694 = true;
           const v1696 = v866;
           const v1697 = v481;
-          const v1698 = v866[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-          const v1699 = v1698[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
+          const v1698 =
+            v866[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:76:44:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
+          const v1699 =
+            v1698[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:76:44:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
           sim_r.isHalt = false;
-          
+
           break;
-          }
-        case 'lockNFT0_73': {
-          const v924 = v597[1];
-          
-          break;
-          }
         }
+        case "lockNFT0_73": {
+          const v924 = v597[1];
+
+          break;
+        }
+      }
       return sim_r;
-      }),
+    },
     soloSend: false,
     timeoutAt: undefined /* mto */,
     tys: [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1, ctc11],
-    waitIfNotPresent: false
-    }));
-  const {data: [v597], secs: v599, time: v598, didSend: v304, from: v596 } = txn1;
+    waitIfNotPresent: false,
+  });
+  const {
+    data: [v597],
+    secs: v599,
+    time: v598,
+    didSend: v304,
+    from: v596,
+  } = txn1;
   switch (v597[0]) {
-    case 'IERC721Receiver0_73': {
+    case "IERC721Receiver0_73": {
       const v600 = v597[1];
       return;
       break;
-      }
-    case 'claimNFT0_73': {
+    }
+    case "claimNFT0_73": {
       const v708 = v597[1];
       return;
       break;
-      }
-    case 'completeBridge0_73': {
+    }
+    case "completeBridge0_73": {
       const v816 = v597[1];
       undefined /* setApiDetails */;
-      ;
-      const v865 = stdlib.Array_set(v491, '0', v492);
-      const v866 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v865);
-      ;
+      const v865 = stdlib.Array_set(v491, "0", v492);
+      const v866 = stdlib.Array_set(
+        v480,
+        stdlib.checkedBigNumberify(
+          "./index.rsh:68:75:dot",
+          stdlib.UInt_max,
+          "0"
+        ),
+        v865
+      );
       const v906 = stdlib.addressEq(v596, v463);
       stdlib.assert(v906, {
-        at: './index.rsh:93:24:application',
-        fs: ['at ./index.rsh:92:13:application call to [unknown function] (defined at: ./index.rsh:92:13:function exp)'],
-        msg: 'Only Backend can complete bridging',
-        who: 'completeBridge'
-        });
+        at: "./index.rsh:93:24:application",
+        fs: [
+          "at ./index.rsh:92:13:application call to [unknown function] (defined at: ./index.rsh:92:13:function exp)",
+        ],
+        msg: "Only Backend can complete bridging",
+        who: "completeBridge",
+      });
       stdlib.assert(v477, {
-        at: './index.rsh:94:24:application',
-        fs: ['at ./index.rsh:92:13:application call to [unknown function] (defined at: ./index.rsh:92:13:function exp)'],
-        msg: 'no NFT has been locked yet, so cannot complete bridging',
-        who: 'completeBridge'
-        });
+        at: "./index.rsh:94:24:application",
+        fs: [
+          "at ./index.rsh:92:13:application call to [unknown function] (defined at: ./index.rsh:92:13:function exp)",
+        ],
+        msg: "no NFT has been locked yet, so cannot complete bridging",
+        who: "completeBridge",
+      });
       const v908 = true;
-      const v909 = await txn1.getOutput('completeBridge', 'v908', ctc5, v908);
+      const v909 = await txn1.getOutput("completeBridge", "v908", ctc5, v908);
       if (v304) {
         stdlib.protect(ctc0, await interact.out(v816, v909), {
-          at: './index.rsh:83:13:application',
-          fs: ['at ./index.rsh:83:13:application call to [unknown function] (defined at: ./index.rsh:83:13:function exp)', 'at ./index.rsh:96:20:application call to "res" (defined at: ./index.rsh:92:13:function exp)', 'at ./index.rsh:92:13:application call to [unknown function] (defined at: ./index.rsh:92:13:function exp)'],
-          msg: 'out',
-          who: 'completeBridge'
-          });
-        }
-      else {
-        }
-      
+          at: "./index.rsh:83:13:application",
+          fs: [
+            "at ./index.rsh:83:13:application call to [unknown function] (defined at: ./index.rsh:83:13:function exp)",
+            'at ./index.rsh:96:20:application call to "res" (defined at: ./index.rsh:92:13:function exp)',
+            "at ./index.rsh:92:13:application call to [unknown function] (defined at: ./index.rsh:92:13:function exp)",
+          ],
+          msg: "out",
+          who: "completeBridge",
+        });
+      } else {
+      }
+
       const v1692 = v475;
       const v1693 = true;
       const v1694 = true;
       const v1696 = v866;
       const v1697 = v481;
-      const v1698 = v866[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-      const v1699 = v1698[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
+      const v1698 =
+        v866[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:76:44:application",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
+      const v1699 =
+        v1698[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:76:44:application",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
       return;
-      
+
       break;
-      }
-    case 'lockNFT0_73': {
+    }
+    case "lockNFT0_73": {
       const v924 = v597[1];
       return;
       break;
-      }
     }
-  
-  
-  };
+  }
+}
 export async function _lockNFT3(ctcTop, interact) {
-  if (typeof(ctcTop) !== 'object' || ctcTop._initialize === undefined) {
-    return Promise.reject(new Error(`The backend for _lockNFT3 expects to receive a contract as its first argument.`));}
-  if (typeof(interact) !== 'object') {
-    return Promise.reject(new Error(`The backend for _lockNFT3 expects to receive an interact object as its second argument.`));}
+  if (typeof ctcTop !== "object" || ctcTop._initialize === undefined) {
+    return Promise.reject(
+      new Error(
+        `The backend for _lockNFT3 expects to receive a contract as its first argument.`
+      )
+    );
+  }
+  if (typeof interact !== "object") {
+    return Promise.reject(
+      new Error(
+        `The backend for _lockNFT3 expects to receive an interact object as its second argument.`
+      )
+    );
+  }
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
   const ctc0 = stdlib.T_Null;
   const ctc1 = stdlib.T_UInt;
   const ctc2 = stdlib.T_Data({
     None: ctc0,
-    Some: ctc1
-    });
+    Some: ctc1,
+  });
   const ctc3 = stdlib.T_Address;
   const ctc4 = stdlib.T_Token;
   const ctc5 = stdlib.T_Bool;
   const ctc6 = stdlib.T_Tuple([ctc1, ctc1, ctc5]);
-  const ctc7 = stdlib.T_Array(ctc6, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '1'));
+  const ctc7 = stdlib.T_Array(
+    ctc6,
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "1")
+  );
   const ctc8 = stdlib.T_Tuple([]);
-  const ctc9 = stdlib.T_Bytes(stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '4'));
+  const ctc9 = stdlib.T_Bytes(
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "4")
+  );
   const ctc10 = stdlib.T_Tuple([ctc3, ctc3, ctc1, ctc9]);
   const ctc11 = stdlib.T_Data({
     IERC721Receiver0_73: ctc10,
     claimNFT0_73: ctc8,
     completeBridge0_73: ctc8,
-    lockNFT0_73: ctc8
-    });
-  
+    lockNFT0_73: ctc8,
+  });
+
   const map0_ctc = ctc2;
   const map0 = stdlib.newMap({
     ctc: ctc,
     idx: 0,
     isAPI: true,
-    ty: map0_ctc
-    });
-  
-  
-  const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] = await ctc.getState(stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3'), [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1]);
+    ty: map0_ctc,
+  });
+
+  const [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492] =
+    await ctc.getState(
+      stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3"),
+      [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1]
+    );
   const v510 = ctc.selfAddress();
   const v512 = stdlib.protect(ctc8, await interact.in(), {
-    at: './index.rsh:1:23:application',
-    fs: ['at ./index.rsh:103:13:application call to [unknown function] (defined at: ./index.rsh:103:13:function exp)', 'at ./index.rsh:68:75:application call to "runlockNFT0_73" (defined at: ./index.rsh:100:13:function exp)', 'at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)'],
-    msg: 'in',
-    who: 'lockNFT'
-    });
+    at: "./index.rsh:1:23:application",
+    fs: [
+      "at ./index.rsh:103:13:application call to [unknown function] (defined at: ./index.rsh:103:13:function exp)",
+      'at ./index.rsh:68:75:application call to "runlockNFT0_73" (defined at: ./index.rsh:100:13:function exp)',
+      "at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)",
+    ],
+    msg: "in",
+    who: "lockNFT",
+  });
   const v514 = stdlib.addressEq(v510, v464);
   stdlib.assert(v514, {
-    at: './index.rsh:104:23:application',
-    fs: ['at ./index.rsh:103:13:application call to [unknown function] (defined at: ./index.rsh:103:17:function exp)', 'at ./index.rsh:103:13:application call to [unknown function] (defined at: ./index.rsh:103:13:function exp)', 'at ./index.rsh:68:75:application call to "runlockNFT0_73" (defined at: ./index.rsh:100:13:function exp)', 'at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)'],
-    msg: 'You are not the bridger. Only Bridger can bridge NFT on this contract',
-    who: 'lockNFT'
-    });
-  const v517 = ['lockNFT0_73', v512];
-  
-  const txn1 = await (ctc.sendrecv({
+    at: "./index.rsh:104:23:application",
+    fs: [
+      "at ./index.rsh:103:13:application call to [unknown function] (defined at: ./index.rsh:103:17:function exp)",
+      "at ./index.rsh:103:13:application call to [unknown function] (defined at: ./index.rsh:103:13:function exp)",
+      'at ./index.rsh:68:75:application call to "runlockNFT0_73" (defined at: ./index.rsh:100:13:function exp)',
+      "at ./index.rsh:68:75:application call to [unknown function] (defined at: ./index.rsh:68:75:function exp)",
+    ],
+    msg: "You are not the bridger. Only Bridger can bridge NFT on this contract",
+    who: "lockNFT",
+  });
+  const v517 = ["lockNFT0_73", v512];
+
+  const txn1 = await ctc.sendrecv({
     args: [v463, v464, v465, v475, v476, v477, v480, v481, v491, v492, v517],
     evt_cnt: 1,
     funcNum: 2,
-    lct: stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '0'),
+    lct: stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "0"),
     onlyIf: true,
     out_tys: [ctc11],
-    pay: [stdlib.checkedBigNumberify('./index.rsh:107:21:decimal', stdlib.UInt_max, '0'), [[stdlib.checkedBigNumberify('./index.rsh:107:25:decimal', stdlib.UInt_max, '1'), v465]]],
-    sim_p: (async (txn1) => {
+    pay: [
+      stdlib.checkedBigNumberify(
+        "./index.rsh:107:21:decimal",
+        stdlib.UInt_max,
+        "0"
+      ),
+      [
+        [
+          stdlib.checkedBigNumberify(
+            "./index.rsh:107:25:decimal",
+            stdlib.UInt_max,
+            "1"
+          ),
+          v465,
+        ],
+      ],
+    ],
+    sim_p: async (txn1) => {
       const sim_r = { txns: [], mapRefs: [], maps: [] };
       let sim_txn_ctr = stdlib.UInt_max;
-      const getSimTokCtr = () => { sim_txn_ctr = sim_txn_ctr.sub(1); return sim_txn_ctr; };
-      
+      const getSimTokCtr = () => {
+        sim_txn_ctr = sim_txn_ctr.sub(1);
+        return sim_txn_ctr;
+      };
+
       stdlib.simMapDupe(sim_r, 0, map0);
-      
-      const {data: [v597], secs: v599, time: v598, didSend: v304, from: v596 } = txn1;
-      
+
+      const {
+        data: [v597],
+        secs: v599,
+        time: v598,
+        didSend: v304,
+        from: v596,
+      } = txn1;
+
       switch (v597[0]) {
-        case 'IERC721Receiver0_73': {
+        case "IERC721Receiver0_73": {
           const v600 = v597[1];
-          
+
           break;
-          }
-        case 'claimNFT0_73': {
+        }
+        case "claimNFT0_73": {
           const v708 = v597[1];
-          
+
           break;
-          }
-        case 'completeBridge0_73': {
+        }
+        case "completeBridge0_73": {
           const v816 = v597[1];
-          
+
           break;
-          }
-        case 'lockNFT0_73': {
+        }
+        case "lockNFT0_73": {
           const v924 = v597[1];
           sim_r.txns.push({
-            kind: 'api',
-            who: "lockNFT"
-            });
-          ;
-          const v971 = stdlib.safeAdd(v492, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '1'));
-          const v973 = stdlib.Array_set(v491, '0', v971);
-          const v974 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v973);
+            kind: "api",
+            who: "lockNFT",
+          });
+          const v971 = stdlib.safeAdd(
+            v492,
+            stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "1")
+          );
+          const v973 = stdlib.Array_set(v491, "0", v971);
+          const v974 = stdlib.Array_set(
+            v480,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:68:75:dot",
+              stdlib.UInt_max,
+              "0"
+            ),
+            v973
+          );
           sim_r.txns.push({
-            amt: stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '1'),
-            kind: 'to',
-            tok: v465
-            });
-          await stdlib.simMapSet(sim_r, 0, v596, stdlib.checkedBigNumberify('./index.rsh:112:39:decimal', stdlib.UInt_max, '1'));
+            amt: stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "1"),
+            kind: "to",
+            tok: v465,
+          });
+          await stdlib.simMapSet(
+            sim_r,
+            0,
+            v596,
+            stdlib.checkedBigNumberify(
+              "./index.rsh:112:39:decimal",
+              stdlib.UInt_max,
+              "1"
+            )
+          );
           const v1025 = true;
-          const v1026 = await txn1.getOutput('lockNFT', 'v1025', ctc5, v1025);
-          
+          const v1026 = await txn1.getOutput("lockNFT", "v1025", ctc5, v1025);
+
           const v1742 = v475;
           const v1743 = v476;
           const v1744 = true;
           const v1746 = v974;
           const v1747 = v481;
-          const v1748 = v974[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-          const v1749 = v1748[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
+          const v1748 =
+            v974[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:76:44:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
+          const v1749 =
+            v1748[
+              stdlib.checkedBigNumberify(
+                "./index.rsh:76:44:application",
+                stdlib.UInt_max,
+                "0"
+              )
+            ];
           sim_r.isHalt = false;
-          
+
           break;
-          }
         }
+      }
       return sim_r;
-      }),
+    },
     soloSend: false,
     timeoutAt: undefined /* mto */,
     tys: [ctc3, ctc3, ctc4, ctc3, ctc5, ctc5, ctc7, ctc1, ctc6, ctc1, ctc11],
-    waitIfNotPresent: false
-    }));
-  const {data: [v597], secs: v599, time: v598, didSend: v304, from: v596 } = txn1;
+    waitIfNotPresent: false,
+  });
+  const {
+    data: [v597],
+    secs: v599,
+    time: v598,
+    didSend: v304,
+    from: v596,
+  } = txn1;
   switch (v597[0]) {
-    case 'IERC721Receiver0_73': {
+    case "IERC721Receiver0_73": {
       const v600 = v597[1];
       return;
       break;
-      }
-    case 'claimNFT0_73': {
+    }
+    case "claimNFT0_73": {
       const v708 = v597[1];
       return;
       break;
-      }
-    case 'completeBridge0_73': {
+    }
+    case "completeBridge0_73": {
       const v816 = v597[1];
       return;
       break;
-      }
-    case 'lockNFT0_73': {
+    }
+    case "lockNFT0_73": {
       const v924 = v597[1];
       undefined /* setApiDetails */;
-      ;
-      const v971 = stdlib.safeAdd(v492, stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '1'));
-      const v973 = stdlib.Array_set(v491, '0', v971);
-      const v974 = stdlib.Array_set(v480, stdlib.checkedBigNumberify('./index.rsh:68:75:dot', stdlib.UInt_max, '0'), v973);
-      ;
+      const v971 = stdlib.safeAdd(
+        v492,
+        stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "1")
+      );
+      const v973 = stdlib.Array_set(v491, "0", v971);
+      const v974 = stdlib.Array_set(
+        v480,
+        stdlib.checkedBigNumberify(
+          "./index.rsh:68:75:dot",
+          stdlib.UInt_max,
+          "0"
+        ),
+        v973
+      );
       const v1024 = stdlib.addressEq(v596, v464);
       stdlib.assert(v1024, {
-        at: './index.rsh:110:24:application',
-        fs: ['at ./index.rsh:109:13:application call to [unknown function] (defined at: ./index.rsh:109:13:function exp)'],
-        msg: 'You are not the bridger. Only Bridger can bridge NFT on this contract',
-        who: 'lockNFT'
-        });
-      await stdlib.mapSet(map0, v596, stdlib.checkedBigNumberify('./index.rsh:112:39:decimal', stdlib.UInt_max, '1'));
+        at: "./index.rsh:110:24:application",
+        fs: [
+          "at ./index.rsh:109:13:application call to [unknown function] (defined at: ./index.rsh:109:13:function exp)",
+        ],
+        msg: "You are not the bridger. Only Bridger can bridge NFT on this contract",
+        who: "lockNFT",
+      });
+      await stdlib.mapSet(
+        map0,
+        v596,
+        stdlib.checkedBigNumberify(
+          "./index.rsh:112:39:decimal",
+          stdlib.UInt_max,
+          "1"
+        )
+      );
       const v1025 = true;
-      const v1026 = await txn1.getOutput('lockNFT', 'v1025', ctc5, v1025);
+      const v1026 = await txn1.getOutput("lockNFT", "v1025", ctc5, v1025);
       if (v304) {
         stdlib.protect(ctc0, await interact.out(v924, v1026), {
-          at: './index.rsh:101:13:application',
-          fs: ['at ./index.rsh:101:13:application call to [unknown function] (defined at: ./index.rsh:101:13:function exp)', 'at ./index.rsh:114:20:application call to "res" (defined at: ./index.rsh:109:13:function exp)', 'at ./index.rsh:109:13:application call to [unknown function] (defined at: ./index.rsh:109:13:function exp)'],
-          msg: 'out',
-          who: 'lockNFT'
-          });
-        }
-      else {
-        }
-      
+          at: "./index.rsh:101:13:application",
+          fs: [
+            "at ./index.rsh:101:13:application call to [unknown function] (defined at: ./index.rsh:101:13:function exp)",
+            'at ./index.rsh:114:20:application call to "res" (defined at: ./index.rsh:109:13:function exp)',
+            "at ./index.rsh:109:13:application call to [unknown function] (defined at: ./index.rsh:109:13:function exp)",
+          ],
+          msg: "out",
+          who: "lockNFT",
+        });
+      } else {
+      }
+
       const v1742 = v475;
       const v1743 = v476;
       const v1744 = true;
       const v1746 = v974;
       const v1747 = v481;
-      const v1748 = v974[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
-      const v1749 = v1748[stdlib.checkedBigNumberify('./index.rsh:76:44:application', stdlib.UInt_max, '0')];
+      const v1748 =
+        v974[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:76:44:application",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
+      const v1749 =
+        v1748[
+          stdlib.checkedBigNumberify(
+            "./index.rsh:76:44:application",
+            stdlib.UInt_max,
+            "0"
+          )
+        ];
       return;
-      
+
       break;
-      }
     }
-  
-  
-  };
+  }
+}
 export async function IERC721Receiver(ctcTop, interact) {
-  if (typeof(ctcTop) !== 'object' || ctcTop._initialize === undefined) {
-    return Promise.reject(new Error(`The backend for IERC721Receiver expects to receive a contract as its first argument.`));}
-  if (typeof(interact) !== 'object') {
-    return Promise.reject(new Error(`The backend for IERC721Receiver expects to receive an interact object as its second argument.`));}
+  if (typeof ctcTop !== "object" || ctcTop._initialize === undefined) {
+    return Promise.reject(
+      new Error(
+        `The backend for IERC721Receiver expects to receive a contract as its first argument.`
+      )
+    );
+  }
+  if (typeof interact !== "object") {
+    return Promise.reject(
+      new Error(
+        `The backend for IERC721Receiver expects to receive an interact object as its second argument.`
+      )
+    );
+  }
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
-  const step = await ctc.getCurrentStep()
-  if (step == 3) {return _IERC721Receiver3(ctcTop, interact);}
-  throw stdlib.apiStateMismatchError({ _stateSourceMap }, [stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3')], stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, step))
-  };
+  const step = await ctc.getCurrentStep();
+  if (step == 3) {
+    return _IERC721Receiver3(ctcTop, interact);
+  }
+  throw stdlib.apiStateMismatchError(
+    { _stateSourceMap },
+    [stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")],
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, step)
+  );
+}
 export async function claimNFT(ctcTop, interact) {
-  if (typeof(ctcTop) !== 'object' || ctcTop._initialize === undefined) {
-    return Promise.reject(new Error(`The backend for claimNFT expects to receive a contract as its first argument.`));}
-  if (typeof(interact) !== 'object') {
-    return Promise.reject(new Error(`The backend for claimNFT expects to receive an interact object as its second argument.`));}
+  if (typeof ctcTop !== "object" || ctcTop._initialize === undefined) {
+    return Promise.reject(
+      new Error(
+        `The backend for claimNFT expects to receive a contract as its first argument.`
+      )
+    );
+  }
+  if (typeof interact !== "object") {
+    return Promise.reject(
+      new Error(
+        `The backend for claimNFT expects to receive an interact object as its second argument.`
+      )
+    );
+  }
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
-  const step = await ctc.getCurrentStep()
-  if (step == 3) {return _claimNFT3(ctcTop, interact);}
-  throw stdlib.apiStateMismatchError({ _stateSourceMap }, [stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3')], stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, step))
-  };
+  const step = await ctc.getCurrentStep();
+  if (step == 3) {
+    return _claimNFT3(ctcTop, interact);
+  }
+  throw stdlib.apiStateMismatchError(
+    { _stateSourceMap },
+    [stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")],
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, step)
+  );
+}
 export async function completeBridge(ctcTop, interact) {
-  if (typeof(ctcTop) !== 'object' || ctcTop._initialize === undefined) {
-    return Promise.reject(new Error(`The backend for completeBridge expects to receive a contract as its first argument.`));}
-  if (typeof(interact) !== 'object') {
-    return Promise.reject(new Error(`The backend for completeBridge expects to receive an interact object as its second argument.`));}
+  if (typeof ctcTop !== "object" || ctcTop._initialize === undefined) {
+    return Promise.reject(
+      new Error(
+        `The backend for completeBridge expects to receive a contract as its first argument.`
+      )
+    );
+  }
+  if (typeof interact !== "object") {
+    return Promise.reject(
+      new Error(
+        `The backend for completeBridge expects to receive an interact object as its second argument.`
+      )
+    );
+  }
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
-  const step = await ctc.getCurrentStep()
-  if (step == 3) {return _completeBridge3(ctcTop, interact);}
-  throw stdlib.apiStateMismatchError({ _stateSourceMap }, [stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3')], stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, step))
-  };
+  const step = await ctc.getCurrentStep();
+  if (step == 3) {
+    return _completeBridge3(ctcTop, interact);
+  }
+  throw stdlib.apiStateMismatchError(
+    { _stateSourceMap },
+    [stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")],
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, step)
+  );
+}
 export async function lockNFT(ctcTop, interact) {
-  if (typeof(ctcTop) !== 'object' || ctcTop._initialize === undefined) {
-    return Promise.reject(new Error(`The backend for lockNFT expects to receive a contract as its first argument.`));}
-  if (typeof(interact) !== 'object') {
-    return Promise.reject(new Error(`The backend for lockNFT expects to receive an interact object as its second argument.`));}
+  if (typeof ctcTop !== "object" || ctcTop._initialize === undefined) {
+    return Promise.reject(
+      new Error(
+        `The backend for lockNFT expects to receive a contract as its first argument.`
+      )
+    );
+  }
+  if (typeof interact !== "object") {
+    return Promise.reject(
+      new Error(
+        `The backend for lockNFT expects to receive an interact object as its second argument.`
+      )
+    );
+  }
   const ctc = ctcTop._initialize();
   const stdlib = ctc.stdlib;
-  const step = await ctc.getCurrentStep()
-  if (step == 3) {return _lockNFT3(ctcTop, interact);}
-  throw stdlib.apiStateMismatchError({ _stateSourceMap }, [stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, '3')], stdlib.checkedBigNumberify('<builtin>', stdlib.UInt_max, step))
-  };
+  const step = await ctc.getCurrentStep();
+  if (step == 3) {
+    return _lockNFT3(ctcTop, interact);
+  }
+  throw stdlib.apiStateMismatchError(
+    { _stateSourceMap },
+    [stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, "3")],
+    stdlib.checkedBigNumberify("<builtin>", stdlib.UInt_max, step)
+  );
+}
 const _ALGO = {
   ABI: {
-    impure: [`IERC721Receiver(address,address,uint64,byte[4])byte[4]`, `claimNFT()byte`, `completeBridge()byte`, `lockNFT()byte`],
-    pure: [`Bridger_v()address`, `Creator_v()address`, `balance_NFT_v()uint64`, `balance_v()uint64`, `bridgingComplete_v()byte`, `lockedNFT_v()byte`, `saved_v(address)uint64`],
-    sigs: [`Bridger_v()address`, `Creator_v()address`, `IERC721Receiver(address,address,uint64,byte[4])byte[4]`, `balance_NFT_v()uint64`, `balance_v()uint64`, `bridgingComplete_v()byte`, `claimNFT()byte`, `completeBridge()byte`, `lockNFT()byte`, `lockedNFT_v()byte`, `saved_v(address)uint64`]
-    },
+    impure: [
+      `IERC721Receiver(address,address,uint64,byte[4])byte[4]`,
+      `claimNFT()byte`,
+      `completeBridge()byte`,
+      `lockNFT()byte`,
+    ],
+    pure: [
+      `Bridger_v()address`,
+      `Creator_v()address`,
+      `balance_NFT_v()uint64`,
+      `balance_v()uint64`,
+      `bridgingComplete_v()byte`,
+      `lockedNFT_v()byte`,
+      `saved_v(address)uint64`,
+    ],
+    sigs: [
+      `Bridger_v()address`,
+      `Creator_v()address`,
+      `IERC721Receiver(address,address,uint64,byte[4])byte[4]`,
+      `balance_NFT_v()uint64`,
+      `balance_v()uint64`,
+      `bridgingComplete_v()byte`,
+      `claimNFT()byte`,
+      `completeBridge()byte`,
+      `lockNFT()byte`,
+      `lockedNFT_v()byte`,
+      `saved_v(address)uint64`,
+    ],
+  },
   appApproval: `BiAWAAEDTAQICa349ZUI2dCEowueop60DJLu6+cMsLDzlgru9d6pCpS7oOQDyNbelwa5wM37B6aJr9cCAv///////////wFAe6CNBiYDAQABAQAiNQAxGEEE1SpkSSJbNQEhBVs1AjEZIxJBAAoxACghBq9mQgShNhoAF0lBAVgiNQQjNQZJIQcMQAC1SSEIDEAAY0khCQxAADxJIQoMQAAcIQoSRDYaATYaAlA2GgNQNhoEUDX/KDT/UEIBlCEJEkQ0ASQSRChkKWRQSTUDVwAgNQdCBFEhCBJENAEkEkQiNhoBiARmSTX/I1s0/yJVTRY1B0IEMUkhCwxAADNJIQwMQAATIQwSRCo1/4ABAzT/UCWvUEIBOiELEkQ0ASQSRChkKWRQSTUDV2gBNQdCA/chBxJEKjX/KTT/UCWvUEIBEEkhDQxAAFNJIQ4MQAA5SSEPDEAAGSEPEkQ0ASQSRChkKWRQSTUDV0ggNQdCA7ghDhJENAEkEkQoZClkUEk1A1eUCDUHQgOfIQ0SRCo1/4ABAjT/UCWvUEIAtkkhEAxAABkhEBJENAEkEkQoZClkUEk1A1d7CDUHQgNsgf3whT0SRDQBJBJEKGQpZFBJNQNXaQE1B0IDUDYaAhc1BDYaAzYaARdJIREMQAIiSSQMQABfJBJEJDQBEkQ0BEkiEkw0AhIRRChkKWRQSTUDVwAgNf+ABKdlxLSwMgYhEg9ENP8xABJENP80A1cgIDQDIRNbNANXSCA0A1doARc0A1dpARcyBjQDV2oRNAMhFFtCAjBIJDQBEkQ0BEkiEkw0AhIRRChkKWRQSTUDSUpKSkpXACA1/1cgIDX+IRNbNf1XSCA1/FdoARc1+1dpARc1+ldqETX5IRRbNfhXgxE194GUAVs19kk1BTX1gARgVjLXNPVQsDIGIRIMRDT1IlVJIREMQACNSSQMQABPJBJEIzT9iAKhMQA0/hJEMQAogAkBAAAAAAAAAAFmgAkAAAAAAAAEAQGwKTUHNP80/jT9NPw0+yMyBjT3NPYjCBY19FcICTT0TFA0+EIBaEgxADT/EkQ0+kSACQAAAAAAAAOMAbApNQc0/zT+NP00/CMjMgY09zT2FjX0VwgJNPRMUDT4QgEwSSMMQAB+SDT3NPYWNfNXCAk080xQNfQxADT+EkQ0+kQ09FcAEUk18yJbSTXyIg1EsSKyASOyEiEEshAxALIUNP2yEbMxACiACQEAAAAAAAAAAGaACQAAAAAAAAMWAbApNQc0/zT+NP00/DT7IjIGNPM08iMJFjXxVwgJNPFMUDT4QgCsSIAMAAAAAAAAApB0cnVlsIAEdHJ1ZTUHNP80/jT9NPw0+zT6MgY09zT2FjX0VwgJNPRMUDT4QgBzIhJEIRWIAUYiNAESRDQESSISTDQCEhFESTUFSVcAIDX/gSBbNf6ABNnpsco0/1A0/hZQsIERrzX9IRWIARCxIrIBIrISIQSyEDIKshQ0/rIRszEANP80/jT/IiIyBjT9VwARIQWvNfxXCAk0/ExQIkIAADX/Nf41/TX8Nfs1+jX5Nfg19zT+VwARSTX2Ils19TT3NPhQNPkWUDT6UDT7FlEHCFA0/BZRBwhQNP5QNP8WUDT2UDT1FlAoSwFXAH9nKUsBV38dZ0gkNQEyBjUCQgAcMRmBBRJEsSKyASKyCCOyEDIJsgkyCrIHs0IABTEZIhJEKjQBFjQCFlBnNAZBAAqABBUffHU0B1CwNABJIwgyBBJEMRYSRCNDMRkiEkRC/98iMTQSRCQxNRJEIjE2EkQjMTcSRCI1ASI1AkL/r0kxGGFAAAVIIQaviShiiTQASUojCDUAOAcyChJEOBAjEkQ4CBJEiTQASUpJIwg1ADgUMgoSRDgQIQQSRDgRTwISRDgSEkSJ`,
   appClear: `Bg==`,
   companionInfo: null,
@@ -1374,8 +2292,8 @@ const _ALGO = {
   stateSize: 156,
   unsupported: [],
   version: 10,
-  warnings: []
-  };
+  warnings: [],
+};
 const _ETH = {
   ABI: `[
   {
@@ -2048,37 +2966,37 @@ const _ETH = {
     balance_v: `balance_v`,
     bridgingComplete_v: `bridgingComplete_v`,
     lockedNFT_v: `lockedNFT_v`,
-    saved_v: `saved_v`
-    }
-  };
+    saved_v: `saved_v`,
+  },
+};
 export const _stateSourceMap = {
   2: {
-    at: './index.rsh:161:17:after expr stmt semicolon',
+    at: "./index.rsh:161:17:after expr stmt semicolon",
     fs: [],
     msg: null,
-    who: 'Module'
-    },
+    who: "Module",
+  },
   3: {
-    at: './index.rsh:68:75:after expr stmt semicolon',
+    at: "./index.rsh:68:75:after expr stmt semicolon",
     fs: [],
     msg: null,
-    who: 'Module'
-    }
-  };
+    who: "Module",
+  },
+};
 export const _Connectors = {
   ALGO: _ALGO,
-  ETH: _ETH
-  };
+  ETH: _ETH,
+};
 export const _Participants = {
-  "Creator": Creator,
-  "IERC721Receiver": IERC721Receiver,
-  "claimNFT": claimNFT,
-  "completeBridge": completeBridge,
-  "lockNFT": lockNFT
-  };
+  Creator: Creator,
+  IERC721Receiver: IERC721Receiver,
+  claimNFT: claimNFT,
+  completeBridge: completeBridge,
+  lockNFT: lockNFT,
+};
 export const _APIs = {
   IERC721Receiver: IERC721Receiver,
   claimNFT: claimNFT,
   completeBridge: completeBridge,
-  lockNFT: lockNFT
-  };
+  lockNFT: lockNFT,
+};
