@@ -108,7 +108,9 @@ export const getEthNftUri = async ({
     try {
       const web3_ = new Web3(window.ethereum);
       const ctc = await nftContract(web3_, nftToBeBridgedAddress);
-      const uri = await ctc.methods.tokenURI(selectedNftId).call();
+      const uri = await ctc.methods
+        .tokenURI(selectedNftId.replaceAll(" ", ""))
+        .call();
       setNftUrl(uri);
       const gateway = uri.replace(
         "ipfs://",
@@ -300,7 +302,10 @@ export const bridgeEthToAlgo = async ({
       }
       setButtonStep("submitting");
       const web3_ = new Web3(window.ethereum);
-      const ctc = await nftContract(web3_, nftToBeBridgedAddress);
+      const ctc = await nftContract(
+        web3_,
+        nftToBeBridgedAddress.replaceAll(" ", "")
+      );
       ctc.methods
         .transferFrom(
           ethWalletAddress,
@@ -377,7 +382,9 @@ export const getAlgoNftUri = async ({
 }: getAlgoNftUriProps) => {
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   const acc = await reach.getDefaultAccount();
-  const metadata = await acc.tokenMetadata(nftToBeBridgedAddress);
+  const metadata = await acc.tokenMetadata(
+    nftToBeBridgedAddress.replaceAll(" ", "")
+  );
   setNftUrl(metadata.url);
   const gateway = metadata.url.replace(
     "ipfs://",

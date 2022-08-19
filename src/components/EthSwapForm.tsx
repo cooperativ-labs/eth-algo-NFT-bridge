@@ -104,6 +104,9 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
             required
             name="nftToBeBridgedAddress"
             placeholder={`Your NFT's Ethereum address`}
+            onBlur={(e: any) => {
+              e.target.value = e.target.value.replaceAll(" ", "");
+            }}
           />
         </div>
       )}
@@ -115,6 +118,9 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
             required
             name="selectedNftId"
             placeholder={`Your NFT's Id`}
+            onBlur={(e: any) => {
+              e.target.value = e.target.value.replaceAll(" ", "");
+            }}
           />
         </div>
       )}

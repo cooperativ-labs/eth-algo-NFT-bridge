@@ -87,12 +87,27 @@ const SwapForm: FC = () => {
         }}
         validate={(values) => {
           const errors: any = {}; /** @TODO : Shape */
-
+          // if (!values.fromChain) {
+          //   errors.fromChain = "Required";
+          // }
+          // if (!values.nftToBeBridgedAddress) {
+          //   errors.nftToBeBridgedAddress = "Required";
+          // }
+          // if (!values.toChain) {
+          //   errors.toChain = "Required";
+          // }
+          // if (!values.toWalletAddress) {
+          //   errors.toWalletAddress = "Required";
+          // }
+          // if (!values.selectedNftId) {
+          //   errors.selectedNftId = "Required";
+          // }
           return errors;
         }}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true);
           const { selectedNftId, nftToBeBridgedAddress } = values;
+
           ethToAlgo
             ? bridgeEthToAlgo({
                 algoWalletAddress,

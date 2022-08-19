@@ -70,6 +70,9 @@ const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
             required
             name="nftToBeBridgedAddress"
             placeholder={`Your Algorand NFT's ID`}
+            onBlur={(e: any) => {
+              e.target.value = e.target.value.replaceAll(" ", "");
+            }}
           />
           {nftToBeBridgedAddress && (
             <button
