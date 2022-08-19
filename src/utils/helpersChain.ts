@@ -201,7 +201,8 @@ type deployAlgoTokenProps = {
   setButtonStep: Dispatch<SetStateAction<LoadingButtonStateType>>;
 };
 
-const deployAlgoToken = async ({ //@Jake -  this is running the backend like three times - may be rerendering issue
+const deployAlgoToken = async ({
+  //@Jake -  this is running the backend like three times - may be rerendering issue
   algoWalletAddress,
   ethWalletAddress,
   nftUrl,
@@ -222,7 +223,7 @@ const deployAlgoToken = async ({ //@Jake -  this is running the backend like thr
       method: "POST",
       body: JSON.stringify({
         ethRecAddr: ethWalletAddress,
-        ethNftCtcId: nftToBeBridgedAddress, 
+        ethNftCtcId: nftToBeBridgedAddress,
         bridgerOnEth: ethWalletAddress,
         bridgerOnAlgo: algoWalletAddress,
         name: "",
@@ -382,7 +383,11 @@ export const getAlgoNftUri = async ({
     "ipfs://",
     "https://gateway.ipfscdn.io/ipfs/"
   );
-  const metadataIpfs = await fetch(gateway).then((r) => r.json());
+  const metadataIpfs = await fetch(gateway)
+    .then((r) => r.json())
+    .catch((e) => {
+      alert(`error: ${e.message}. Are you sure this is an NFT ID?`);
+    });
   const uri2 = "https://ipfs.io/ipfs/" + metadataIpfs.image.substring(7);
   setNftImageUrl(uri2);
 };
@@ -390,7 +395,7 @@ export const getAlgoNftUri = async ({
 type deployAlgoLockProps = {
   algoWalletAddress: string;
   ethWalletAddress: string;
-  selectedNftId: string;
+  nftToBeBridgedAddress: string;
   status: any;
   algorandBridgeId: any;
   setButtonStep: Dispatch<SetStateAction<LoadingButtonStateType>>;
@@ -398,7 +403,7 @@ type deployAlgoLockProps = {
 
 const deployAlgoLock = async ({
   algoWalletAddress,
-  selectedNftId,
+  nftToBeBridgedAddress,
   status,
   algorandBridgeId,
   setButtonStep,
@@ -408,8 +413,8 @@ const deployAlgoLock = async ({
     const res = await fetch(apiPath + "/deployAlgoLock", {
       method: "POST",
       body: JSON.stringify({
-        algoNftId: selectedNftId, //@Jake  - this is sending empty string to backend for algoNftId
-        bridgerOnAlgorand: algoWalletAddress, 
+        algoNftId: nftToBeBridgedAddress, //@Jake  - this is sending empty string to backend for algoNftId
+        bridgerOnAlgorand: algoWalletAddress,
       }),
       headers: { "Content-Type": "application/json" },
     });
@@ -450,14 +455,14 @@ export const bridgeAlgoToEth = async ({
   ethNftId,
   ethWalletAddress,
   algoWalletAddress,
-  selectedNftId,
+  nftToBeBridgedAddress,
   status,
   setButtonStep,
   nftUrl,
   pubKey,
 }: bridgeAlgoToEthProps) => {
   const lockNFT = async () => {
-    const bal = 1000000 * (await getAlgoNftBalance(selectedNftId));
+    const bal = 1000000 * (await getAlgoNftBalance(nftToBeBridgedAddress));
     try {
       if (bal > 0) {
         let count = 0;
@@ -479,7 +484,7 @@ export const bridgeAlgoToEth = async ({
       const res = await fetch(apiPath + "/finalAlgoBridgeStep", {
         method: "POST",
         body: JSON.stringify({
-          algoNftId: selectedNftId,
+          algoNftId: nftToBeBridgedAddress,
           algoBridgeId: algorandBridgeId.current,
           bridgerOnAlgorand: pubKey,
           bridgerOnEth: ethWalletAddress,
@@ -508,7 +513,7 @@ export const bridgeAlgoToEth = async ({
   if (status.current == "init" && algorandBridgeId.current === "") {
     await deployAlgoLock({
       algoWalletAddress,
-      selectedNftId,
+      nftToBeBridgedAddress,
       status,
       algorandBridgeId,
       setButtonStep,

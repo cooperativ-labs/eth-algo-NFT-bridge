@@ -113,7 +113,7 @@ const SwapForm: FC = () => {
                 ethNftId,
                 ethWalletAddress,
                 algoWalletAddress,
-                selectedNftId,
+                nftToBeBridgedAddress,
                 status,
                 setButtonStep,
                 lockingNFT,
