@@ -76,6 +76,9 @@ const handler = async (request: any, res: any) => {
                 success: `Bridge completed successfully. Check your wallet for your ERC-721 NFT`,
                 nftContractId: `Here is your NFT contract ID : ${ctc.goerliNftMinter}`,
               });
+              console.log(
+                `Here is your NFT contract ID : ${ctc.goerliNftMinter}`
+              );
             })
             .catch((err: any) => {
               console.log(`error while minting eth NFT: `, err);
