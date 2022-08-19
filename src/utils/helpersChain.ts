@@ -427,7 +427,6 @@ const deployAlgoLock = async ({
     });
     let data: any;
     res.json().then((x) => {
-      console.log("I am running here");
       alert(x.success);
       console.log(x.success);
       data = x;

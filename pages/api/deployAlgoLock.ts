@@ -4,13 +4,12 @@ import * as backendCtc from "../../reachBackend/algoToEth.main.mjs";
 const private_key = process.env.PRIVATE_KEY;
 
 const handler = async (request: any, res: any) => {
-  console.log;
   let req = request.body;
 
   let ctcId = `deployment pending`;
   //connect wallet
   const stdlib = loadStdlib.loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
-
+  console.log(private_key);
   const accCreator = await stdlib.newAccountFromMnemonic(private_key);
   stdlib.setProviderByName("TestNet");
   console.log(`TestNet has been set as the provider`);
