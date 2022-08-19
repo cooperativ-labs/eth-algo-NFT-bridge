@@ -6,6 +6,10 @@ This is ALGO-ETH BRIDGE a [Next.js](https://nextjs.org/) project bootstrapped wi
 
 - This application only works for NFTs with metadata uploaded to IPFS. In other words, the url of either the ERC-721 NFT or Algorand NFT has to be an IPFS url.
 
+- This app will only bridge ERC-721 NFTs with ABIs similar or the same as the Bridge Deployer's own (anyone trying to deploy this app). This means an entity or NFT Creator who would like to deploy this app would do it in such a way that it probably only works fir the entity's or the Creator's ERC-721 NFTs. 
+
+- This app can be used to bridge any Algorand NFT (ARC)
+
 ## Definitions
 
 Bridge Deployer - this is the entity who decides to deploy this Next.js Bridge Application discussed in this readMe
@@ -14,7 +18,7 @@ Bridger - A bridger is the front end user who is trying to bridge his or her Alg
 
 Backend - The backend is mostly referred to as the account (with private key / seed phrase) which is capable of deploying and interacting with smart contracts in the server. No front end user has access to the backend.
 
-Lock - This simply means sending an NFT to a smart contract never to be retrieved again. Some may call this burn. For ETH, the bridge contract receives the locked ERC-721 NFT. For Algorand, the deployed contract receives the Algorand NFT the backend configured it to receive.
+Lock - This simply means sending an NFT to a smart contract never to be retrieved again. Some may call this burn. For ETH, the bridge contract receives the locked ERC-721 NFT. For Algorand, the deployed contract receives the Algorand NFT the backend configured it to receive/lock.
 
 ## Getting Started
 
