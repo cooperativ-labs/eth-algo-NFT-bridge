@@ -76,7 +76,7 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
             [
               !ethWalletAddress
                 ? " text-white bg-emerald-700 dark:bg-opacity-10 dark:border-2 dark:border-slate-200 "
-                : "text-emerald-700  dark:bg-opacity-10 border-2 border-emerald-700 dark:border-slate-200 ",
+                : "text-emerald-700  dark:text-emerald-400 dark:bg-opacity-10 border-2 border-emerald-700 dark:border-slate-200 ",
             ],
 
             "flex pl-2  ml-3 font-medium text-sm items-center  p-1 rounded-full"
@@ -91,7 +91,7 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
           ) : (
             <div>{shortenAddress(ethWalletAddress)}</div>
           )}
-          <div className="flex justify-center bg-white rounded-full p-1 h-6 w-6 ml-2">
+          <div className="flex justify-center bg-white dark:bg-slate-300 rounded-full p-1 h-6 w-6 ml-2">
             <img src="chain-icons/ethereum-eth-logo.svg" className="h-4" />
           </div>
         </button>

@@ -31,7 +31,9 @@ const Application: NextPage = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span className={"flex items-center"}>
+          <span
+            className={"flex items-center text-slate-800 dark:text-slate-400"}
+          >
             Powered by{" "}
             <Image
               src="/logos/Cooperativ_Main Logo_Full_Yellow.svg"

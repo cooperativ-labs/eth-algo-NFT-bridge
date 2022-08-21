@@ -42,7 +42,7 @@ const SwapForm: FC = () => {
   //triggered by submit of form
   const bridgeDirectionButton = (
     <button
-      className="p-5 flex w-36 justify-between items-center rounded-full shadow-2xl"
+      className="p-5 flex w-36 justify-between items-center rounded-full shadow-2xl dark:bg-opacity-50 dark:bg-slate-400 "
       onClick={(e) => {
         e.preventDefault();
         handleBridgeDirectionChange();

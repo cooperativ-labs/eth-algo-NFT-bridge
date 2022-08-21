@@ -42,7 +42,7 @@ const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
             [
               !algoWalletAddress
                 ? " text-white bg-blue-700 dark:bg-opacity-10 dark:border-2 dark:border-slate-200 "
-                : "text-blue-700  dark:bg-opacity-10 border-2 border-blue-700 dark:border-slate-200 ",
+                : "text-blue-700 dark:text-blue-400 dark:bg-opacity-10 border-2 border-blue-700 dark:border-slate-200 ",
             ],
 
             "flex pl-2  ml-3 font-medium text-sm items-center  p-1 rounded-full"
@@ -57,7 +57,7 @@ const AlgoSwapForm: React.FC<AlgoSwapFormProps> = ({
           ) : (
             <div>{shortenAddress(algoWalletAddress)}</div>
           )}
-          <div className="flex justify-center bg-white rounded-full p-1 h-6 w-6 ml-2">
+          <div className="flex justify-center bg-white  dark:bg-slate-300 rounded-full p-1 h-6 w-6 ml-2">
             <img src="chain-icons/algorand-algo.svg" className="h-4" />
           </div>
         </button>
