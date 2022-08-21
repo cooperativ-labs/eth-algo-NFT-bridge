@@ -33,10 +33,13 @@ const mintNft = async (to, url) => {
           if (!err) {
             console.log("The hash of your transaction is: ", hash);
             return hash;
-          } else {
+            } else {
             console.log(
+              
               "Something went wrong when submitting your transaction:",
+             
               err
+            
             );
             return `Something went wrong when submitting your transaction: ${err}`;
           }
@@ -46,6 +49,7 @@ const mintNft = async (to, url) => {
     .catch((err) => {
       console.log("Promise failed:", err);
     });
+};
 };
 
 module.exports = { mintNft };
