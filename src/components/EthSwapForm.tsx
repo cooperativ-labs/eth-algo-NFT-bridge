@@ -32,11 +32,18 @@ const EthSwapForm: React.FC<EthSwapFormProps> = ({
   // const [nftBalance, setNftBalance] = useState<string>("");
 
   useEffect(() => {
-    const web3 = new Web3(window.ethereum);
-    window.ethereum.on("accountsChanged", async () => {
-      const accounts = await web3.eth.getAccounts();
-      setEthWalletAddress(accounts[0]);
-    });
+    let web3: any;
+    if (window.ethereum) {
+      web3 = new Web3(window.ethereum);
+      window.ethereum.on("accountsChanged", async () => {
+        const accounts = await web3.eth.getAccounts();
+        setEthWalletAddress(accounts[0]);
+      });
+    } else {
+      alert(
+        "You do not have metaMask installed yet. Please install MetaMask at https://metamask.io/download/"
+      );
+    }
   }, [
     setEthWalletAddress,
     ethWalletAddress,

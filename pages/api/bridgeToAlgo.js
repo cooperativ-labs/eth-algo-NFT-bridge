@@ -27,7 +27,7 @@ const handler = async (request, res) => {
         req.tokenSymbol,
         {
           decimals: 0,
-          supply: 1,
+          supply: 3,
           url: req.url /* metadataHash: req.metadataHash */,
         }
       );
