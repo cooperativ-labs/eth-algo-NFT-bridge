@@ -1,7 +1,7 @@
 const loadStdlib = require("@reach-sh/stdlib");
 import * as backendCtc from "../../reachBackend/algoToEth.main.mjs";
 // import { nftContract } from '../../ethContracts/erc721.';
-const private_key = process.env.PRIVATE_KEY;
+const private_key = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 
 const handler = async (request: any, res: any) => {
   let req = request.body;

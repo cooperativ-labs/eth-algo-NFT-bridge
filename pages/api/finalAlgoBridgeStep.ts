@@ -1,7 +1,7 @@
 const loadStdlib = require("@reach-sh/stdlib");
 import * as backendCtc from "../../reachBackend/algoToEth.main.mjs";
 const { authenticate } = require("./authenticate.js");
-const private_key = process.env.PRIVATE_KEY;
+const private_key = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 const Web3 = require("web3");
 const infura = `https://goerli.infura.io/v3/eaf55bdd847a49a6a4701f2ef30e96f8`;
 const web3 = new Web3(infura);
