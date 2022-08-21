@@ -153,7 +153,7 @@ export default function Erc721() {
             `This Algorand Bridge contract now holds your NFT waiting to be claimed (write it down): ${data.contractId}`
           );
         if (data.contractId)
-          alert( 
+          alert(
             `This is the ID of your "NFT" waiting for you to claim after opting in:  ${data.NFTid}`
           );
         if (data.contractId) {
@@ -412,7 +412,7 @@ export default function Erc721() {
           `This Algorand Bridge contract now holds your NFT waiting to be claimed (write it down): ${data.contractId}`
         );
       if (data.contractId)
-        alert( 
+        alert(
           `This is the ID of your "NFT" waiting for you to claim after opting in:  ${data.NFTid}`
         );
       if (data.contractId) {
@@ -430,7 +430,6 @@ export default function Erc721() {
       alert(`error: `, error);
     }
   };
-  
 
   return (
     <div className="bg-blue-500 flex flex-col">
@@ -483,7 +482,11 @@ export default function Erc721() {
         <br />
         <br />
         {/* <button className="button is-primary" onClick = {claimNft}> Claim Algorand NFT</button> */}
-        <button className="button is-danger" onClick = {deployToken}>Test BackEnd</button> <br/><br/>
+        <button className="button is-danger" onClick={deployToken}>
+          Test BackEnd
+        </button>{" "}
+        <br />
+        <br />
       </div>
       <div className="mb-5">
         <button
