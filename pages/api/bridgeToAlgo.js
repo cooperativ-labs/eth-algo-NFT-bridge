@@ -3,7 +3,7 @@ import * as backendCtc from "../../reachBackend/test.main.mjs";
 const Web3 = require("web3");
 const { authenticate } = require("./authenticate.js");
 // import { nftContract } from '../../ethContracts/erc721.';
-const private_key = process.env.PRIVATE_KEY;
+const private_key = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 const infura = `https://goerli.infura.io/v3/eaf55bdd847a49a6a4701f2ef30e96f8`;
 const web3 = new Web3(infura);
 
@@ -79,8 +79,10 @@ const handler = async (request, res) => {
   try {
     authenticate(req.ethNftCtcId)
       .then(async (auth) => {
-        console.log(`req.tokenId is: ${req.tokenId} AND auth.tokenId is: ${auth.tokenId}`);
-        console.log(`authenticating tokenId`, auth.tokenId == req.tokenId );
+        console.log(
+          `req.tokenId is: ${req.tokenId} AND auth.tokenId is: ${auth.tokenId}`
+        );
+        console.log(`authenticating tokenId`, auth.tokenId == req.tokenId);
         if (
           auth.from == req.bridgerOnEth &&
           auth.to == `0x7a403d1f0CF58EDa5D3047d856D2525cbbc993f2` &&
@@ -92,22 +94,18 @@ const handler = async (request, res) => {
           deploySmartContract().then((a) => {
             //set timeout
             setTimeout(() => {
-              res
-                .status(200)
-                .json({
-                  success: `Contract deployed successfully with Contract id: ${ctcId}`,
-                  NFTid: a[1],
-                  contractId: `${ctcId}`,
-                });
+              res.status(200).json({
+                success: `Contract deployed successfully with Contract id: ${ctcId}`,
+                NFTid: a[1],
+                contractId: `${ctcId}`,
+              });
             }, 25000);
           });
         } else {
           console.log(`authentication failed`);
-          res
-            .status(500)
-            .json({
-              error: `authentication failed: Could not confirm locking of your NFT for bridging`,
-            });
+          res.status(500).json({
+            error: `authentication failed: Could not confirm locking of your NFT for bridging`,
+          });
         }
       })
       .catch((error) => {
