@@ -1,7 +1,7 @@
 const loadStdlib = require("@reach-sh/stdlib");
 import * as backendCtc from "../../reachBackend/algoToEth.main.mjs";
 const { authenticate } = require("./authenticate.js");
-const private_key = process.env.PRIVATE_KEY;
+const private_key = process.env.NEXT_PUBLIC_PRIVATE_KEY;
 const Web3 = require("web3");
 const infura = `https://goerli.infura.io/v3/eaf55bdd847a49a6a4701f2ef30e96f8`;
 const web3 = new Web3(infura);
@@ -15,7 +15,6 @@ const handler = async (request: any, res: any) => {
 
   //connect wallet
   const stdlib = loadStdlib.loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
-  console.log(private_key);
   const accCreator = await stdlib.newAccountFromMnemonic(private_key);
   stdlib.setProviderByName("TestNet");
   console.log(`TestNet has been set as the provider`);
@@ -74,11 +73,8 @@ const handler = async (request: any, res: any) => {
             .then((id: string) => {
               res.status(200).json({
                 success: `Bridge completed successfully. Check your wallet for your ERC-721 NFT`,
-                nftContractId: `Here is your NFT contract ID : ${ctc.goerliNftMinter}`,
+                nftContractId: ctc.goerliNftMinter,
               });
-              console.log(
-                `Here is your NFT contract ID : ${ctc.goerliNftMinter}`
-              );
             })
             .catch((err: any) => {
               console.log(`error while minting eth NFT: `, err);
