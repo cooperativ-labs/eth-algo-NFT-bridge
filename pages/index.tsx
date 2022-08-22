@@ -19,7 +19,7 @@ const Application: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavigationBar />
-      <div className="my-auto items-center h-full mt-24 md:mt-28">
+      <div className="my-auto items-center h-full mt-16 md:mt-28">
         <FormCard center>
           <SwapForm />
         </FormCard>
