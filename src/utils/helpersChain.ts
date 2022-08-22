@@ -301,7 +301,6 @@ const deployAlgoToken = async ({
             callAPI(backendCtcE2A, algorandBridgeId.current, "claimNFT", []);
           }, 5000);
         });
-        console.log("after the thing");
         countE2A++;
       }
 
