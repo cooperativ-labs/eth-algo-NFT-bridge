@@ -7,9 +7,9 @@ import * as backendCtcE2A from "../../reachBackend/test.main.mjs";
 import { Dispatch, SetStateAction } from "react";
 import { LoadingButtonStateType } from "../components/buttons/LoadingButtonText";
 declare let window: any;
-let countE2A = 0 ;
-let algoWalletConnected = false
-let acc : any = null;
+let countE2A = 0;
+let algoWalletConnected = false;
+let acc: any = null;
 
 const apiPath = "/api";
 // =============== WALLET CONNECTORS =====================
@@ -53,19 +53,19 @@ export const connectAlgoWallet = async (
   setAlgoWalletAddress(reach.formatAddress(contractUserPubKey));
 };
 
-export const checkAlgoNftBalance = async (
-  nft: string
-) => {
+export const checkAlgoNftBalance = async (nft: string) => {
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
   reach.setWalletFallback(
     reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
   );
-  if(algoWalletConnected == false) {
-    acc = await reach.getDefaultAccount();  
+  if (algoWalletConnected == false) {
+    acc = await reach.getDefaultAccount();
   }
-  let ret =  parseFloat(reach.formatCurrency(await reach.balanceOf(acc, nft), 6))*1000000;
+  let ret =
+    parseFloat(reach.formatCurrency(await reach.balanceOf(acc, nft), 6)) *
+    1000000;
   return ret;
-}
+};
 
 // =============== SHARED FUNCTIONS =====================
 
@@ -126,7 +126,10 @@ export const getEthNftUri = async ({
   if (!!ethWalletAddress)
     try {
       const web3_ = new Web3(window.ethereum);
-      const ctc = await nftContract(web3_, nftToBeBridgedAddress);
+      const ctc = await nftContract(
+        web3_,
+        nftToBeBridgedAddress.replaceAll(" ", "")
+      );
       const uri = await ctc.methods
         .tokenURI(selectedNftId.replaceAll(" ", ""))
         .call();
@@ -145,29 +148,31 @@ export const getEthNftUri = async ({
     }
 };
 
-export const optInToNFT = async (token: string) => {
-  if(countE2A == 1){
+export const optInToNFT = async (
+  token: string,
+  setButtonStep: Dispatch<SetStateAction<LoadingButtonStateType>>
+) => {
+  if (countE2A == 1) {
     countE2A++;
-    let ret : boolean = false;
+    let ret: boolean = false;
     const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
     reach.setWalletFallback(
       reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
     );
-    if(algoWalletConnected == false){
+    if (algoWalletConnected == false) {
       acc = await reach.getDefaultAccount();
     }
     console.log("acc", acc);
-    acc.tokenAccept(token).then((accepted : any) =>
-      {
-        if(accepted) ret = true;
-        alert(`You have now opted in to ${token}`)
-      });
-     return ret;
+    acc.tokenAccept(token).then((accepted: any) => {
+      if (accepted) ret = true;
+      alert(`You have now opted in to ${token}`);
+      setButtonStep("confirmed");
+    });
+    return ret;
   } else {
     alert(`optInToNFT function was already run once`);
     return false;
   }
-  
 };
 
 export const callAPI = async (
@@ -181,25 +186,31 @@ export const callAPI = async (
   reach.setWalletFallback(
     reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
   );
-  if(algoWalletConnected == false){
+  if (algoWalletConnected == false) {
     acc = await reach.getDefaultAccount();
   }
   const ctc = acc.contract(reachBackend, ctcDeployed);
 
   const call = async (f: any) => {
-    console.log(acc)
+    console.log(acc);
     let res = undefined;
     try {
-      res = (countE2A == 3 && apiName == 'claimNFT') || apiName == 'lockNFT' ? await f() : 'no way';
+      res =
+        (countE2A == 3 && apiName == "claimNFT") || apiName == "lockNFT"
+          ? await f()
+          : "no way";
       response = await f();
       if (res == `no`) {
         console.log(`"${apiName}" API is not available from Reach backend`);
         alert(`"${apiName}" API is not available from Reach backend`);
-      } else if(res == `no way`) {
-        console.log(`"${apiName}" API is not available because you are trying to run it more than 1 time`);
-        alert(`countE2A is now ${countE2A}... "${apiName}" API is not available you are trying to run it more than 1 time`);
-      }
-      else {
+      } else if (res == `no way`) {
+        console.log(
+          `"${apiName}" API is not available because you are trying to run it more than 1 time`
+        );
+        alert(
+          `countE2A is now ${countE2A}... "${apiName}" API is not available you are trying to run it more than 1 time`
+        );
+      } else {
         countE2A++;
         console.log(
           `the "${apiName}" API has successfully worked. Here is the response:`,
@@ -244,7 +255,6 @@ type deployAlgoTokenProps = {
 };
 
 const deployAlgoToken = async ({
-  //@Jake -  this is running the backend like three times - may be rerendering issue
   algoWalletAddress,
   ethWalletAddress,
   nftUrl,
@@ -261,18 +271,17 @@ const deployAlgoToken = async ({
   try {
     console.log("deploying algo token");
     const res = await fetch(apiPath + "/bridgeToAlgo", {
-      // @Sunday - Problem here
       method: "POST",
       body: JSON.stringify({
         ethRecAddr: ethWalletAddress,
-        ethNftCtcId: nftToBeBridgedAddress,
+        ethNftCtcId: nftToBeBridgedAddress.replaceAll(" ", ""),
         bridgerOnEth: ethWalletAddress,
         bridgerOnAlgo: algoWalletAddress,
         name: "",
         url: nftUrl,
         //We probably need to transfer the metadata of the NFT to the Algorand contract
         metadataHash: "metaDataHash",
-        tokenId: selectedNftId,
+        tokenId: selectedNftId.replaceAll(" ", ""),
       }),
       headers: { "Content-Type": "application/json" },
     });
@@ -286,15 +295,15 @@ const deployAlgoToken = async ({
       alert(
         `This is the ID of your "NFT" waiting for you to claim after opting in:  ${data.NFTid}. You will be able to claim your NFT on Algorand on the next prompt`
       );
-      if(countE2A == 1) { 
-        optInToNFT(data.NFTid).then((ret) => {
+      if (countE2A == 1) {
+        await optInToNFT(data.NFTid, setButtonStep).then((ret) => {
           setTimeout(() => {
-            callAPI(backendCtcE2A, algorandBridgeId.current, "claimNFT", []) ;
-          } , 5000);
-        })
-        countE2A++;       
-       }
-      setButtonStep("confirmed");
+            callAPI(backendCtcE2A, algorandBridgeId.current, "claimNFT", []);
+          }, 5000);
+        });
+        countE2A++;
+      }
+
       return data.contractId;
     } else {
       setButtonStep("failed");
@@ -311,7 +320,6 @@ const deployAlgoToken = async ({
 type bridgeEthToAlgoProps = deployAlgoTokenProps & {
   count: any;
   nftToBeBridgedAddress: string;
-  
 };
 
 export const bridgeEthToAlgo = async ({
@@ -351,7 +359,7 @@ export const bridgeEthToAlgo = async ({
         .transferFrom(
           ethWalletAddress,
           "0x7a403d1f0CF58EDa5D3047d856D2525cbbc993f2",
-          selectedNftId
+          selectedNftId.replaceAll(" ", "")
         )
         .send({
           from: ethWalletAddress,
@@ -365,7 +373,6 @@ export const bridgeEthToAlgo = async ({
         .on(
           "confirmation",
           async function (confirmationNumber: any, receipt: any) {
-            //this is to make sure it only runs once and not infinitely
             while (countE2A < 1) {
               countE2A++;
               deployAlgoToken({
@@ -379,7 +386,7 @@ export const bridgeEthToAlgo = async ({
                 setButtonStep,
               }).then((ret) => {
                 console.log("deployAlgo", ret);
-              })
+              });
             }
           }
         );
@@ -397,7 +404,7 @@ export const getAlgoNftBalance = async (nftId: string) => {
   reach.setWalletFallback(
     reach.walletFallback({ providerEnv: "TestNet", MyAlgoConnect })
   );
-  if(algoWalletConnected == false){
+  if (algoWalletConnected == false) {
     acc = await reach.getDefaultAccount();
   }
   const bal = await reach.balanceOf(acc, nftId);
@@ -416,7 +423,7 @@ export const getAlgoNftUri = async ({
   setNftImageUrl,
 }: getAlgoNftUriProps) => {
   const reach = loadStdlib({ REACH_CONNECTOR_MODE: "ALGO" });
-  if(algoWalletConnected == false){
+  if (algoWalletConnected == false) {
     acc = await reach.getDefaultAccount();
   }
   const metadata = await acc.tokenMetadata(
@@ -457,7 +464,7 @@ const deployAlgoLock = async ({
     const res = await fetch(apiPath + "/deployAlgoLock", {
       method: "POST",
       body: JSON.stringify({
-        algoNftId: nftToBeBridgedAddress,
+        algoNftId: nftToBeBridgedAddress.replaceAll(" ", ""),
         bridgerOnAlgorand: algoWalletAddress,
       }),
       headers: { "Content-Type": "application/json" },
@@ -491,6 +498,7 @@ type bridgeAlgoToEthProps = deployAlgoLockProps & {
   lockingNFT: any;
   pubKey: string;
   nftUrl: string;
+  setNftContractId: Dispatch<SetStateAction<string>>;
 };
 //triggered by submit of form
 export const bridgeAlgoToEth = async ({
@@ -503,14 +511,19 @@ export const bridgeAlgoToEth = async ({
   setButtonStep,
   nftUrl,
   pubKey,
+  setNftContractId,
 }: bridgeAlgoToEthProps) => {
-  if(await checkAlgoNftBalance(nftToBeBridgedAddress) == 0){
+  if (
+    (await checkAlgoNftBalance(nftToBeBridgedAddress.replaceAll(" ", ""))) == 0
+  ) {
     alert(`You do not have enough Algorand NFT to lock. Your NFT balance is 0`);
     return;
   }
   const lockNFT = async () => {
     console.log(algorandBridgeId.current);
-    const bal = 1000000 * (await getAlgoNftBalance(nftToBeBridgedAddress));
+    const bal =
+      1000000 *
+      (await getAlgoNftBalance(nftToBeBridgedAddress.replaceAll(" ", "")));
     try {
       if (bal > 0) {
         let count = 0;
@@ -521,7 +534,9 @@ export const bridgeAlgoToEth = async ({
           return true;
         }
       } else {
-        alert(`You do not have enough Algorand to lock this NFT. You have ${bal} NFT`);
+        alert(
+          `You do not have enough Algorand to lock this NFT. You have ${bal} NFT`
+        );
         return false;
       }
     } catch (err) {
@@ -549,18 +564,19 @@ export const bridgeAlgoToEth = async ({
         status.current = "bridged";
         ethNftId.current = `${data.ethNftId}`;
         alert(
-          `${data.success} and ${data.nftContractId}`
+          `${data.success} and here is your NFT's address: ${data.nftContractId}`
         );
+        setNftContractId(data.nftContractId);
         setButtonStep("confirmed");
-      } else if(data.failure) {
+      } else if (data.failure) {
         setButtonStep("failed");
         alert(`${data.failure}`);
-      } else if(data.error) {
+      } else if (data.error) {
         setButtonStep("failed");
         alert(`${data.error}`);
       }
     } catch (err) {
-      status.current = "error"
+      status.current = "error";
       alert(`error: ${err}`);
       setButtonStep("failed");
     }

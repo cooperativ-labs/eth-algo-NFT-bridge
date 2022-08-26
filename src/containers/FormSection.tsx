@@ -7,7 +7,7 @@ type FormSectionProps = {
 
 const FormSection: FC<FormSectionProps> = ({ children }) => {
   return (
-    <div className="min-h-max mb-6 md:rounded-3xl  bg-blue-50  dark:bg-opacity-5 pt-5 pb-10 px-6 shadow-innerFormSection dark:shadow-innerFormSectionDark">
+    <div className="min-h-max mb-6 mx-2 md:mx-0 rounded-3xl  bg-blue-50  dark:bg-opacity-5 pt-5 pb-10 px-6 shadow-innerFormSection dark:shadow-innerFormSectionDark">
       {children}
     </div>
   );

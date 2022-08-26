@@ -19,6 +19,7 @@ const SwapForm: FC = () => {
   const [nftImageUri, setNftImageUrl] = useState<string>("");
   const [metaData, setMetaData] = useState<any>("");
   const [nftClaimId, setNftClaimId] = useState<string>("");
+  const [nftContractId, setNftContractId] = useState<string>("");
   const [pubKey, setPubKey] = useState<string>("");
   const algorandBridgeId = useRef<string>("");
   const count = useRef<number>(0);
@@ -29,6 +30,7 @@ const SwapForm: FC = () => {
 
   const handleBridgeDirectionChange = () => {
     setBridgeDirection(!ethToAlgo);
+    setButtonStep("idle");
     setNftUrl("");
     setNftImageUrl("");
     setMetaData("");
@@ -79,29 +81,16 @@ const SwapForm: FC = () => {
       <Formik
         innerRef={formikRef}
         initialValues={{
-          fromChain: "",
           nftToBeBridgedAddress: "",
-          toChain: "",
-          toWalletAddress: "",
+
           selectedNftId: "",
         }}
         validate={(values) => {
           const errors: any = {}; /** @TODO : Shape */
-          // if (!values.fromChain) {
-          //   errors.fromChain = "Required";
-          // }
-          // if (!values.nftToBeBridgedAddress) {
-          //   errors.nftToBeBridgedAddress = "Required";
-          // }
-          // if (!values.toChain) {
-          //   errors.toChain = "Required";
-          // }
-          // if (!values.toWalletAddress) {
-          //   errors.toWalletAddress = "Required";
-          // }
-          // if (!values.selectedNftId) {
-          //   errors.selectedNftId = "Required";
-          // }
+
+          if (!values.nftToBeBridgedAddress) {
+            errors.nftToBeBridgedAddress = "Required";
+          }
           return errors;
         }}
         onSubmit={async (values, { setSubmitting }) => {
@@ -109,7 +98,7 @@ const SwapForm: FC = () => {
           const { selectedNftId, nftToBeBridgedAddress } = values;
 
           ethToAlgo
-            ? bridgeEthToAlgo({
+            ? await bridgeEthToAlgo({
                 algoWalletAddress,
                 ethWalletAddress,
                 nftUrl,
@@ -120,7 +109,7 @@ const SwapForm: FC = () => {
                 setButtonStep,
                 setNftClaimId,
               })
-            : bridgeAlgoToEth({
+            : await bridgeAlgoToEth({
                 algorandBridgeId,
                 ethNftId,
                 ethWalletAddress,
@@ -131,6 +120,7 @@ const SwapForm: FC = () => {
                 lockingNFT,
                 pubKey,
                 nftUrl,
+                setNftContractId,
               });
           setSubmitting(false);
         }}
@@ -153,7 +143,6 @@ const SwapForm: FC = () => {
                 setNftUrl={setNftUrl}
                 setMetaData={setMetaData}
               />
-
               <AlgoSwapForm
                 isFrom={!ethToAlgo}
                 algoWalletAddress={algoWalletAddress}
@@ -176,26 +165,31 @@ const SwapForm: FC = () => {
                     ? shortenAddress(values.nftToBeBridgedAddress)
                     : ""
                 } ${
-                  values.toWalletAddress
-                    ? `to ${shortenAddress(values.toWalletAddress)}`
-                    : ""
+                  ethToAlgo && (algoWalletAddress || ethWalletAddress)
+                    ? `to ${shortenAddress(algoWalletAddress)}`
+                    : `to ${shortenAddress(ethWalletAddress)}`
                 }`}
                 submittingText={`Bridging ${
                   values.nftToBeBridgedAddress
                     ? shortenAddress(values.nftToBeBridgedAddress)
                     : ""
                 } ${
-                  values.toWalletAddress
-                    ? `to ${shortenAddress(values.toWalletAddress)}`
-                    : ""
+                  ethToAlgo && (algoWalletAddress || ethWalletAddress)
+                    ? `to ${shortenAddress(algoWalletAddress)}`
+                    : `to ${shortenAddress(ethWalletAddress)}`
                 }`}
                 confirmedText="Bridged!"
-                failedText="Oops. Something went wrong"
+                failedText="Oops. Something went wrong (please refresh the page)"
               />
             </FormButton>
           </Form>
         )}
       </Formik>
+      {nftContractId && (
+        <div className="mt-3 font-bold">
+          Add this token to your wallet: {nftContractId}
+        </div>
+      )}
     </>
   );
 };

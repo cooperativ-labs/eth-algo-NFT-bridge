@@ -19,13 +19,13 @@ const Application: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavigationBar />
-      <div className="my-auto items-center h-full mt-24 md:mt-28">
+      <div className="my-auto items-center h-full mt-16 md:mt-28">
         <FormCard center>
           <SwapForm />
         </FormCard>
       </div>
 
-      <footer className={" p-2"}>
+      <footer className={" p-2 mt-5"}>
         <a
           href="https://cooperativ.io?utm_source=eth_algo_nft_bridge"
           target="_blank"
@@ -35,12 +35,14 @@ const Application: NextPage = () => {
             className={"flex items-center text-slate-800 dark:text-slate-400"}
           >
             Powered by{" "}
-            <Image
-              src="/logos/Cooperativ_Main Logo_Full_Yellow.svg"
-              alt="Cooperativ Logo"
-              width={150}
-              height={25}
-            />
+            <span className="ml-1 pt-1">
+              <Image
+                src="/logos/Cooperativ_Main Logo_Full_Yellow.svg"
+                alt="Cooperativ Logo"
+                width={110}
+                height={20}
+              />
+            </span>
           </span>
         </a>
       </footer>
