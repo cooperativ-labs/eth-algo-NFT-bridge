@@ -45,7 +45,7 @@ We will continue to develop this repo after hackathon submission at this [Cooper
 
 ## Limitations
 
-- The only limitation currently faced for this bridge has to do with myAlgo wallet. When claiming NFT on Algorand or locking NFT on Alogrand during a bridging process, the pop up shows up two times instead of one time when calling a contract function
+- The only limitation currently faced for this bridge has to do with myAlgo wallet. When claiming NFT on Algorand or locking NFT on Algorand during a bridging process, the pop up shows up two times instead of one time when calling a contract function
 
 
 ## Getting Started
