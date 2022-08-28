@@ -1,8 +1,8 @@
 This is ALGO-ETH BRIDGE developed on Algorand using smart contracts developed with [Reach](reach.sh) and solidity. It is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-**Developed by**: [Sunday Akinbowale](https://github.com/asolpshinning), [Jake ChaseBuilt](https://github.com/jchaselubitz), and powered by [Cooperativ.io](https://github.com/cooperativ-labs)
+**Developed by**: [Sunday Akinbowale](https://github.com/asolpshinning), [Jake Chase-Lubitz](https://github.com/jchaselubitz), and powered by [Cooperativ.io](https://github.com/cooperativ-labs)
 
-We will continue to develop this repo after hackathon submission at this [Cooperative's Github Repo](https://github.com/cooperativ-labs/eth-algo-NFT-bridge)
+We will continue to develop this repo after hackathon submission at this [Cooperativ's Github Repo](https://github.com/cooperativ-labs/eth-algo-NFT-bridge)
 
 
 ## Video Demo
@@ -45,7 +45,7 @@ We will continue to develop this repo after hackathon submission at this [Cooper
 
 ## Limitations
 
-- The only limitation currently faced for this bridge has to do with myAlgo wallet. When claiming NFT on Algorand or locking NFT on Alogrand during a bridging process, the pop up shows up two times instead of one time when calling a contract function
+- The only limitation currently faced for this bridge has to do with myAlgo wallet. When claiming NFT on Algorand or locking NFT on Algorand during a bridging process, the pop up shows up two times instead of one time when calling a contract function
 
 
 ## Getting Started
@@ -65,7 +65,7 @@ The ALGO-ETH Bridge is made up of the following major parts:
 
 - [Reach Compiled Javascript Files](https://github.com/asolpshinning/nft-bridge/tree/main/reachBackend)
 
-    - `algoToEth.main.mjs` (this is compiled from algoToEth.rsh). It is mainly for locking ALgorand NFT in a reach algorand smart contract, and the backend can view the contract to see whether the "bridger" has locked NFT in it before minting ERC-721 NFT. THe backend can also check this contract to see if the backend has previously noted that a specific bridge has been completed.
+    - `algoToEth.main.mjs` (this is compiled from algoToEth.rsh). It is mainly for locking Algorand NFT in a reach Algorand smart contract, and the backend can view the contract to see whether the "bridger" has locked NFT in it before minting ERC-721 NFT. THe backend can also check this contract to see if the backend has previously noted that a specific bridge has been completed.
 
     - `test.main.js` (this is compiled from test.rsh). This is mainly used in the front end  the bridger can use to claim Algorand NFT from the Algorand smart contract deployed by the backend, after a bridger locks ERC-721 NFT during a bridging process.
 
@@ -75,7 +75,7 @@ The ALGO-ETH Bridge is made up of the following major parts:
 
     - `erc721a.js` => these are functions and the minter address required to launch a web3 instance in the backend using the web3.js library
 
-    - `erc721abi.json` => this is the eth bridge ABI which is able to receive any ERC-721 NFT being permanently locked and also able to mint new ERC-721 NFT after an algorand NFT has been locked. 
+    - `erc721abi.json` => this is the eth bridge ABI which is able to receive any ERC-721 NFT being permanently locked and also able to mint new ERC-721 NFT after an Algorand NFT has been locked. 
 
     - `nftAbi.json` => this is the example ABI of the ERC-721 NFT issued by the Bridge Deployer who is offering bridging services for people to move their NFTs from Ethereum to Algorand 
 
